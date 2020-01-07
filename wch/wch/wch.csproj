@@ -976,6 +976,9 @@
     <Compile Include="tool\universe\GetTeacher.ashx.cs">
       <DependentUpon>GetTeacher.ashx</DependentUpon>
     </Compile>
+    <Compile Include="tool\universe\GetTerm.ashx.cs">
+      <DependentUpon>GetTerm.ashx</DependentUpon>
+    </Compile>
     <Compile Include="tool\universe\GetTheatre.ashx.cs">
       <DependentUpon>GetTheatre.ashx</DependentUpon>
     </Compile>
@@ -1388,6 +1391,7 @@
     <Content Include="tool\admin\department\DelDep.ashx" />
     <Content Include="tool\admin\department\GetDepartment.ashx" />
     <Content Include="tool\admin\department\UpdDep.ashx" />
+    <Content Include="tool\universe\GetTerm.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

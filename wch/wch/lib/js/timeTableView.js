@@ -80,14 +80,19 @@ function timeTableView() {
                     layer.open({
                         type: 1,
                         content: AddTimeTable, //这里content是一个普通的String
-                        area: ['570px', '710px'],
+                        area: ['480px', '600px'],
                         title: '排课',
                         success: function (layero, index) {
                             console.log(index);
                             //addStudent();
+                            bindCourse("#CourseGridding");
+                            bindTeacher("#TeaGridding");
+                            bindSchedule("#ScheduleGridding");
+                            bindTheatre("#TheatreGridding");
+                            bindTerm("#TermGridding");
                             layui.use('form', function () {
                                 var form = layui.form;
-
+                                
                                 //监听提交
                                 form.on('submit(submitStuForm)', function (data) {
                                     //layer.msg(JSON.stringify(data.field));

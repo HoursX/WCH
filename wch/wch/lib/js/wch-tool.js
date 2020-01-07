@@ -219,7 +219,7 @@ function bindTheatre(id, isDefault = false, isView = false, val = ""){
         function (value, data) {
             console.log(data);
             $(id).empty();
-            $(id).append(new Option("请选择教师", ""));
+            $(id).append(new Option("请选择上课教室", ""));
             if(isDefault){
                 $.each(data.data, function (index, item) {
                     if(isView){
@@ -240,6 +240,43 @@ function bindTheatre(id, isDefault = false, isView = false, val = ""){
             }else{
                 $.each(data.data, function (index, item) {
                     $(id).append(new Option(item.Site, item.TheatreID));
+                });
+            }
+            layui.form.render();
+        });
+}
+
+//获取学期并绑定下拉框
+//id: 下拉框id
+//isView: 是否按照显示值绑定
+//val:显示值
+function bindTerm(id, isDefault = false, isView = false, val = ""){
+    myPost("/tool/universe/GetTerm.ashx",
+        {},
+        function (value, data) {
+            console.log(data);
+            $(id).empty();
+            $(id).append(new Option("请选择学期", ""));
+            if(isDefault){
+                $.each(data.data, function (index, item) {
+                    if(isView){
+                        if(val == item.TermName){
+                            $(id).append(new Option(item.TermName, item.TermID, true, true));
+                        }else{
+                            $(id).append(new Option(item.TermName, item.TermID));
+                        }
+                    }else{
+                        if(val == item.TermID){
+                            $(id).append(new Option(item.TermName, item.TermID, true, true));
+                        }else{
+                            $(id).append(new Option(item.TermName, item.TermID));
+                        }
+                    }
+                    
+                });
+            }else{
+                $.each(data.data, function (index, item) {
+                    $(id).append(new Option(item.TermName, item.TermID));
                 });
             }
             layui.form.render();

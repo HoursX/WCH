@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,8 +14,33 @@ namespace wch.tool.admin.timeTable
 
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/plain";
-            context.Response.Write("Hello World");
+            HttpResponse res = context.Response;
+            res.ContentType = "text/json";
+            string timeTable = context.Request.Params["val"];
+            try
+            {
+                wch.bll.timeTable.Add(timeTable);
+                var json = new
+                {
+                    code = 200,
+                    msg = "添加成功",
+                };
+                res.Write(JsonConvert.SerializeObject(json));
+
+            }
+            catch (Exception e)
+            {
+                var json = new
+                {
+                    code = 500,
+                    msg = "出现错误：" + e.Message,
+                };
+                res.Write(JsonConvert.SerializeObject(json));
+            }
+            finally
+            {
+                res.End();
+            }
         }
 
         public bool IsReusable

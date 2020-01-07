@@ -329,6 +329,15 @@
         </select>
       </div>
     </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">学期</label>
+      <div class="layui-input-inline">
+        <select name="TermID" lay-verify="required" lay-search="" id="TermGridding">
+          <option value="">直接选择或搜索选择</option>
+        </select>
+      </div>
+    </div>
     
     <div class="layui-form-item">
         <div class="layui-input-block">

@@ -57,6 +57,7 @@
     <Compile Include="bll\departments.cs" />
     <Compile Include="bll\students.cs" />
     <Compile Include="bll\teachers.cs" />
+    <Compile Include="bll\timeTable.cs" />
     <Compile Include="bll\universe.cs" />
     <Compile Include="lib\DBHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
