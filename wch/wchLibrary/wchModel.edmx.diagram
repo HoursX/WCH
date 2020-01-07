@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8950e51adbed4aaf889a32fefbfced34" Name="关系图1" ZoomLevel="108">
+        <EntityTypeShape EntityType="wchModel.wch_Class" Width="1.5" PointX="8.3512638548162137" PointY="25.559832465629945" />
+        <EntityTypeShape EntityType="wchModel.wch_Course" Width="1.5" PointX="9.6682366065998728" PointY="9.2910527928225015" />
+        <EntityTypeShape EntityType="wchModel.wch_CourseSelection" Width="1.5" PointX="4.0181439966047847" PointY="7.0824379357893195" />
+        <EntityTypeShape EntityType="wchModel.wch_Department" Width="1.5" PointX="0.09347549271466" PointY="3.9728047866247618" />
+        <EntityTypeShape EntityType="wchModel.wch_Login" Width="1.5" PointX="8.0464934520639915" PointY="7.1946815285806922" />
+        <EntityTypeShape EntityType="wchModel.wch_Schedule" Width="1.5" PointX="10.888070269901338" PointY="13.445648080411203" />
+        <EntityTypeShape EntityType="wchModel.wch_Student" Width="1.5" PointX="5.7052533504111942" PointY="0.16122433550712856" />
+        <EntityTypeShape EntityType="wchModel.wch_Teacher" Width="1.5" PointX="3.0799159496463444" PointY="13.224613940913516" />
+        <EntityTypeShape EntityType="wchModel.wch_Term" Width="1.5" PointX="10.460067914081769" PointY="22.635931934526159" />
+        <EntityTypeShape EntityType="wchModel.wch_Theatre" Width="1.5" PointX="7.075917752029337" PointY="31.993052825328451" />
+        <EntityTypeShape EntityType="wchModel.wch_TimeTable" Width="1.5" PointX="0.74239298735856685" PointY="13.121949783117486" />
+        <EntityTypeShape EntityType="wchModel.wch_TimeTableDetail" Width="1.5" PointX="5.7118470080717678" PointY="27.932172788275487" />
+        <AssociationConnector Association="wchModel.FK__wch_Class__DepID__0519C6AF" />
+        <AssociationConnector Association="wchModel.FK__wch_Stude__Class__09DE7BCC" />
+        <AssociationConnector Association="wchModel.FK__wch_Cours__DepID__21B6055D" />
+        <AssociationConnector Association="wchModel.FK__wch_TimeT__Cours__286302EC" />
+        <AssociationConnector Association="wchModel.FK__wch_Cours__StuID__32E0915F" />
+        <AssociationConnector Association="wchModel.FK__wch_Stude__DepID__0AD2A005" />
+        <AssociationConnector Association="wchModel.FK__wch_Teach__DepID__108B795B" />
+        <AssociationConnector Association="wchModel.FK__wch_TimeT__Sched__2F10007B" />
+        <AssociationConnector Association="wchModel.FK__wch_TimeT__TeaID__29572725" />
+        <AssociationConnector Association="wchModel.FK__wch_TimeT__TermI__2D27B809" />
+        <AssociationConnector Association="wchModel.FK__wch_TimeT__Theat__300424B4" />
+        <AssociationConnector Association="wchModel.FK__wch_TimeT__TimeI__2C3393D0" />
+        <EntityTypeShape EntityType="wchModel.sv_wch_Student" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="wchModel.sv_wch_CourseSelection" Width="1.5" PointX="3.4389867351571968" PointY="29.135747789002838" />
+        <EntityTypeShape EntityType="wchModel.sv_wch_Teacher" Width="1.5" PointX="8.6701453312626775" PointY="17.040914826579819" />
+        <AssociationConnector Association="wchModel.FK__wch_Cours__TimeI__33D4B598" />
+        <EntityTypeShape EntityType="wchModel.sv_wch_TimeTable" Width="1.5" PointX="8.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

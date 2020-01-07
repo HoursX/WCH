@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wch.Tests", "wch.Tests\wch.Tests.csproj", "{D9DE2FB1-DCEE-4265-88F4-443360224898}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wchLibrary", "wchLibrary\wchLibrary.csproj", "{23F6858E-DF0D-4EC4-94D5-DFEE05BF7D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbInitial", "dbInitial\dbInitial.csproj", "{3496396B-71D7-45F7-8A02-6D0AC915022E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wch", "wch\wch.csproj", "{CFDB8660-CDBA-4929-8770-CAF45FAF0889}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9DE2FB1-DCEE-4265-88F4-443360224898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9DE2FB1-DCEE-4265-88F4-443360224898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9DE2FB1-DCEE-4265-88F4-443360224898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9DE2FB1-DCEE-4265-88F4-443360224898}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23F6858E-DF0D-4EC4-94D5-DFEE05BF7D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F6858E-DF0D-4EC4-94D5-DFEE05BF7D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F6858E-DF0D-4EC4-94D5-DFEE05BF7D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F6858E-DF0D-4EC4-94D5-DFEE05BF7D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3496396B-71D7-45F7-8A02-6D0AC915022E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3496396B-71D7-45F7-8A02-6D0AC915022E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3496396B-71D7-45F7-8A02-6D0AC915022E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3496396B-71D7-45F7-8A02-6D0AC915022E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFDB8660-CDBA-4929-8770-CAF45FAF0889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFDB8660-CDBA-4929-8770-CAF45FAF0889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFDB8660-CDBA-4929-8770-CAF45FAF0889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFDB8660-CDBA-4929-8770-CAF45FAF0889}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EFCD2EB-9FF5-4CE8-8320-7E8C0B0B3B87}
+	EndGlobalSection
+EndGlobal

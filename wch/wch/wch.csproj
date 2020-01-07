@@ -1,0 +1,1395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CFDB8660-CDBA-4929-8770-CAF45FAF0889}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>wch</RootNamespace>
+    <AssemblyName>wch</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin.aspx" />
+    <Content Include="lib\bootstrap-4.4.1\.babelrc.js" />
+    <Content Include="lib\bootstrap-4.4.1\build\banner.js" />
+    <Content Include="lib\bootstrap-4.4.1\build\build-plugins.js" />
+    <Content Include="lib\bootstrap-4.4.1\build\change-version.js" />
+    <Content Include="lib\bootstrap-4.4.1\build\generate-sri.js" />
+    <Content Include="lib\bootstrap-4.4.1\build\postcss.config.js" />
+    <Content Include="lib\bootstrap-4.4.1\build\rollup.config.js" />
+    <Content Include="lib\bootstrap-4.4.1\build\vnu-jar.js" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap-grid.css" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap-grid.min.css" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap-reboot.css" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap.css" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap.min.css" />
+    <Content Include="lib\bootstrap-4.4.1\dist\js\bootstrap.bundle.js" />
+    <Content Include="lib\bootstrap-4.4.1\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="lib\bootstrap-4.4.1\dist\js\bootstrap.js" />
+    <Content Include="lib\bootstrap-4.4.1\dist\js\bootstrap.min.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\alert.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\button.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\carousel.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\collapse.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\dropdown.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\index.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\modal.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\popover.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\scrollspy.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\tab.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\toast.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\tooltip.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\util.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\alert.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\button.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\carousel.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\collapse.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\dropdown.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\index.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\modal.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\popover.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\scrollspy.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\tab.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\toast.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\tools\sanitizer.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\tooltip.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\src\util.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\browsers.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\integration\bundle.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\integration\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\integration\rollup.bundle.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\karma.conf.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\alert.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\button.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\carousel.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\collapse.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\dropdown.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\modal.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\popover.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\scrollspy.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\tab.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\toast.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\tooltip.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\util.js" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\alert.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\button.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\carousel.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\collapse.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\dropdown.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\modal.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\popover.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\scrollspy.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\tab.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\toast.html" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\visual\tooltip.html" />
+    <Content Include="lib\bootstrap-4.4.1\package.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\brand\bootstrap-social-logo.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\brand\bootstrap-social.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\css\docs.min.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\bootstrap-themes%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\bootstrap-themes.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\album%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\album.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\blog%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\blog.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\carousel%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\carousel.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\checkout%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\checkout.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\cover%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\cover.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\dashboard%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\dashboard.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\floating-labels%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\floating-labels.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\grid%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\grid.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\jumbotron%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\jumbotron.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\navbar-bottom%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\navbar-bottom.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\navbar-fixed%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\navbar-fixed.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\navbar-static%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\navbar-static.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\navbars%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\navbars.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\offcanvas%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\offcanvas.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\pricing%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\pricing.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\product%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\product.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\sign-in%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\sign-in.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\starter-template%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\starter-template.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\sticky-footer%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\sticky-footer-navbar%402x.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\sticky-footer-navbar.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\examples\sticky-footer.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\android-chrome-192x192.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\android-chrome-512x512.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\apple-touch-icon.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\browserconfig.xml" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\favicon-16x16.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\favicon-32x32.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\favicon.ico" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\mstile-144x144.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\mstile-150x150.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\mstile-310x150.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\mstile-310x310.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\mstile-70x70.png" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\js\docs.min.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\js\src\application.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\js\src\ie-emulation-modes-warning.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\js\src\search.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\js\vendor\anchor.min.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\js\vendor\bs-custom-file-input.min.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\js\vendor\clipboard.min.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\js\vendor\jquery.slim.min.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\album\album.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\album\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\blog\blog.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\blog\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\carousel\carousel.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\carousel\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\checkout\form-validation.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\checkout\form-validation.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\checkout\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\cover\cover.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\cover\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\dashboard\dashboard.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\dashboard\dashboard.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\dashboard\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\floating-labels\floating-labels.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\floating-labels\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\grid\grid.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\grid\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\jumbotron\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\jumbotron\jumbotron.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\navbar-bottom\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\navbar-fixed\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\navbar-fixed\navbar-top-fixed.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\navbar-static\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\navbar-static\navbar-top.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\navbars\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\navbars\navbar.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\offcanvas\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\offcanvas\offcanvas.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\offcanvas\offcanvas.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\pricing\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\pricing\pricing.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\product\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\product\product.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\sign-in\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\sign-in\signin.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\starter-template\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\starter-template\starter-template.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\sticky-footer-navbar\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\sticky-footer-navbar\sticky-footer-navbar.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\sticky-footer\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\sticky-footer\sticky-footer.css" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\versions.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\favicon.ico" />
+    <Content Include="lib\bootstrap-4.4.1\site\index.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\robots.txt" />
+    <Content Include="lib\bootstrap-4.4.1\site\sw.js" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\ads.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\analytics.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\bugify.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\callout.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\docs-navbar.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\docs-sidebar.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\example.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\favicons.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\footer.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\header.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\scripts.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\skippy.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\social.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\stylesheet.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_layouts\default.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_layouts\docs.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_layouts\examples.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_layouts\home.html" />
+    <Content Include="lib\bootstrap-4.4.1\site\_layouts\simple.html" />
+    <Content Include="lib\css\login.css" />
+    <Content Include="lib\img\bc.jpg" />
+    <Content Include="lib\jquery-3.4.1\AUTHORS.txt" />
+    <Content Include="lib\jquery-3.4.1\build\release.js" />
+    <Content Include="lib\jquery-3.4.1\build\release\cdn.js" />
+    <Content Include="lib\jquery-3.4.1\build\release\dist.js" />
+    <Content Include="lib\jquery-3.4.1\build\release\ensure-sizzle.js" />
+    <Content Include="lib\jquery-3.4.1\build\tasks\build.js" />
+    <Content Include="lib\jquery-3.4.1\build\tasks\dist.js" />
+    <Content Include="lib\jquery-3.4.1\build\tasks\lib\spawn_test.js" />
+    <Content Include="lib\jquery-3.4.1\build\tasks\node_smoke_tests.js" />
+    <Content Include="lib\jquery-3.4.1\build\tasks\promises_aplus_tests.js" />
+    <Content Include="lib\jquery-3.4.1\build\tasks\qunit_fixture.js" />
+    <Content Include="lib\jquery-3.4.1\build\tasks\sourcemap.js" />
+    <Content Include="lib\jquery-3.4.1\build\tasks\testswarm.js" />
+    <Content Include="lib\jquery-3.4.1\dist\jquery.js" />
+    <Content Include="lib\jquery-3.4.1\dist\jquery.min.js" />
+    <Content Include="lib\jquery-3.4.1\dist\jquery.slim.js" />
+    <Content Include="lib\jquery-3.4.1\dist\jquery.slim.min.js" />
+    <Content Include="lib\jquery-3.4.1\external\npo\npo.js" />
+    <Content Include="lib\jquery-3.4.1\external\qunit\LICENSE.txt" />
+    <Content Include="lib\jquery-3.4.1\external\qunit\qunit.css" />
+    <Content Include="lib\jquery-3.4.1\external\qunit\qunit.js" />
+    <Content Include="lib\jquery-3.4.1\external\requirejs\require.js" />
+    <Content Include="lib\jquery-3.4.1\external\sinon\LICENSE.txt" />
+    <Content Include="lib\jquery-3.4.1\external\sinon\sinon.js" />
+    <Content Include="lib\jquery-3.4.1\external\sizzle\dist\sizzle.js" />
+    <Content Include="lib\jquery-3.4.1\external\sizzle\dist\sizzle.min.js" />
+    <Content Include="lib\jquery-3.4.1\external\sizzle\LICENSE.txt" />
+    <Content Include="lib\jquery-3.4.1\Gruntfile.js" />
+    <Content Include="lib\jquery-3.4.1\LICENSE.txt" />
+    <Content Include="lib\jquery-3.4.1\src\ajax.js" />
+    <Content Include="lib\jquery-3.4.1\src\ajax\jsonp.js" />
+    <Content Include="lib\jquery-3.4.1\src\ajax\load.js" />
+    <Content Include="lib\jquery-3.4.1\src\ajax\parseXML.js" />
+    <Content Include="lib\jquery-3.4.1\src\ajax\script.js" />
+    <Content Include="lib\jquery-3.4.1\src\ajax\var\location.js" />
+    <Content Include="lib\jquery-3.4.1\src\ajax\var\nonce.js" />
+    <Content Include="lib\jquery-3.4.1\src\ajax\var\rquery.js" />
+    <Content Include="lib\jquery-3.4.1\src\ajax\xhr.js" />
+    <Content Include="lib\jquery-3.4.1\src\attributes.js" />
+    <Content Include="lib\jquery-3.4.1\src\attributes\attr.js" />
+    <Content Include="lib\jquery-3.4.1\src\attributes\classes.js" />
+    <Content Include="lib\jquery-3.4.1\src\attributes\prop.js" />
+    <Content Include="lib\jquery-3.4.1\src\attributes\support.js" />
+    <Content Include="lib\jquery-3.4.1\src\attributes\val.js" />
+    <Content Include="lib\jquery-3.4.1\src\callbacks.js" />
+    <Content Include="lib\jquery-3.4.1\src\core.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\access.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\camelCase.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\DOMEval.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\init.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\isAttached.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\nodeName.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\parseHTML.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\ready-no-deferred.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\ready.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\readyException.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\stripAndCollapse.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\support.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\toType.js" />
+    <Content Include="lib\jquery-3.4.1\src\core\var\rsingleTag.js" />
+    <Content Include="lib\jquery-3.4.1\src\css.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\addGetHookIf.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\adjustCSS.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\curCSS.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\finalPropName.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\showHide.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\support.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\var\cssExpand.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\var\getStyles.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\var\isHiddenWithinTree.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\var\rboxStyle.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\var\rnumnonpx.js" />
+    <Content Include="lib\jquery-3.4.1\src\css\var\swap.js" />
+    <Content Include="lib\jquery-3.4.1\src\data.js" />
+    <Content Include="lib\jquery-3.4.1\src\data\Data.js" />
+    <Content Include="lib\jquery-3.4.1\src\data\var\acceptData.js" />
+    <Content Include="lib\jquery-3.4.1\src\data\var\dataPriv.js" />
+    <Content Include="lib\jquery-3.4.1\src\data\var\dataUser.js" />
+    <Content Include="lib\jquery-3.4.1\src\deferred.js" />
+    <Content Include="lib\jquery-3.4.1\src\deferred\exceptionHook.js" />
+    <Content Include="lib\jquery-3.4.1\src\deprecated.js" />
+    <Content Include="lib\jquery-3.4.1\src\dimensions.js" />
+    <Content Include="lib\jquery-3.4.1\src\effects.js" />
+    <Content Include="lib\jquery-3.4.1\src\effects\animatedSelector.js" />
+    <Content Include="lib\jquery-3.4.1\src\effects\Tween.js" />
+    <Content Include="lib\jquery-3.4.1\src\event.js" />
+    <Content Include="lib\jquery-3.4.1\src\event\ajax.js" />
+    <Content Include="lib\jquery-3.4.1\src\event\alias.js" />
+    <Content Include="lib\jquery-3.4.1\src\event\focusin.js" />
+    <Content Include="lib\jquery-3.4.1\src\event\support.js" />
+    <Content Include="lib\jquery-3.4.1\src\event\trigger.js" />
+    <Content Include="lib\jquery-3.4.1\src\exports\amd.js" />
+    <Content Include="lib\jquery-3.4.1\src\exports\global.js" />
+    <Content Include="lib\jquery-3.4.1\src\jquery.js" />
+    <Content Include="lib\jquery-3.4.1\src\manipulation.js" />
+    <Content Include="lib\jquery-3.4.1\src\manipulation\buildFragment.js" />
+    <Content Include="lib\jquery-3.4.1\src\manipulation\getAll.js" />
+    <Content Include="lib\jquery-3.4.1\src\manipulation\setGlobalEval.js" />
+    <Content Include="lib\jquery-3.4.1\src\manipulation\support.js" />
+    <Content Include="lib\jquery-3.4.1\src\manipulation\var\rscriptType.js" />
+    <Content Include="lib\jquery-3.4.1\src\manipulation\var\rtagName.js" />
+    <Content Include="lib\jquery-3.4.1\src\manipulation\wrapMap.js" />
+    <Content Include="lib\jquery-3.4.1\src\manipulation\_evalUrl.js" />
+    <Content Include="lib\jquery-3.4.1\src\offset.js" />
+    <Content Include="lib\jquery-3.4.1\src\queue.js" />
+    <Content Include="lib\jquery-3.4.1\src\queue\delay.js" />
+    <Content Include="lib\jquery-3.4.1\src\selector-native.js" />
+    <Content Include="lib\jquery-3.4.1\src\selector-sizzle.js" />
+    <Content Include="lib\jquery-3.4.1\src\selector.js" />
+    <Content Include="lib\jquery-3.4.1\src\serialize.js" />
+    <Content Include="lib\jquery-3.4.1\src\traversing.js" />
+    <Content Include="lib\jquery-3.4.1\src\traversing\findFilter.js" />
+    <Content Include="lib\jquery-3.4.1\src\traversing\var\dir.js" />
+    <Content Include="lib\jquery-3.4.1\src\traversing\var\rneedsContext.js" />
+    <Content Include="lib\jquery-3.4.1\src\traversing\var\siblings.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\arr.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\class2type.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\concat.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\document.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\documentElement.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\fnToString.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\getProto.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\hasOwn.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\indexOf.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\isFunction.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\isWindow.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\ObjectFunctionString.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\pnum.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\push.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\rcheckableType.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\rcssNum.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\rnothtmlwhite.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\slice.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\support.js" />
+    <Content Include="lib\jquery-3.4.1\src\var\toString.js" />
+    <Content Include="lib\jquery-3.4.1\src\wrap.js" />
+    <Content Include="lib\jquery-3.4.1\src\wrapper.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\1x1.jpg" />
+    <Content Include="lib\jquery-3.4.1\test\data\ajax\onunload.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\ajax\unreleasedXHR.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\badcall.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\badjson.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\cleanScript.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\core\aliased.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\core\cc_on.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\core\dynamic_ready.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\core\jquery-iterability-transpiled-es6.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\core\jquery-iterability-transpiled.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\core\onready.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\csp-nonce-external.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\csp-nonce-external.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\csp-nonce-globaleval.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\csp-nonce-globaleval.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\csp-nonce.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\csp-nonce.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\csp.include.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\css\cssWidthBeforeDocReady.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\css\cssWidthBrowserZoom.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\dashboard.xml" />
+    <Content Include="lib\jquery-3.4.1\test\data\data\dataAttrs.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\dimensions\documentLarge.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\event\focusElem.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\event\focusinCrossFrame.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\event\interactiveReady.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\event\onbeforeunload.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\event\promiseReady.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\event\syncReady.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\event\triggerunload.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\frame.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\iframe.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\iframeTest.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\inner_module.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\inner_nomodule.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\jquery-1.9.1.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\json_obj.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\manipulation\iframe-denied.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\manipulation\scripts-context.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\module.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\name.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\nomodule.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\offset\absolute.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\offset\body.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\offset\boxes.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\offset\fixed.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\offset\relative.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\offset\scroll.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\offset\static.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\offset\table.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\qunit-fixture.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\qunit-fixture.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\readywait.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\selector\html5_selector.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\selector\sizzle_cache.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\support\bodyBackground.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\support\csp.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\support\getComputedSupport.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\test.include.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\test2.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\test3.html" />
+    <Content Include="lib\jquery-3.4.1\test\data\testinit-jsdom.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\testinit.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\testrunner.js" />
+    <Content Include="lib\jquery-3.4.1\test\data\testsuite.css" />
+    <Content Include="lib\jquery-3.4.1\test\data\text.txt" />
+    <Content Include="lib\jquery-3.4.1\test\data\with_fries.xml" />
+    <Content Include="lib\jquery-3.4.1\test\delegatetest.html" />
+    <Content Include="lib\jquery-3.4.1\test\hovertest.html" />
+    <Content Include="lib\jquery-3.4.1\test\index.html" />
+    <Content Include="lib\jquery-3.4.1\test\integration\data\gh-1764-fullscreen-iframe.css" />
+    <Content Include="lib\jquery-3.4.1\test\integration\data\gh-1764-fullscreen-iframe.html" />
+    <Content Include="lib\jquery-3.4.1\test\integration\data\gh-1764-fullscreen.js" />
+    <Content Include="lib\jquery-3.4.1\test\integration\gh-1764-fullscreen.html" />
+    <Content Include="lib\jquery-3.4.1\test\integration\gh-2343-ie-radio-click.html" />
+    <Content Include="lib\jquery-3.4.1\test\jquery.js" />
+    <Content Include="lib\jquery-3.4.1\test\karma.context.html" />
+    <Content Include="lib\jquery-3.4.1\test\karma.debug.html" />
+    <Content Include="lib\jquery-3.4.1\test\localfile.html" />
+    <Content Include="lib\jquery-3.4.1\test\middleware-mockserver.js" />
+    <Content Include="lib\jquery-3.4.1\test\networkerror.html" />
+    <Content Include="lib\jquery-3.4.1\test\node_smoke_tests\document_missing.js" />
+    <Content Include="lib\jquery-3.4.1\test\node_smoke_tests\document_passed.js" />
+    <Content Include="lib\jquery-3.4.1\test\node_smoke_tests\document_present_originally.js" />
+    <Content Include="lib\jquery-3.4.1\test\node_smoke_tests\iterable_with_native_symbol.js" />
+    <Content Include="lib\jquery-3.4.1\test\node_smoke_tests\lib\ensure_global_not_created.js" />
+    <Content Include="lib\jquery-3.4.1\test\node_smoke_tests\lib\ensure_iterability_es6.js" />
+    <Content Include="lib\jquery-3.4.1\test\node_smoke_tests\lib\ensure_jquery.js" />
+    <Content Include="lib\jquery-3.4.1\test\promises_aplus_adapters\deferred.js" />
+    <Content Include="lib\jquery-3.4.1\test\promises_aplus_adapters\when.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\ajax.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\animation.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\attributes.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\basic.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\callbacks.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\core.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\css.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\data.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\deferred.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\deprecated.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\dimensions.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\effects.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\event.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\exports.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\manipulation.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\offset.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\queue.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\ready.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\selector.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\serialize.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\support.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\traversing.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\tween.js" />
+    <Content Include="lib\jquery-3.4.1\test\unit\wrap.js" />
+    <Content Include="lib\js\addStudent.js" />
+    <Content Include="lib\js\addTeacher.js" />
+    <Content Include="lib\js\login.js" />
+    <Content Include="lib\js\studentSelect.js" />
+    <Content Include="lib\js\studentView.js" />
+    <Content Include="lib\js\teacherView.js" />
+    <Content Include="lib\layui\css\layui.css" />
+    <Content Include="lib\layui\css\layui.mobile.css" />
+    <Content Include="lib\layui\css\modules\code.css" />
+    <Content Include="lib\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="lib\layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="lib\layui\css\modules\layer\default\icon.png" />
+    <Content Include="lib\layui\css\modules\layer\default\layer.css" />
+    <Content Include="lib\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="lib\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="lib\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="lib\layui\images\face\0.gif" />
+    <Content Include="lib\layui\images\face\1.gif" />
+    <Content Include="lib\layui\images\face\10.gif" />
+    <Content Include="lib\layui\images\face\11.gif" />
+    <Content Include="lib\layui\images\face\12.gif" />
+    <Content Include="lib\layui\images\face\13.gif" />
+    <Content Include="lib\layui\images\face\14.gif" />
+    <Content Include="lib\layui\images\face\15.gif" />
+    <Content Include="lib\layui\images\face\16.gif" />
+    <Content Include="lib\layui\images\face\17.gif" />
+    <Content Include="lib\layui\images\face\18.gif" />
+    <Content Include="lib\layui\images\face\19.gif" />
+    <Content Include="lib\layui\images\face\2.gif" />
+    <Content Include="lib\layui\images\face\20.gif" />
+    <Content Include="lib\layui\images\face\21.gif" />
+    <Content Include="lib\layui\images\face\22.gif" />
+    <Content Include="lib\layui\images\face\23.gif" />
+    <Content Include="lib\layui\images\face\24.gif" />
+    <Content Include="lib\layui\images\face\25.gif" />
+    <Content Include="lib\layui\images\face\26.gif" />
+    <Content Include="lib\layui\images\face\27.gif" />
+    <Content Include="lib\layui\images\face\28.gif" />
+    <Content Include="lib\layui\images\face\29.gif" />
+    <Content Include="lib\layui\images\face\3.gif" />
+    <Content Include="lib\layui\images\face\30.gif" />
+    <Content Include="lib\layui\images\face\31.gif" />
+    <Content Include="lib\layui\images\face\32.gif" />
+    <Content Include="lib\layui\images\face\33.gif" />
+    <Content Include="lib\layui\images\face\34.gif" />
+    <Content Include="lib\layui\images\face\35.gif" />
+    <Content Include="lib\layui\images\face\36.gif" />
+    <Content Include="lib\layui\images\face\37.gif" />
+    <Content Include="lib\layui\images\face\38.gif" />
+    <Content Include="lib\layui\images\face\39.gif" />
+    <Content Include="lib\layui\images\face\4.gif" />
+    <Content Include="lib\layui\images\face\40.gif" />
+    <Content Include="lib\layui\images\face\41.gif" />
+    <Content Include="lib\layui\images\face\42.gif" />
+    <Content Include="lib\layui\images\face\43.gif" />
+    <Content Include="lib\layui\images\face\44.gif" />
+    <Content Include="lib\layui\images\face\45.gif" />
+    <Content Include="lib\layui\images\face\46.gif" />
+    <Content Include="lib\layui\images\face\47.gif" />
+    <Content Include="lib\layui\images\face\48.gif" />
+    <Content Include="lib\layui\images\face\49.gif" />
+    <Content Include="lib\layui\images\face\5.gif" />
+    <Content Include="lib\layui\images\face\50.gif" />
+    <Content Include="lib\layui\images\face\51.gif" />
+    <Content Include="lib\layui\images\face\52.gif" />
+    <Content Include="lib\layui\images\face\53.gif" />
+    <Content Include="lib\layui\images\face\54.gif" />
+    <Content Include="lib\layui\images\face\55.gif" />
+    <Content Include="lib\layui\images\face\56.gif" />
+    <Content Include="lib\layui\images\face\57.gif" />
+    <Content Include="lib\layui\images\face\58.gif" />
+    <Content Include="lib\layui\images\face\59.gif" />
+    <Content Include="lib\layui\images\face\6.gif" />
+    <Content Include="lib\layui\images\face\60.gif" />
+    <Content Include="lib\layui\images\face\61.gif" />
+    <Content Include="lib\layui\images\face\62.gif" />
+    <Content Include="lib\layui\images\face\63.gif" />
+    <Content Include="lib\layui\images\face\64.gif" />
+    <Content Include="lib\layui\images\face\65.gif" />
+    <Content Include="lib\layui\images\face\66.gif" />
+    <Content Include="lib\layui\images\face\67.gif" />
+    <Content Include="lib\layui\images\face\68.gif" />
+    <Content Include="lib\layui\images\face\69.gif" />
+    <Content Include="lib\layui\images\face\7.gif" />
+    <Content Include="lib\layui\images\face\70.gif" />
+    <Content Include="lib\layui\images\face\71.gif" />
+    <Content Include="lib\layui\images\face\8.gif" />
+    <Content Include="lib\layui\images\face\9.gif" />
+    <Content Include="lib\layui\layui.all.js" />
+    <Content Include="lib\layui\layui.js" />
+    <Content Include="lib\layui\lay\modules\carousel.js" />
+    <Content Include="lib\layui\lay\modules\code.js" />
+    <Content Include="lib\layui\lay\modules\colorpicker.js" />
+    <Content Include="lib\layui\lay\modules\element.js" />
+    <Content Include="lib\layui\lay\modules\flow.js" />
+    <Content Include="lib\layui\lay\modules\form.js" />
+    <Content Include="lib\layui\lay\modules\jquery.js" />
+    <Content Include="lib\layui\lay\modules\laydate.js" />
+    <Content Include="lib\layui\lay\modules\layedit.js" />
+    <Content Include="lib\layui\lay\modules\layer.js" />
+    <Content Include="lib\layui\lay\modules\laypage.js" />
+    <Content Include="lib\layui\lay\modules\laytpl.js" />
+    <Content Include="lib\layui\lay\modules\mobile.js" />
+    <Content Include="lib\layui\lay\modules\rate.js" />
+    <Content Include="lib\layui\lay\modules\slider.js" />
+    <Content Include="lib\layui\lay\modules\table.js" />
+    <Content Include="lib\layui\lay\modules\transfer.js" />
+    <Content Include="lib\layui\lay\modules\tree.js" />
+    <Content Include="lib\layui\lay\modules\upload.js" />
+    <Content Include="lib\layui\lay\modules\util.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\esm\popper-utils.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\esm\popper-utils.min.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\esm\popper.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\esm\popper.min.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\popper-utils.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\popper-utils.min.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\popper.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\popper.min.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\umd\popper-utils.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\umd\popper-utils.min.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\umd\popper.js" />
+    <Content Include="lib\popper.js-1.16.0\dist\umd\popper.min.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\css\code.css" />
+    <Content Include="lib\popper.js-1.16.0\docs\css\font-awesome.min.css" />
+    <Content Include="lib\popper.js-1.16.0\docs\css\popper.css" />
+    <Content Include="lib\popper.js-1.16.0\docs\documentation.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\favicon-16x16.png" />
+    <Content Include="lib\popper.js-1.16.0\docs\favicon-32x32.png" />
+    <Content Include="lib\popper.js-1.16.0\docs\favicon-96x96.png" />
+    <Content Include="lib\popper.js-1.16.0\docs\favicon.ico" />
+    <Content Include="lib\popper.js-1.16.0\docs\feed.xml" />
+    <Content Include="lib\popper.js-1.16.0\docs\images\banner.jpg" />
+    <Content Include="lib\popper.js-1.16.0\docs\images\banner.png" />
+    <Content Include="lib\popper.js-1.16.0\docs\images\logo.png" />
+    <Content Include="lib\popper.js-1.16.0\docs\images\pic01.jpg" />
+    <Content Include="lib\popper.js-1.16.0\docs\images\pic02.jpg" />
+    <Content Include="lib\popper.js-1.16.0\docs\images\pic03.jpg" />
+    <Content Include="lib\popper.js-1.16.0\docs\images\pic04.jpg" />
+    <Content Include="lib\popper.js-1.16.0\docs\images\pic05.jpg" />
+    <Content Include="lib\popper.js-1.16.0\docs\index.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\ie\backgroundsize.min.htc" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\ie\html5shiv.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\ie\respond.min.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\jquery.min.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\jquery.nanoscroller.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\jquery.scrollex.min.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\jquery.scrolly.min.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\main.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\skel.min.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\js\util.js" />
+    <Content Include="lib\popper.js-1.16.0\docs\LICENSE.txt" />
+    <Content Include="lib\popper.js-1.16.0\docs\popper-documentation.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\README.txt" />
+    <Content Include="lib\popper.js-1.16.0\docs\themes.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\tooltip-documentation.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\tooltip-examples.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example10-code.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example10.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example10t-code.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example10t.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example20-code.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example20.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example20t-code.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example20t.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example30-code.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example30.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example40-code.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example40.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example50-code.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\example50.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\footer.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\head.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\header.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\scripts.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_layouts\default.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_layouts\landing.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_layouts\page-hashtag.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_layouts\page-nowrap.html" />
+    <Content Include="lib\popper.js-1.16.0\docs\_layouts\page.html" />
+    <Content Include="lib\popper.js-1.16.0\packages\babel-config\index.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\bundle\index.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\eslint-config-popper\index.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\.eslintrc.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\bundle.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\index.d.ts" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\index.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\methods\defaults.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\methods\destroy.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\methods\disableEventListeners.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\methods\enableEventListeners.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\methods\placements.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\methods\update.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\applyStyle.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\arrow.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\computeStyle.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\flip.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\hide.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\index.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\inner.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\keepTogether.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\offset.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\preventOverflow.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\modifiers\shift.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\clockwise.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\computeAutoPlacement.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\debounce.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\find.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\findCommonOffsetParent.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\findIndex.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getBordersSize.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getBoundaries.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getBoundingClientRect.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getClientRect.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getOffsetParent.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getOffsetRect.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getOppositePlacement.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getOppositeVariation.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getOuterSizes.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getParentNode.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getPopperOffsets.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getReferenceNode.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getReferenceOffsets.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getRoot.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getRoundedOffsets.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getScroll.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getScrollParent.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getStyleComputedProperty.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getSupportedPropertyName.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getWindow.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\getWindowSizes.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\includeScroll.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\index.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\isBrowser.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\isFixed.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\isFunction.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\isIE.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\isModifierEnabled.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\isModifierRequired.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\isNumeric.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\isOffsetContainer.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\removeEventListeners.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\runModifiers.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\setAttributes.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\setStyles.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\src\utils\setupEventListeners.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\.eslintrc.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\functional\arrow.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\functional\computeStyle.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\functional\core.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\functional\flips.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\functional\lifecycle.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\functional\offset.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\functional\rendering.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\styles\test.css" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\types\type-tests.ts" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\clockwise.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\debounce.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\find.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\findIndex.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getBoundaries.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getBoundaries.padding.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getClientRect.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getOffsetParent.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getOppositePlacement.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getOppositeVariation.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getOuterSizes.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getParentNode.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getRoundedOffsets.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getScrollParent.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\getStyleComputedProperty.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\isFixed.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\unit\parseOffset.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\utils\getRect.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\utils\makePopperFactory.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\visual\flipWithoutPreventOverflow.html" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\visual\test.html" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\visual\tooltip.html" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\setup.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\appendNewPopper.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\appendNewRef.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\customEventPolyfill.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\getRect.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\isMSBrowser.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\makeConnectedElement.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\makeConnectedScrollElement.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\makeElement.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\prepend.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\simulateScroll.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\utils\then.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test\.babelrc.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test\bin\karma.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\test\karma.conf.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\.eslintrc.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\bundle.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\index.d.ts" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\src\index.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\tests\functional\tooltip.js" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\tests\types\type-tests.ts" />
+    <Content Include="lib\popper.js-1.16.0\popperjs.png" />
+    <Content Include="lib\vue-2.6.11\dist\vue.common.dev.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.common.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.common.prod.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.esm.browser.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.esm.browser.min.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.esm.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.min.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.runtime.common.dev.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.runtime.common.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.runtime.common.prod.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.runtime.esm.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.runtime.js" />
+    <Content Include="lib\vue-2.6.11\dist\vue.runtime.min.js" />
+    <Content Include="lib\vue-2.6.11\examples\commits\app.js" />
+    <Content Include="lib\vue-2.6.11\examples\commits\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\commits\mock.js" />
+    <Content Include="lib\vue-2.6.11\examples\elastic-header\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\elastic-header\style.css" />
+    <Content Include="lib\vue-2.6.11\examples\firebase\app.js" />
+    <Content Include="lib\vue-2.6.11\examples\firebase\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\firebase\style.css" />
+    <Content Include="lib\vue-2.6.11\examples\grid\grid.js" />
+    <Content Include="lib\vue-2.6.11\examples\grid\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\grid\style.css" />
+    <Content Include="lib\vue-2.6.11\examples\markdown\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\markdown\style.css" />
+    <Content Include="lib\vue-2.6.11\examples\modal\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\modal\style.css" />
+    <Content Include="lib\vue-2.6.11\examples\move-animations\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\select2\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\svg\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\svg\style.css" />
+    <Content Include="lib\vue-2.6.11\examples\svg\svg.js" />
+    <Content Include="lib\vue-2.6.11\examples\todomvc\app.js" />
+    <Content Include="lib\vue-2.6.11\examples\todomvc\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\tree\index.html" />
+    <Content Include="lib\vue-2.6.11\examples\tree\tree.js" />
+    <Content Include="Login.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="admin.aspx.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin.aspx.designer.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tool\admin\student\AddStu.ashx.cs">
+      <DependentUpon>AddStu.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\student\DelStu.ashx.cs">
+      <DependentUpon>DelStu.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\student\GetStu.ashx.cs">
+      <DependentUpon>GetStu.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\student\UpdStu.ashx.cs">
+      <DependentUpon>UpdStu.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\teacher\DelTea.ashx.cs">
+      <DependentUpon>DelTea.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\teacher\GetSelectCourse.ashx.cs">
+      <DependentUpon>GetSelectCourse.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\teacher\GetTeacher.ashx.cs">
+      <DependentUpon>GetTeacher.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\timeTable\AddTimeTable.ashx.cs">
+      <DependentUpon>AddTimeTable.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\timeTable\DelTimeTable.ashx.cs">
+      <DependentUpon>DelTimeTable.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\timeTable\GetTimeTable.ashx.cs">
+      <DependentUpon>GetTimeTable.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\timeTable\UpdTimeTable.ashx.cs">
+      <DependentUpon>UpdTimeTable.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\universe\getClass.ashx.cs">
+      <DependentUpon>getClass.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\universe\GetCourse.ashx.cs">
+      <DependentUpon>GetCourse.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\universe\getDepartment.ashx.cs">
+      <DependentUpon>getDepartment.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\universe\GetSchedule.ashx.cs">
+      <DependentUpon>GetSchedule.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\universe\GetTeacher.ashx.cs">
+      <DependentUpon>GetTeacher.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\universe\GetTheatre.ashx.cs">
+      <DependentUpon>GetTheatre.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tool\admin\student\GetStu.ashx" />
+    <Content Include="tool\admin\student\DelStu.ashx" />
+    <Content Include="tool\admin\student\UpdStu.ashx" />
+    <Content Include="tool\admin\student\AddStu.ashx" />
+    <Content Include="tool\admin\teacher\GetSelectCourse.ashx" />
+    <Content Include="tool\admin\teacher\GetTeacher.ashx" />
+    <Content Include="lib\bootstrap-4.4.1\.browserslistrc" />
+    <Content Include="lib\bootstrap-4.4.1\.editorconfig" />
+    <Content Include="lib\bootstrap-4.4.1\.eslintignore" />
+    <Content Include="lib\bootstrap-4.4.1\.eslintrc.json" />
+    <Content Include="lib\bootstrap-4.4.1\.gitattributes" />
+    <Content Include="lib\bootstrap-4.4.1\.github\CODEOWNERS" />
+    <Content Include="lib\bootstrap-4.4.1\.github\CONTRIBUTING.md" />
+    <Content Include="lib\bootstrap-4.4.1\.github\ISSUE_TEMPLATE\bug.md" />
+    <Content Include="lib\bootstrap-4.4.1\.github\ISSUE_TEMPLATE\bug_report.md" />
+    <Content Include="lib\bootstrap-4.4.1\.github\ISSUE_TEMPLATE\feature.md" />
+    <Content Include="lib\bootstrap-4.4.1\.github\ISSUE_TEMPLATE\feature_request.md" />
+    <Content Include="lib\bootstrap-4.4.1\.github\SUPPORT.md" />
+    <Content Include="lib\bootstrap-4.4.1\.github\workflows\test.yml" />
+    <Content Include="lib\bootstrap-4.4.1\.gitignore" />
+    <Content Include="lib\bootstrap-4.4.1\.stylelintignore" />
+    <Content Include="lib\bootstrap-4.4.1\.stylelintrc" />
+    <Content Include="lib\bootstrap-4.4.1\build\.eslintrc.json" />
+    <Content Include="lib\bootstrap-4.4.1\build\ship.sh" />
+    <Content Include="lib\bootstrap-4.4.1\build\svgo.yml" />
+    <Content Include="lib\bootstrap-4.4.1\bundlesize.config.json" />
+    <Content Include="lib\bootstrap-4.4.1\CNAME" />
+    <Content Include="lib\bootstrap-4.4.1\CODE_OF_CONDUCT.md" />
+    <Content Include="lib\bootstrap-4.4.1\composer.json" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap-grid.css.map" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap.css.map" />
+    <Content Include="lib\bootstrap-4.4.1\dist\css\bootstrap.min.css.map" />
+    <Content Include="lib\bootstrap-4.4.1\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\dist\js\bootstrap.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\dist\js\bootstrap.min.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\Gemfile" />
+    <Content Include="lib\bootstrap-4.4.1\Gemfile.lock" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\alert.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\button.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\carousel.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\collapse.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\dropdown.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\index.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\modal.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\popover.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\scrollspy.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\tab.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\toast.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\tooltip.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\dist\util.js.map" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\README.md" />
+    <Content Include="lib\bootstrap-4.4.1\js\tests\unit\.eslintrc.json" />
+    <Content Include="lib\bootstrap-4.4.1\LICENSE" />
+    <Content Include="lib\bootstrap-4.4.1\nuget\bootstrap.nuspec" />
+    <Content Include="lib\bootstrap-4.4.1\nuget\bootstrap.sass.nuspec" />
+    <Content Include="lib\bootstrap-4.4.1\nuget\MyGet.ps1" />
+    <Content Include="lib\bootstrap-4.4.1\package-lock.json" />
+    <Content Include="lib\bootstrap-4.4.1\package.json" />
+    <Content Include="lib\bootstrap-4.4.1\README.md" />
+    <Content Include="lib\bootstrap-4.4.1\scss\bootstrap-grid.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\bootstrap-reboot.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\bootstrap.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_alert.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_background-variant.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_badge.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_border-radius.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_box-shadow.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_breakpoints.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_buttons.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_caret.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_clearfix.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_deprecate.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_float.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_forms.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_gradients.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_grid-framework.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_grid.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_hover.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_image.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_list-group.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_lists.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_nav-divider.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_pagination.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_reset-text.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_resize.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_screen-reader.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_size.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_table-row.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_text-emphasis.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_text-hide.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_text-truncate.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_transition.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\mixins\_visibility.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_align.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_background.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_borders.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_clearfix.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_display.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_embed.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_flex.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_float.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_overflow.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_position.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_screenreaders.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_shadows.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_sizing.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_spacing.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_stretched-link.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_text.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\utilities\_visibility.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\vendor\_rfs.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_alert.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_badge.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_breadcrumb.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_button-group.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_buttons.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_card.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_carousel.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_close.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_code.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_custom-forms.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_dropdown.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_forms.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_functions.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_grid.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_images.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_input-group.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_jumbotron.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_list-group.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_media.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_mixins.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_modal.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_nav.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_navbar.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_pagination.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_popover.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_print.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_progress.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_reboot.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_root.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_spinners.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_tables.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_toasts.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_tooltip.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_transitions.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_type.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_utilities.scss" />
+    <Content Include="lib\bootstrap-4.4.1\scss\_variables.scss" />
+    <Content Include="lib\bootstrap-4.4.1\SECURITY.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\.eslintrc.json" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\about\brand.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\about\license.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\about\overview.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\about\team.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\about\translations.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\brand\bootstrap-outline.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\brand\bootstrap-punchout.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\brand\bootstrap-solid.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\css\docs.min.css.map" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\manifest.json" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\img\favicons\safari-pinned-tab.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\docs.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_ads.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_algolia.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_anchor.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_brand.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_browser-bugs.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_buttons.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_callouts.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_clipboard-js.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_colors.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_component-examples.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_content.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_footer.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_masthead.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_nav.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_placeholder-img.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_sidebar.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_skippy.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_syntax.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\assets\scss\_variables.scss" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\browser-bugs.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\alerts.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\badge.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\breadcrumb.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\button-group.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\buttons.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\card.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\carousel.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\collapse.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\dropdowns.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\forms.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\input-group.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\jumbotron.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\list-group.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\media-object.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\modal.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\navbar.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\navs.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\pagination.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\popovers.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\progress.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\scrollspy.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\spinners.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\toasts.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\components\tooltips.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\content\code.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\content\figures.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\content\images.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\content\reboot.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\content\tables.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\content\typography.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\examples\.stylelintrc" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\extend\approach.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\extend\icons.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\accessibility.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\best-practices.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\browsers-devices.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\build-tools.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\contents.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\download.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\introduction.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\javascript.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\theming.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\getting-started\webpack.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\layout\grid.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\layout\overview.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\layout\utilities-for-layout.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\migration.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\borders.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\clearfix.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\close-icon.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\colors.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\display.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\embed.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\flex.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\float.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\image-replacement.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\overflow.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\position.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\screen-readers.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\shadows.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\sizing.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\spacing.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\stretched-link.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\text.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\vertical-align.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\docs\4.4\utilities\visibility.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\breakpoints.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\browser-bugs.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\browser-features.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\colors.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\core-team.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\docs-versions.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\examples.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\grays.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\nav.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\theme-colors.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_data\translations.yml" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\callout-danger-async-methods.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\callout-info-mediaqueries-breakpoints.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\callout-info-prefersreducedmotion.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\callout-warning-color-assistive-technologies.md" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\bootstrap-stack.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\bootstrap.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\download.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\github.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\import.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\lightning.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\menu.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\opencollective.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\placeholder.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\slack.svg" />
+    <Content Include="lib\bootstrap-4.4.1\site\_includes\icons\twitter.svg" />
+    <Content Include="lib\bootstrap-4.4.1\_config.yml" />
+    <Content Include="lib\jquery-3.4.1\.editorconfig" />
+    <Content Include="lib\jquery-3.4.1\.eslintignore" />
+    <Content Include="lib\jquery-3.4.1\.eslintrc-browser.json" />
+    <Content Include="lib\jquery-3.4.1\.eslintrc-node.json" />
+    <Content Include="lib\jquery-3.4.1\.eslintrc.json" />
+    <Content Include="lib\jquery-3.4.1\.gitattributes" />
+    <Content Include="lib\jquery-3.4.1\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="lib\jquery-3.4.1\.github\lock.yml" />
+    <Content Include="lib\jquery-3.4.1\.github\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="lib\jquery-3.4.1\.gitignore" />
+    <Content Include="lib\jquery-3.4.1\.mailmap" />
+    <Content Include="lib\jquery-3.4.1\.npmignore" />
+    <Content Include="lib\jquery-3.4.1\.npmrc" />
+    <Content Include="lib\jquery-3.4.1\.travis.yml" />
+    <Content Include="lib\jquery-3.4.1\CODE_OF_CONDUCT.md" />
+    <Content Include="lib\jquery-3.4.1\CONTRIBUTING.md" />
+    <Content Include="lib\jquery-3.4.1\dist\.eslintrc.json" />
+    <Content Include="lib\jquery-3.4.1\dist\jquery.min.map" />
+    <Content Include="lib\jquery-3.4.1\dist\jquery.slim.min.map" />
+    <Content Include="lib\jquery-3.4.1\external\sizzle\dist\sizzle.min.map" />
+    <Content Include="lib\jquery-3.4.1\package.json" />
+    <Content Include="lib\jquery-3.4.1\README.md" />
+    <Content Include="lib\jquery-3.4.1\src\.eslintrc.json" />
+    <Content Include="lib\jquery-3.4.1\test\.eslintrc.json" />
+    <Content Include="lib\jquery-3.4.1\test\data\1x1.svg" />
+    <Content Include="lib\jquery-3.4.1\test\data\mock.php" />
+    <Content Include="lib\jquery-3.4.1\test\data\support\csp.log" />
+    <Content Include="lib\jquery-3.4.1\test\node_smoke_tests\.eslintrc.json" />
+    <Content Include="lib\jquery-3.4.1\test\promises_aplus_adapters\.eslintrc.json" />
+    <Content Include="lib\jquery-3.4.1\test\xhtml.php" />
+    <Content Include="lib\layui\font\iconfont.eot" />
+    <Content Include="lib\layui\font\iconfont.svg" />
+    <Content Include="lib\layui\font\iconfont.ttf" />
+    <Content Include="lib\layui\font\iconfont.woff" />
+    <Content Include="lib\layui\font\iconfont.woff2" />
+    <Content Include="lib\popper.js-1.16.0\.bithoundrc" />
+    <Content Include="lib\popper.js-1.16.0\.codeclimate.yml" />
+    <Content Include="lib\popper.js-1.16.0\.editorconfig" />
+    <Content Include="lib\popper.js-1.16.0\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="lib\popper.js-1.16.0\.github\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="lib\popper.js-1.16.0\.gitignore" />
+    <Content Include="lib\popper.js-1.16.0\.jsdoc" />
+    <Content Include="lib\popper.js-1.16.0\.travis.yml" />
+    <Content Include="lib\popper.js-1.16.0\bower.json" />
+    <Content Include="lib\popper.js-1.16.0\CHANGELOG.md" />
+    <Content Include="lib\popper.js-1.16.0\CONTRIBUTING.md" />
+    <Content Include="lib\popper.js-1.16.0\dist\esm\popper-utils.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\esm\popper-utils.min.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\esm\popper.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\esm\popper.min.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\popper-utils.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\popper-utils.min.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\popper.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\popper.min.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\umd\popper-utils.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\umd\popper-utils.min.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\umd\popper.js.flow" />
+    <Content Include="lib\popper.js-1.16.0\dist\umd\popper.js.map" />
+    <Content Include="lib\popper.js-1.16.0\dist\umd\popper.min.js.map" />
+    <Content Include="lib\popper.js-1.16.0\docs\CNAME" />
+    <Content Include="lib\popper.js-1.16.0\docs\css\ie8.scss" />
+    <Content Include="lib\popper.js-1.16.0\docs\css\ie9.scss" />
+    <Content Include="lib\popper.js-1.16.0\docs\css\images\arrow.svg" />
+    <Content Include="lib\popper.js-1.16.0\docs\css\images\bars.svg" />
+    <Content Include="lib\popper.js-1.16.0\docs\css\images\close.svg" />
+    <Content Include="lib\popper.js-1.16.0\docs\css\main.scss" />
+    <Content Include="lib\popper.js-1.16.0\docs\fonts\fontawesome-webfont.eot" />
+    <Content Include="lib\popper.js-1.16.0\docs\fonts\fontawesome-webfont.svg" />
+    <Content Include="lib\popper.js-1.16.0\docs\fonts\fontawesome-webfont.ttf" />
+    <Content Include="lib\popper.js-1.16.0\docs\fonts\fontawesome-webfont.woff" />
+    <Content Include="lib\popper.js-1.16.0\docs\fonts\fontawesome-webfont.woff2" />
+    <Content Include="lib\popper.js-1.16.0\docs\fonts\FontAwesome.otf" />
+    <Content Include="lib\popper.js-1.16.0\docs\_config.yml" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\popper-documentation.md" />
+    <Content Include="lib\popper.js-1.16.0\docs\_includes\tooltip-documentation.md" />
+    <Content Include="lib\popper.js-1.16.0\docs\_sass\libs\_functions.scss" />
+    <Content Include="lib\popper.js-1.16.0\docs\_sass\libs\_mixins.scss" />
+    <Content Include="lib\popper.js-1.16.0\docs\_sass\libs\_skel.scss" />
+    <Content Include="lib\popper.js-1.16.0\docs\_sass\libs\_vars.scss" />
+    <Content Include="lib\popper.js-1.16.0\lerna.json" />
+    <Content Include="lib\popper.js-1.16.0\LICENSE.md" />
+    <Content Include="lib\popper.js-1.16.0\MENTIONS.md" />
+    <Content Include="lib\popper.js-1.16.0\package.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\babel-config\package.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\babel-config\yarn.lock" />
+    <Content Include="lib\popper.js-1.16.0\packages\bundle\package.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\bundle\yarn.lock" />
+    <Content Include="lib\popper.js-1.16.0\packages\eslint-config-popper\package.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\eslint-config-popper\yarn.lock" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\.eslintignore" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\.npmignore" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\bower-publish.sh" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\bower.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\index.js.flow" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\package.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\README.md" />
+    <Content Include="lib\popper.js-1.16.0\packages\popper\tests\types\tsconfig.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\package.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\test-utils\yarn.lock" />
+    <Content Include="lib\popper.js-1.16.0\packages\test\package.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\test\README.md" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\.eslintignore" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\.npmignore" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\package.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\tests\.eslintrc" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\tests\types\tsconfig.json" />
+    <Content Include="lib\popper.js-1.16.0\packages\tooltip\yarn.lock" />
+    <Content Include="lib\popper.js-1.16.0\README.md" />
+    <Content Include="lib\popper.js-1.16.0\yarn.lock" />
+    <Content Include="lib\vue-2.6.11\dist\README.md" />
+    <Content Include="lib\vue-2.6.11\examples\todomvc\readme.md" />
+    <Content Include="tool\universe\getClass.ashx" />
+    <Content Include="tool\universe\getDepartment.ashx" />
+    <Content Include="tool\admin\teacher\DelTea.ashx" />
+    <Content Include="tool\admin\timeTable\AddTimeTable.ashx" />
+    <Content Include="tool\admin\timeTable\DelTimeTable.ashx" />
+    <Content Include="tool\admin\timeTable\GetTimeTable.ashx" />
+    <Content Include="tool\admin\timeTable\UpdTimeTable.ashx" />
+    <Content Include="tool\universe\GetCourse.ashx" />
+    <Content Include="tool\universe\GetTheatre.ashx" />
+    <Content Include="tool\universe\GetSchedule.ashx" />
+    <Content Include="tool\universe\GetTeacher.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\wchLibrary\wchLibrary.csproj">
+      <Project>{23f6858e-df0d-4ec4-94d5-dfee05bf7d7d}</Project>
+      <Name>wchLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:10037/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

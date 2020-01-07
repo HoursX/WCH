@@ -1,0 +1,6 @@
+G:\WCH\wch\dbInitial\bin\Debug\dbInitial.exe.config
+G:\WCH\wch\dbInitial\bin\Debug\dbInitial.exe
+G:\WCH\wch\dbInitial\bin\Debug\dbInitial.pdb
+G:\WCH\wch\dbInitial\obj\Debug\dbInitial.exe
+G:\WCH\wch\dbInitial\obj\Debug\dbInitial.pdb
+G:\WCH\wch\dbInitial\obj\Debug\dbInitial.csprojAssemblyReference.cache

@@ -1,0 +1,16 @@
+G:\WCH\wch\wch\bin\wch.dll
+G:\WCH\wch\wch\bin\wch.pdb
+G:\WCH\wch\wch\bin\EntityFramework.dll
+G:\WCH\wch\wch\bin\EntityFramework.SqlServer.dll
+G:\WCH\wch\wch\bin\wchLibrary.dll
+G:\WCH\wch\wch\bin\wchLibrary.pdb
+G:\WCH\wch\wch\bin\EntityFramework.xml
+G:\WCH\wch\wch\bin\EntityFramework.SqlServer.xml
+G:\WCH\wch\wch\bin\zh-Hans\EntityFramework.resources.dll
+G:\WCH\wch\wch\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+G:\WCH\wch\wch\obj\Debug\wch.dll
+G:\WCH\wch\wch\obj\Debug\wch.pdb
+G:\WCH\wch\wch\bin\Newtonsoft.Json.dll
+G:\WCH\wch\wch\bin\Newtonsoft.Json.xml
+G:\WCH\wch\wch\bin\wch.dll.config
+G:\WCH\wch\wch\obj\Debug\wch.csprojResolveAssemblyReference.cache

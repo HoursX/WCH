@@ -1,0 +1,51 @@
+CREATE VIEW sv_wch_Student
+	AS SELECT [StuName],[Gender],[StuAge],[Tel],[Grade],[Address],[ClassName],[DepName],[StuID]
+	FROM wch_Student 
+	join wch_Class on wch_Student.ClassID = wch_Class.ClassID
+	join wch_Department on wch_Student.DepID = wch_Department.DepID
+
+
+
+
+
+	
+create view sv_wch_Teacher
+as
+SELECT     dbo.wch_Teacher.TeaID, dbo.wch_Teacher.TeaName, dbo.wch_Teacher.Gender, dbo.wch_Department.DepName, dbo.wch_Teacher.TeaAge, dbo.wch_Teacher.Tel, 
+                      dbo.wch_Teacher.Address
+FROM         dbo.wch_Teacher INNER JOIN
+                      dbo.wch_Department ON dbo.wch_Teacher.DepID = dbo.wch_Department.DepID
+
+
+
+
+
+
+
+create view sv_wch_CourseSelection
+as
+SELECT     dbo.wch_CourseSelection.StuID, dbo.wch_CourseSelection.Mark, dbo.wch_TimeTable.TimeID
+FROM         dbo.wch_CourseSelection INNER JOIN
+                      dbo.wch_TimeTable ON dbo.wch_CourseSelection.TimeID = dbo.wch_TimeTable.TimeID
+
+
+
+
+
+
+
+create view sv_wch_TimeTable
+as
+SELECT     dbo.wch_Term.TermID, dbo.wch_Term.TermName, dbo.wch_Term.StartTime, dbo.wch_Term.EndTime, dbo.wch_Term.StartChoice, dbo.wch_Term.EndChoice, 
+                      dbo.wch_Theatre.TheatreID, dbo.wch_Theatre.SeatCapacity, dbo.wch_Theatre.Site, dbo.wch_TimeTable.TimeID, dbo.wch_TimeTable.StuNum, 
+                      dbo.wch_TimeTable.Capacity, dbo.wch_TimeTable.AllowView, dbo.wch_Course.CourseID, dbo.wch_Course.CourseName, dbo.wch_Course.Period, 
+                      dbo.wch_Course.Credit, dbo.wch_Department.DepID, dbo.wch_Department.DepName, dbo.wch_Teacher.TeaID, dbo.wch_Teacher.TeaName, 
+                      dbo.wch_Schedule.ScheduleID, dbo.wch_Schedule.TimeSpan, dbo.wch_TimeTableDetail.Day
+FROM         dbo.wch_TimeTable INNER JOIN
+                      dbo.wch_TimeTableDetail ON dbo.wch_TimeTable.TimeID = dbo.wch_TimeTableDetail.TimeID INNER JOIN
+                      dbo.wch_Theatre ON dbo.wch_TimeTableDetail.TheatreID = dbo.wch_Theatre.TheatreID INNER JOIN
+                      dbo.wch_Term ON dbo.wch_TimeTableDetail.TermID = dbo.wch_Term.TermID INNER JOIN
+                      dbo.wch_Teacher ON dbo.wch_TimeTable.TeaID = dbo.wch_Teacher.TeaID INNER JOIN
+                      dbo.wch_Schedule ON dbo.wch_TimeTableDetail.ScheduleID = dbo.wch_Schedule.ScheduleID INNER JOIN
+                      dbo.wch_Department ON dbo.wch_Teacher.DepID = dbo.wch_Department.DepID INNER JOIN
+                      dbo.wch_Course ON dbo.wch_TimeTable.CourseID = dbo.wch_Course.CourseID AND dbo.wch_Department.DepID = dbo.wch_Course.DepID

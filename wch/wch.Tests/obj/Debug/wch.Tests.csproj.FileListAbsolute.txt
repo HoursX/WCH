@@ -1,0 +1,15 @@
+G:\WCH\wch\wch.Tests\bin\Debug\wch.Tests.dll
+G:\WCH\wch\wch.Tests\bin\Debug\wch.Tests.pdb
+G:\WCH\wch\wch.Tests\obj\Debug\wch.Tests.dll
+G:\WCH\wch\wch.Tests\obj\Debug\wch.Tests.pdb
+G:\WCH\wch\wch.Tests\bin\Debug\EntityFramework.dll
+G:\WCH\wch\wch.Tests\bin\Debug\EntityFramework.xml
+G:\WCH\wch\wch.Tests\bin\Debug\zh-Hans\EntityFramework.resources.dll
+G:\WCH\wch\wch.Tests\bin\Debug\wch.Tests.dll.config
+G:\WCH\wch\wch.Tests\bin\Debug\EntityFramework.SqlServer.dll
+G:\WCH\wch\wch.Tests\bin\Debug\EntityFramework.SqlServer.xml
+G:\WCH\wch\wch.Tests\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+G:\WCH\wch\wch.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+G:\WCH\wch\wch.Tests\bin\Debug\zh-Hans\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+G:\WCH\wch\wch.Tests\obj\Debug\wch.Tests.csprojAssemblyReference.cache
+G:\WCH\wch\wch.Tests\obj\Debug\wch.Tests.csproj.CopyComplete
