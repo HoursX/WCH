@@ -539,6 +539,8 @@
     <Content Include="lib\js\studentSelect.js" />
     <Content Include="lib\js\studentView.js" />
     <Content Include="lib\js\teacherView.js" />
+    <Content Include="lib\js\timeTableView.js" />
+    <Content Include="lib\js\wch-tool.js" />
     <Content Include="lib\layui\css\layui.css" />
     <Content Include="lib\layui\css\layui.mobile.css" />
     <Content Include="lib\layui\css\modules\code.css" />
