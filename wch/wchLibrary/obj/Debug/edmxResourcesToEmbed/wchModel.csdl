@@ -68,8 +68,8 @@
       <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
       <End Role="wch_CourseSelection" EntitySet="wch_CourseSelection" />
     </AssociationSet>
-    <EntitySet Name="sv_wch_TimeTable" EntityType="wchModel.sv_wch_TimeTable" />
     <EntitySet Name="sv_wch_courseSelect" EntityType="wchModel.sv_wch_courseSelect" />
+    <EntitySet Name="sv_wch_TimeTable" EntityType="wchModel.sv_wch_TimeTable" />
   </EntityContainer>
   <EntityType Name="wch_Class">
     <Key>
@@ -416,52 +416,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="sv_wch_TimeTable">
-    <Key>
-      <PropertyRef Name="TermID" />
-      <PropertyRef Name="TermName" />
-      <PropertyRef Name="TheatreID" />
-      <PropertyRef Name="SeatCapacity" />
-      <PropertyRef Name="Site" />
-      <PropertyRef Name="TimeID" />
-      <PropertyRef Name="Capacity" />
-      <PropertyRef Name="CourseID" />
-      <PropertyRef Name="CourseName" />
-      <PropertyRef Name="Period" />
-      <PropertyRef Name="Credit" />
-      <PropertyRef Name="DepID" />
-      <PropertyRef Name="DepName" />
-      <PropertyRef Name="TeaID" />
-      <PropertyRef Name="TeaName" />
-      <PropertyRef Name="ScheduleID" />
-      <PropertyRef Name="TimeSpan" />
-      <PropertyRef Name="Day" />
-    </Key>
-    <Property Name="TermID" Type="Int32" Nullable="false" />
-    <Property Name="TermName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="StartTime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="EndTime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="StartChoice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="EndChoice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="TheatreID" Type="Int32" Nullable="false" />
-    <Property Name="SeatCapacity" Type="Int32" Nullable="false" />
-    <Property Name="Site" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="TimeID" Type="Int32" Nullable="false" />
-    <Property Name="StuNum" Type="Int32" />
-    <Property Name="Capacity" Type="Int32" Nullable="false" />
-    <Property Name="AllowView" Type="Boolean" />
-    <Property Name="CourseID" Type="Int32" Nullable="false" />
-    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="Period" Type="Int32" Nullable="false" />
-    <Property Name="Credit" Type="Int32" Nullable="false" />
-    <Property Name="DepID" Type="Byte" Nullable="false" />
-    <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="TeaID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="TeaName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
-    <Property Name="ScheduleID" Type="Int32" Nullable="false" />
-    <Property Name="TimeSpan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="Day" Type="Byte" Nullable="false" />
-  </EntityType>
   <EntityType Name="sv_wch_courseSelect">
     <Key>
       <PropertyRef Name="StuID" />
@@ -484,5 +438,47 @@
     <Property Name="Credit" Type="Int32" Nullable="false" />
     <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Mark" Type="Double" />
+  </EntityType>
+  <EntityType Name="sv_wch_TimeTable">
+    <Key>
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="Period" />
+      <PropertyRef Name="TimeID" />
+      <PropertyRef Name="Capacity" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="TermID" />
+      <PropertyRef Name="TermName" />
+      <PropertyRef Name="DepName" />
+      <PropertyRef Name="TeaName" />
+      <PropertyRef Name="TheatreID" />
+      <PropertyRef Name="SeatCapacity" />
+      <PropertyRef Name="Site" />
+      <PropertyRef Name="ScheduleID" />
+      <PropertyRef Name="TimeSpan" />
+    </Key>
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Credit" Type="Int32" Nullable="false" />
+    <Property Name="Period" Type="Int32" Nullable="false" />
+    <Property Name="TimeID" Type="Int32" Nullable="false" />
+    <Property Name="CourseID" Type="Int32" />
+    <Property Name="TeaID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="StuNum" Type="Int32" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="AllowView" Type="Boolean" />
+    <Property Name="Day" Type="Byte" Nullable="false" />
+    <Property Name="TermID" Type="Int32" Nullable="false" />
+    <Property Name="TermName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="StartTime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EndTime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="StartChoice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EndChoice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TeaName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="TheatreID" Type="Int32" Nullable="false" />
+    <Property Name="SeatCapacity" Type="Int32" Nullable="false" />
+    <Property Name="Site" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ScheduleID" Type="Int32" Nullable="false" />
+    <Property Name="TimeSpan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

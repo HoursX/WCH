@@ -14,29 +14,28 @@ namespace wch
     
     public partial class sv_wch_TimeTable
     {
+        public string CourseName { get; set; }
+        public int Credit { get; set; }
+        public int Period { get; set; }
+        public int TimeID { get; set; }
+        public Nullable<int> CourseID { get; set; }
+        public string TeaID { get; set; }
+        public Nullable<int> StuNum { get; set; }
+        public int Capacity { get; set; }
+        public Nullable<bool> AllowView { get; set; }
+        public byte Day { get; set; }
         public int TermID { get; set; }
         public string TermName { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public string StartChoice { get; set; }
         public string EndChoice { get; set; }
+        public string DepName { get; set; }
+        public string TeaName { get; set; }
         public int TheatreID { get; set; }
         public int SeatCapacity { get; set; }
         public string Site { get; set; }
-        public int TimeID { get; set; }
-        public Nullable<int> StuNum { get; set; }
-        public int Capacity { get; set; }
-        public Nullable<bool> AllowView { get; set; }
-        public int CourseID { get; set; }
-        public string CourseName { get; set; }
-        public int Period { get; set; }
-        public int Credit { get; set; }
-        public byte DepID { get; set; }
-        public string DepName { get; set; }
-        public string TeaID { get; set; }
-        public string TeaName { get; set; }
         public int ScheduleID { get; set; }
         public string TimeSpan { get; set; }
-        public byte Day { get; set; }
     }
 }

@@ -168,36 +168,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sv_wch_TimeTable">
-      <EntityTypeMapping TypeName="wchModel.sv_wch_TimeTable">
-        <MappingFragment StoreEntitySet="sv_wch_TimeTable">
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="TimeSpan" ColumnName="TimeSpan" />
-          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
-          <ScalarProperty Name="TeaName" ColumnName="TeaName" />
-          <ScalarProperty Name="TeaID" ColumnName="TeaID" />
-          <ScalarProperty Name="DepName" ColumnName="DepName" />
-          <ScalarProperty Name="DepID" ColumnName="DepID" />
-          <ScalarProperty Name="Credit" ColumnName="Credit" />
-          <ScalarProperty Name="Period" ColumnName="Period" />
-          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-          <ScalarProperty Name="AllowView" ColumnName="AllowView" />
-          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-          <ScalarProperty Name="StuNum" ColumnName="StuNum" />
-          <ScalarProperty Name="TimeID" ColumnName="TimeID" />
-          <ScalarProperty Name="Site" ColumnName="Site" />
-          <ScalarProperty Name="SeatCapacity" ColumnName="SeatCapacity" />
-          <ScalarProperty Name="TheatreID" ColumnName="TheatreID" />
-          <ScalarProperty Name="EndChoice" ColumnName="EndChoice" />
-          <ScalarProperty Name="StartChoice" ColumnName="StartChoice" />
-          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-          <ScalarProperty Name="TermName" ColumnName="TermName" />
-          <ScalarProperty Name="TermID" ColumnName="TermID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sv_wch_courseSelect">
       <EntityTypeMapping TypeName="wchModel.sv_wch_courseSelect">
         <MappingFragment StoreEntitySet="sv_wch_courseSelect">
@@ -211,6 +181,35 @@
           <ScalarProperty Name="TimeID" ColumnName="TimeID" />
           <ScalarProperty Name="StuName" ColumnName="StuName" />
           <ScalarProperty Name="StuID" ColumnName="StuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sv_wch_TimeTable">
+      <EntityTypeMapping TypeName="wchModel.sv_wch_TimeTable">
+        <MappingFragment StoreEntitySet="sv_wch_TimeTable">
+          <ScalarProperty Name="TimeSpan" ColumnName="TimeSpan" />
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+          <ScalarProperty Name="SeatCapacity" ColumnName="SeatCapacity" />
+          <ScalarProperty Name="TheatreID" ColumnName="TheatreID" />
+          <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+          <ScalarProperty Name="DepName" ColumnName="DepName" />
+          <ScalarProperty Name="EndChoice" ColumnName="EndChoice" />
+          <ScalarProperty Name="StartChoice" ColumnName="StartChoice" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="TermName" ColumnName="TermName" />
+          <ScalarProperty Name="TermID" ColumnName="TermID" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+          <ScalarProperty Name="TeaID" ColumnName="TeaID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="TimeID" ColumnName="TimeID" />
+          <ScalarProperty Name="Period" ColumnName="Period" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
