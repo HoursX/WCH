@@ -54,11 +54,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bll\departments.cs" />
     <Compile Include="bll\students.cs" />
     <Compile Include="bll\teachers.cs" />
     <Compile Include="bll\universe.cs" />
     <Compile Include="lib\DBHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sv_wch_courseSelect.cs">
+      <DependentUpon>wchModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sv_wch_CourseSelection.cs">
       <DependentUpon>wchModel.tt</DependentUpon>
     </Compile>
@@ -71,7 +75,9 @@
     <Compile Include="sv_wch_TimeTable.cs">
       <DependentUpon>wchModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="view\bs_CourseSelect.cs" />
     <Compile Include="view\bs_CourseSelection.cs" />
+    <Compile Include="view\bs_Department.cs" />
     <Compile Include="view\bs_Student.cs" />
     <Compile Include="view\bs_Teacher.cs" />
     <Compile Include="view\bs_TimeTable.cs" />

@@ -1,6 +1,7 @@
 ﻿function teacherView() {
-    layui.use('table', function () {
-        var table = layui.table;
+    layui.use(['form','table'], function () {
+        var table = layui.table
+        , form = layui.form;
 
         table.render({
             elem: '#context'
@@ -22,22 +23,22 @@
             , layEvent: 'LAYTABLE_TIPS'
             , icon: 'layui-icon-tips'
           }]
-          , title: '用户数据表'
+          , title: '教师表'
              , id: 'teacherTable'
           , cols: [[
-            { type: 'checkbox', fixed: 'left' }
-            , { field: 'TeaID', title: 'ID', width: 150, fixed: 'left', unresize: true, sort: true }
-            , { field: 'TeaName', title: '教师姓名', width: 120, edit: 'text' }
+            { type: 'checkbox', fixed: 'left',width:60 }
+            , { field: 'TeaID', title: 'ID', fixed: 'left', unresize: true, sort: true }
+            , { field: 'TeaName', title: '教师姓名', edit: 'text' }
             , {
-                field: 'Gender', title: '性别', width: 100, edit: 'text', templet: function (res) {
+                field: 'Gender', title: '性别',  edit: 'text', templet: function (res) {
                     return res.Gender == 1 ? '男' : '女';
                 }
             }
-            , { field: 'DepName', title: '所在院系', width: 150, edit: 'text' }
-            , { field: 'TeaAge', title: '年龄', width: 100, sort: true }
-            , { field: 'Tel', title: '电话', width: 100 }
-            , { field: 'Address', title: '家庭地址', width: 150 }
-            , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+            , { field: 'DepName', title: '所在院系',  edit: 'text' }
+            , { field: 'TeaAge', title: '年龄',  sort: true }
+            , { field: 'Tel', title: '电话' }
+            , { field: 'Address', title: '家庭地址' }
+            , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 165,align:'center' }
           ]]
           , page: true
           , done: function (res, curr, count) {
@@ -69,11 +70,39 @@
                     layer.msg(checkStatus.isAll ? '全选' : '未全选');
                     break;
                 case 'add':
-                    var data = obj.data;
-                    for (i in data) {
-                        data
-                    }
+                    var AddTeacher = document.getElementById('submitTea').innerHTML;
+                    layer.open({
+                        type: 1,
+                        content: AddTeacher,
+                        area: ['570px', '580px'],
+                        title: '添加教师',
+                        success: function (layero, index) {
+                            console.log(index);
+                            bindDepartment("#depGridding2");
 
+                            layui.use('form', function () {
+                                var form = layui.form;
+
+                                //监听提交
+                                form.on('submit(submitTeaForm)', function (data) {
+                                    //layer.msg(JSON.stringify(data.field));
+                                    myPost("/tool/admin/teacher/AddTea.ashx",
+                                    { val: JSON.stringify(data.field) },
+                                    function (val, data) {
+                                        console.log(data.msg);
+                                        layer.msg(data.msg);
+                                        if (data.code == 200)
+                                            layer.close(index);
+                                        renderForm();
+                                        table.reload('teacherTable');
+                                    });
+                                    return false;
+                                });
+                            });
+                        }
+                    });
+
+                    break;
                     //自定义头工具栏右侧图标 - 提示
                 case 'LAYTABLE_TIPS':
                     layer.alert('这是工具栏右侧自定义的一个图标按钮');
@@ -98,14 +127,49 @@
                     layer.close(index);
                 });
             } else if (obj.event === 'edit') {
-                layer.prompt({
-                    formType: 2
-                  , value: data.email
-                }, function (value, index) {
-                    obj.update({
-                        email: value
-                    });
-                    layer.close(index);
+                var sdata = obj.data;
+                var AddTeacher = document.getElementById('submitTea').innerHTML;
+                layer.open({
+                    type: 1,
+                    content: AddTeacher,
+                    area: ['570px', '580px'],
+                    title: '修改教师',
+                    success: function (layero, index) {
+                        console.log(sdata.elem);
+                        bindDepartment("#depGridding2");
+                        //修改属性
+                        console.log(sdata.DepName.index);
+                        $("input[name='TeaID']").val(sdata.TeaID);
+                        $("input[name='TeaName']").val(sdata.TeaName);
+                        $("input[name='Gender']").each(function () {
+                            if ($(this).val() == sdata.Gender.toString())
+                                $(this).attr("checked", true);
+                        })
+                        bindDepartment("#depGridding2", true, true, sdata.DepName);
+                        $("input[name='TeaAge']").val(sdata.TeaAge);
+                        $("input[name='Tel']").val(sdata.Tel);
+                        $("textarea[name='Address']").val(sdata.Address);
+                        form.render();
+                        layui.use('form', function () {
+                            var form = layui.form;
+
+                            //监听提交
+                            form.on('submit(submitTeaForm)', function (data) {
+                                //layer.msg(JSON.stringify(data.field));
+                                myPost("/tool/admin/teacher/UpdTea.ashx",
+                                { val: JSON.stringify(data.field) },
+                                function (val, data) {
+                                    console.log(data.msg);
+                                    layer.msg(data.msg);
+                                    if (data.code == 200)
+                                        layer.close(index);
+                                    renderForm();
+                                    table.reload('teacherTable');
+                                });
+                                return false;
+                            });
+                        });
+                    }
                 });
             }
         });

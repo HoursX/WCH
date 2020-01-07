@@ -57,8 +57,8 @@
             <a class="" href="javascript:;">学生管理</a>
             <dl class="layui-nav-child">
               <dd><a href="javascript:;" id="StudentView">学生维护</a></dd>
-              <dd><a href="javascript:;" id="AddStudent">班级维护</a></dd>
-              <dd><a href="javascript:;" id="StudentSelect">学生选课信息查看</a></dd>
+              <dd><a href="javascript:;" id="">班级维护</a></dd>
+              <dd><a href="javascript:;" id="CourseSelect">学生选课信息查看</a></dd>
               <dd><a href="">超链接</a></dd>
             </dl>
           </li>
@@ -66,16 +66,17 @@
             <a class="" href="javascript:;">教师管理</a>
             <dl class="layui-nav-child">
               <dd><a href="javascript:;" id="Teacherview">查看所有教师</a></dd>
-              <dd><a href="javascript:;" id="AddTeacher">教师授课信息查看</a></dd>
+              <dd><a href="javascript:;" id="AddTeacher">添加教师</a></dd>
+              <dd><a href="javascript:;" id="">教师授课信息查看</a></dd>
               <dd><a href="javascript:;">列表三</a></dd>
             </dl>
           </li>
           <li class="layui-nav-item">
             <a href="javascript:;">校级管理</a>
             <dl class="layui-nav-child">
-              <dd><a href="javascript:;" id="StudentSelect">院系维护</a></dd>
-              <dd><a href="javascript:;" id="StudentSelect">学期维护</a></dd>
-              <dd><a href="javascript:;" id="StudentSelect">课程维护</a></dd>
+              <dd><a href="javascript:;" id="Department">院系维护</a></dd>
+              <dd><a href="javascript:;" id="">学期维护</a></dd>
+              <dd><a href="javascript:;" id="">课程维护</a></dd>
               <dd><a href="javascript:;" id="wch_TimeTable">排课</a></dd>
             </dl>
           </li>
@@ -230,31 +231,31 @@
 
 
 <script type="text/html" id="teacherViewTool">
-      <div class="layui-collapse">
-      <div class="layui-colla-item">
-  <h2 class="layui-colla-title">查询条件</h2>
-  <div class="layui-colla-content layui-show">
-      <!-- 放置工具栏 -->
-          <div class="stu-table">
-              姓名:
-              <div class="layui-input-inline">
-                  <input type="text" name="teaname" placeholder="请输入姓名" autocomplete="off" class="layui-input">
-              </div>
-              工号:
-              <div class="layui-input-inline">
-                  <input type="text" name="teaid" placeholder="请输入工号" autocomplete="off" class="layui-input">
-              </div>
-              院系:
-              <div class="layui-input-inline">
-                  <input type="text" name="depname" placeholder="请输入所在院系" autocomplete="off" class="layui-input">
-              </div>
-              <button class="layui-btn layui-btn-md" id="tea_search" data-type="reload">查询</button>
+  <div class="layui-collapse">
+  <div class="layui-colla-item">
+<h2 class="layui-colla-title">查询条件</h2>
+<div class="layui-colla-content layui-show">
+  <!-- 放置工具栏 -->
+      <div class="stu-table">
+          姓名:
+          <div class="layui-input-inline">
+              <input type="text" name="teaname" placeholder="请输入姓名" autocomplete="off" class="layui-input">
           </div>
-  </div>
+          工号:
+          <div class="layui-input-inline">
+              <input type="text" name="teaid" placeholder="请输入工号" autocomplete="off" class="layui-input">
+          </div>
+          院系:
+          <div class="layui-input-inline">
+              <input type="text" name="depname" placeholder="请输入所在院系" autocomplete="off" class="layui-input">
+          </div>
+          <button class="layui-btn layui-btn-md" id="tea_search" data-type="reload">查询</button>
+      </div>
+</div>
 </div>
 </div>
 <table id="context" lay-filter="context" class="layui-hide"></table>
-  
+
 
 </script>
 
@@ -338,7 +339,42 @@
     </form>
 </script>
 
+<script type="text/html" id="courseSelViewTool">
+  <div class="layui-collapse">
+  <div class="layui-colla-item">
+<h2 class="layui-colla-title">查询条件</h2>
+<div class="layui-colla-content layui-show">
+  <!-- 放置工具栏 -->
+      <div class="stu-table">
+          学号:
+          <div class="layui-input-inline">
+              <input type="text" name="teaname" placeholder="请输入学号" autocomplete="off" class="layui-input">
+          </div>
+          姓名:
+          <div class="layui-input-inline">
+              <input type="text" name="teaid" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+          </div>
+          学期:
+          <div class="layui-input-inline">
+              <input type="text" name="depname" placeholder="请输入学期" autocomplete="off" class="layui-input">
+          </div>
+          课程:
+          <div class="layui-input-inline">
+              <input type="text" name="depname" placeholder="请输入课程" autocomplete="off" class="layui-input">
+          </div>
+          教师:
+          <div class="layui-input-inline">
+              <input type="text" name="depname" placeholder="请输入教师" autocomplete="off" class="layui-input">
+          </div>
+          <button class="layui-btn layui-btn-md" id="cos_search" data-type="reload">查询</button>
+      </div>
+</div>
+</div>
+</div>
+<table id="context" lay-filter="context" class="layui-hide"></table>
 
+
+</script>
 
 
 <!-- 表单工具栏 -->
@@ -361,14 +397,21 @@
     <button class="layui-btn layui-btn-sm" lay-event="add">排课</button>
   </div>
   </script>
-
+<script type="text/html" id="deptoolbarDemo">
+<div class="layui-btn-container">
+  <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+  <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+  <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+  <button class="layui-btn layui-btn-sm" lay-event="add">增加</button>
+</div>
+</script>
 
 <script type="text/html" id="toolbarDemo">
 <div class="layui-btn-container">
 <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
 <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
 <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
-<button class="layui-btn layui-btn-sm" lay-event="add">增加</button>
+<button class="layui-btn layui-btn-sm" lay-event="add">添加教师</button>
 </div>
 
 </script>
@@ -470,14 +513,94 @@
 </script>
 
 
+<script type="text/html" id="submitDep">
+  <form class="layui-form" style="margin-top:20px;">
+      <div class="layui-form-item">
+          <label class="layui-form-label" style="width:100px;">请输入院系名</label>
+      <div class="layui-input-inline" >
+          <input type="text" name="DepName" lay-verify="required" lay-reqtext="院名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+      </div>
+      </div>
+      <div class="layui-form-item">
+  <div class="layui-input-block">
+    <button type="submit" class="layui-btn" lay-submit="" lay-filter="submitDepForm">立即提交</button>
+    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+  </div>
+</div>
+  </form>
+</script>
 
+<script type="text/html" id="submitTea">
+  <form class="layui-form" style="margin-top:20px;">
+      <div class="layui-form-item">
+          <label class="layui-form-label">请输入工号</label>
+      <div class="layui-input-inline" >
+          <input type="text" name="TeaID" lay-verify="required" lay-reqtext="工号是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+      </div>
+      </div>
+      <div class="layui-form-item">
+          <label class="layui-form-label">请输入姓名</label>
+      <div class="layui-input-inline" >
+          <input type="text" name="TeaName" lay-verify="required" lay-reqtext="姓名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+      </div>
+      </div>
+        <div class="layui-form-item">
+  <label class="layui-form-label">单选框</label>
+  <div class="layui-input-block">
+    <input type="radio" name="Gender" value="true" title="男" checked="">
+    <input type="radio" name="Gender" value="false" title="女">
+  </div>
+</div>
+      <div class="layui-form-item">
+          <div class="layui-inline">
+    <label class="layui-form-label">选择院系</label>
+    <div class="layui-input-inline">
+      <select name="DepID" lay-verify="required" lay-search="" lay-filter="select" id="depGridding2">
+    <option value="">直接选择或搜索选择</option>
+  </select>
+    </div>
+   </div>
+  </div>
+      <div class="layui-form-item">
+          <label class="layui-form-label">请输入年龄</label>
+      <div class="layui-input-inline" >
+          <input type="text" name="TeaAge" lay-verify="required" lay-reqtext="年龄是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+      </div>
+      </div>
+      <div class="layui-form-item">
+<div class="layui-inline">
+  <label class="layui-form-label">手机</label>
+  <div class="layui-input-inline">
+    <input type="text" name="Tel" lay-verify="phone" placeholder="请输入" autocomplete="off" class="layui-input">
+  </div>
+</div>
+</div>
+      <div class="layui-form-item layui-form-text">
+  <div class="layui-block" style="width: 500px">
+<label class="layui-form-label">地址</label>
+<div class="layui-input-block">
+  <textarea name="Address" placeholder="请输入内容" class="layui-textarea"></textarea>
+</div>
+</div>
+</div>
+
+      <div class="layui-form-item">
+  <div class="layui-input-block">
+    <button type="submit" id="tea-postbtn" class="layui-btn" lay-submit="" lay-filter="submitTeaForm">立即提交</button>
+    <button type="reset" id="tea-rebtn" class="layui-btn layui-btn-primary">重置</button>
+  </div>
+</div>
+  </form>
+
+</script>
 
 
 
 
 <script src="./lib/js/studentView.js"></script>
 <script src="./lib/js/teacherView.js"></script>
-<script src="./lib/js/studentSelect.js"></script>
+<script src="./lib/js/courseSelect.js"></script>
+<script src="./lib/js/department.js"></script>
 <script src="./lib/js/addStudent.js"></script>
 <script src="./lib/js/timeTableView.js"></script>
 
@@ -499,10 +622,22 @@
     $('#form-content').html("");
     $('#table-main').html(TeacherToolbar);
     teacherView();
+    layui.element.init();
   });
-  $("#StudentSelect").click(function () {
-    studentSelect();
-  });
+  $("#CourseSelect").click(function () {
+    var CourseSelToolbar = document.getElementById('courseSelViewTool').innerHTML;
+    $('#form-content').html("");
+    $('#table-main').html(CourseSelToolbar);
+    courseSelect();
+    layui.element.init();
+});
+$("#Department").click(function () {
+  var htt = "<table id='context' lay-filter='context' class='layui-hide'></table>";
+  $('#form-content').html("");
+  $('#table-main').html(htt);
+  department();
+  layui.element.init();
+});
   //排课
   $("#wch_TimeTable").click(function(){
     var timeTableViewTool = document.getElementById('timeTableViewTool').innerHTML;

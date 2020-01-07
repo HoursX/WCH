@@ -34,6 +34,7 @@
         <EntityTypeShape EntityType="wchModel.sv_wch_Teacher" Width="1.5" PointX="8.6701453312626775" PointY="17.040914826579819" />
         <AssociationConnector Association="wchModel.FK__wch_Cours__TimeI__33D4B598" />
         <EntityTypeShape EntityType="wchModel.sv_wch_TimeTable" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="wchModel.sv_wch_courseSelect" Width="1.5" PointX="10.5" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

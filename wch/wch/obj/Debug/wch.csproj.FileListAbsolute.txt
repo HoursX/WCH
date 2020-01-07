@@ -13,4 +13,6 @@ G:\WCH\wch\wch\obj\Debug\wch.pdb
 G:\WCH\wch\wch\bin\Newtonsoft.Json.dll
 G:\WCH\wch\wch\bin\Newtonsoft.Json.xml
 G:\WCH\wch\wch\bin\wch.dll.config
-G:\WCH\wch\wch\obj\Debug\wch.csprojResolveAssemblyReference.cache
+G:\WCH\wch\wch\obj\Debug\wch.csprojAssemblyReference.cache
+G:\WCH\wch\wch\bin\wchLibrary.dll.config
+G:\WCH\wch\wch\obj\Debug\wch.csproj.CopyComplete

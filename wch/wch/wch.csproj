@@ -535,6 +535,8 @@
     <Content Include="lib\jquery-3.4.1\test\unit\wrap.js" />
     <Content Include="lib\js\addStudent.js" />
     <Content Include="lib\js\addTeacher.js" />
+    <Content Include="lib\js\courseSelect.js" />
+    <Content Include="lib\js\department.js" />
     <Content Include="lib\js\login.js" />
     <Content Include="lib\js\studentSelect.js" />
     <Content Include="lib\js\studentView.js" />
@@ -876,6 +878,8 @@
     <Content Include="lib\vue-2.6.11\examples\tree\index.html" />
     <Content Include="lib\vue-2.6.11\examples\tree\tree.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Student.aspx" />
+    <Content Include="Teacher.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -894,6 +898,30 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.aspx.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student.aspx.designer.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher.aspx.cs">
+      <DependentUpon>Teacher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher.aspx.designer.cs">
+      <DependentUpon>Teacher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\department\AddDep.ashx.cs">
+      <DependentUpon>AddDep.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\department\DelDep.ashx.cs">
+      <DependentUpon>DelDep.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\department\GetDepartment.ashx.cs">
+      <DependentUpon>GetDepartment.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\department\UpdDep.ashx.cs">
+      <DependentUpon>UpdDep.ashx</DependentUpon>
+    </Compile>
     <Compile Include="tool\admin\student\AddStu.ashx.cs">
       <DependentUpon>AddStu.ashx</DependentUpon>
     </Compile>
@@ -906,6 +934,9 @@
     <Compile Include="tool\admin\student\UpdStu.ashx.cs">
       <DependentUpon>UpdStu.ashx</DependentUpon>
     </Compile>
+    <Compile Include="tool\admin\teacher\AddTea.ashx.cs">
+      <DependentUpon>AddTea.ashx</DependentUpon>
+    </Compile>
     <Compile Include="tool\admin\teacher\DelTea.ashx.cs">
       <DependentUpon>DelTea.ashx</DependentUpon>
     </Compile>
@@ -914,6 +945,9 @@
     </Compile>
     <Compile Include="tool\admin\teacher\GetTeacher.ashx.cs">
       <DependentUpon>GetTeacher.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tool\admin\teacher\UpdTea.ashx.cs">
+      <DependentUpon>UpdTea.ashx</DependentUpon>
     </Compile>
     <Compile Include="tool\admin\timeTable\AddTimeTable.ashx.cs">
       <DependentUpon>AddTimeTable.ashx</DependentUpon>
@@ -1348,6 +1382,12 @@
     <Content Include="tool\universe\GetTheatre.ashx" />
     <Content Include="tool\universe\GetSchedule.ashx" />
     <Content Include="tool\universe\GetTeacher.ashx" />
+    <Content Include="tool\admin\teacher\AddTea.ashx" />
+    <Content Include="tool\admin\teacher\UpdTea.ashx" />
+    <Content Include="tool\admin\department\AddDep.ashx" />
+    <Content Include="tool\admin\department\DelDep.ashx" />
+    <Content Include="tool\admin\department\GetDepartment.ashx" />
+    <Content Include="tool\admin\department\UpdDep.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -128,6 +128,31 @@
           <Property Name="TheatreID" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_courseSelect”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="sv_wch_courseSelect">
+          <Key>
+            <PropertyRef Name="StuID" />
+            <PropertyRef Name="StuName" />
+            <PropertyRef Name="TimeID" />
+            <PropertyRef Name="TermName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="Period" />
+            <PropertyRef Name="Credit" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="StuID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StuName" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="TimeID" Type="int" Nullable="false" />
+          <Property Name="TermName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TeaName" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="Credit" Type="int" Nullable="false" />
+          <Property Name="DepName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mark" Type="float" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“wch.dbo.sv_wch_CourseSelection”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="sv_wch_CourseSelection">
           <Key>
@@ -222,7 +247,7 @@
           <Property Name="TimeSpan" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Day" Type="tinyint" Nullable="false" />
         </EntityType>
-        <Association Name="FK__wch_Class__DepID__0519C6AF">
+        <Association Name="FK__wch_Class__DepID__25869641">
           <End Role="wch_Department" Type="Self.wch_Department" Multiplicity="0..1" />
           <End Role="wch_Class" Type="Self.wch_Class" Multiplicity="*" />
           <ReferentialConstraint>
@@ -234,7 +259,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_Cours__DepID__21B6055D">
+        <Association Name="FK__wch_Cours__DepID__36B12243">
           <End Role="wch_Department" Type="Self.wch_Department" Multiplicity="0..1" />
           <End Role="wch_Course" Type="Self.wch_Course" Multiplicity="*" />
           <ReferentialConstraint>
@@ -246,7 +271,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_Cours__StuID__32E0915F">
+        <Association Name="FK__wch_Cours__StuID__45F365D3">
           <End Role="wch_Student" Type="Self.wch_Student" Multiplicity="1" />
           <End Role="wch_CourseSelection" Type="Self.wch_CourseSelection" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -258,7 +283,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_Cours__TimeI__33D4B598">
+        <Association Name="FK__wch_Cours__TimeI__46E78A0C">
           <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="0..1" />
           <End Role="wch_CourseSelection" Type="Self.wch_CourseSelection" Multiplicity="*" />
           <ReferentialConstraint>
@@ -270,7 +295,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_Stude__Class__09DE7BCC">
+        <Association Name="FK__wch_Stude__Class__286302EC">
           <End Role="wch_Class" Type="Self.wch_Class" Multiplicity="0..1" />
           <End Role="wch_Student" Type="Self.wch_Student" Multiplicity="*" />
           <ReferentialConstraint>
@@ -282,7 +307,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_Stude__DepID__0AD2A005">
+        <Association Name="FK__wch_Stude__DepID__29572725">
           <End Role="wch_Department" Type="Self.wch_Department" Multiplicity="0..1" />
           <End Role="wch_Student" Type="Self.wch_Student" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,7 +319,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_Teach__DepID__108B795B">
+        <Association Name="FK__wch_Teach__DepID__2D27B809">
           <End Role="wch_Department" Type="Self.wch_Department" Multiplicity="0..1" />
           <End Role="wch_Teacher" Type="Self.wch_Teacher" Multiplicity="*" />
           <ReferentialConstraint>
@@ -306,7 +331,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_TimeT__Cours__286302EC">
+        <Association Name="FK__wch_TimeT__Cours__3B75D760">
           <End Role="wch_Course" Type="Self.wch_Course" Multiplicity="0..1" />
           <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -318,7 +343,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_TimeT__Sched__2F10007B">
+        <Association Name="FK__wch_TimeT__Sched__4222D4EF">
           <End Role="wch_Schedule" Type="Self.wch_Schedule" Multiplicity="1" />
           <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -330,7 +355,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_TimeT__TeaID__29572725">
+        <Association Name="FK__wch_TimeT__TeaID__3C69FB99">
           <End Role="wch_Teacher" Type="Self.wch_Teacher" Multiplicity="0..1" />
           <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -342,7 +367,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_TimeT__TermI__2D27B809">
+        <Association Name="FK__wch_TimeT__TermI__403A8C7D">
           <End Role="wch_Term" Type="Self.wch_Term" Multiplicity="1" />
           <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -354,7 +379,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_TimeT__Theat__300424B4">
+        <Association Name="FK__wch_TimeT__Theat__4316F928">
           <End Role="wch_Theatre" Type="Self.wch_Theatre" Multiplicity="1" />
           <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -366,7 +391,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wch_TimeT__TimeI__2C3393D0">
+        <Association Name="FK__wch_TimeT__TimeI__3F466844">
           <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="1" />
           <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -391,6 +416,20 @@
           <EntitySet Name="wch_Theatre" EntityType="Self.wch_Theatre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wch_TimeTable" EntityType="Self.wch_TimeTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wch_TimeTableDetail" EntityType="Self.wch_TimeTableDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sv_wch_courseSelect" EntityType="Self.sv_wch_courseSelect" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[sv_wch_courseSelect].[StuID] AS [StuID], 
+[sv_wch_courseSelect].[StuName] AS [StuName], 
+[sv_wch_courseSelect].[TimeID] AS [TimeID], 
+[sv_wch_courseSelect].[TermName] AS [TermName], 
+[sv_wch_courseSelect].[CourseName] AS [CourseName], 
+[sv_wch_courseSelect].[TeaName] AS [TeaName], 
+[sv_wch_courseSelect].[Period] AS [Period], 
+[sv_wch_courseSelect].[Credit] AS [Credit], 
+[sv_wch_courseSelect].[DepName] AS [DepName], 
+[sv_wch_courseSelect].[Mark] AS [Mark]
+FROM [dbo].[sv_wch_courseSelect] AS [sv_wch_courseSelect]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="sv_wch_CourseSelection" EntityType="Self.sv_wch_CourseSelection" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [sv_wch_CourseSelection].[StuID] AS [StuID], 
@@ -450,55 +489,55 @@ FROM [dbo].[sv_wch_Teacher] AS [sv_wch_Teacher]</DefiningQuery>
 [sv_wch_TimeTable].[Day] AS [Day]
 FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__wch_Class__DepID__0519C6AF" Association="Self.FK__wch_Class__DepID__0519C6AF">
+          <AssociationSet Name="FK__wch_Class__DepID__25869641" Association="Self.FK__wch_Class__DepID__25869641">
             <End Role="wch_Department" EntitySet="wch_Department" />
             <End Role="wch_Class" EntitySet="wch_Class" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Cours__DepID__21B6055D" Association="Self.FK__wch_Cours__DepID__21B6055D">
+          <AssociationSet Name="FK__wch_Cours__DepID__36B12243" Association="Self.FK__wch_Cours__DepID__36B12243">
             <End Role="wch_Department" EntitySet="wch_Department" />
             <End Role="wch_Course" EntitySet="wch_Course" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Cours__StuID__32E0915F" Association="Self.FK__wch_Cours__StuID__32E0915F">
+          <AssociationSet Name="FK__wch_Cours__StuID__45F365D3" Association="Self.FK__wch_Cours__StuID__45F365D3">
             <End Role="wch_Student" EntitySet="wch_Student" />
             <End Role="wch_CourseSelection" EntitySet="wch_CourseSelection" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Cours__TimeI__33D4B598" Association="Self.FK__wch_Cours__TimeI__33D4B598">
+          <AssociationSet Name="FK__wch_Cours__TimeI__46E78A0C" Association="Self.FK__wch_Cours__TimeI__46E78A0C">
             <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
             <End Role="wch_CourseSelection" EntitySet="wch_CourseSelection" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Stude__Class__09DE7BCC" Association="Self.FK__wch_Stude__Class__09DE7BCC">
+          <AssociationSet Name="FK__wch_Stude__Class__286302EC" Association="Self.FK__wch_Stude__Class__286302EC">
             <End Role="wch_Class" EntitySet="wch_Class" />
             <End Role="wch_Student" EntitySet="wch_Student" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Stude__DepID__0AD2A005" Association="Self.FK__wch_Stude__DepID__0AD2A005">
+          <AssociationSet Name="FK__wch_Stude__DepID__29572725" Association="Self.FK__wch_Stude__DepID__29572725">
             <End Role="wch_Department" EntitySet="wch_Department" />
             <End Role="wch_Student" EntitySet="wch_Student" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Teach__DepID__108B795B" Association="Self.FK__wch_Teach__DepID__108B795B">
+          <AssociationSet Name="FK__wch_Teach__DepID__2D27B809" Association="Self.FK__wch_Teach__DepID__2D27B809">
             <End Role="wch_Department" EntitySet="wch_Department" />
             <End Role="wch_Teacher" EntitySet="wch_Teacher" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__Cours__286302EC" Association="Self.FK__wch_TimeT__Cours__286302EC">
+          <AssociationSet Name="FK__wch_TimeT__Cours__3B75D760" Association="Self.FK__wch_TimeT__Cours__3B75D760">
             <End Role="wch_Course" EntitySet="wch_Course" />
             <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__Sched__2F10007B" Association="Self.FK__wch_TimeT__Sched__2F10007B">
+          <AssociationSet Name="FK__wch_TimeT__Sched__4222D4EF" Association="Self.FK__wch_TimeT__Sched__4222D4EF">
             <End Role="wch_Schedule" EntitySet="wch_Schedule" />
             <End Role="wch_TimeTableDetail" EntitySet="wch_TimeTableDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__TeaID__29572725" Association="Self.FK__wch_TimeT__TeaID__29572725">
+          <AssociationSet Name="FK__wch_TimeT__TeaID__3C69FB99" Association="Self.FK__wch_TimeT__TeaID__3C69FB99">
             <End Role="wch_Teacher" EntitySet="wch_Teacher" />
             <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__TermI__2D27B809" Association="Self.FK__wch_TimeT__TermI__2D27B809">
+          <AssociationSet Name="FK__wch_TimeT__TermI__403A8C7D" Association="Self.FK__wch_TimeT__TermI__403A8C7D">
             <End Role="wch_Term" EntitySet="wch_Term" />
             <End Role="wch_TimeTableDetail" EntitySet="wch_TimeTableDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__Theat__300424B4" Association="Self.FK__wch_TimeT__Theat__300424B4">
+          <AssociationSet Name="FK__wch_TimeT__Theat__4316F928" Association="Self.FK__wch_TimeT__Theat__4316F928">
             <End Role="wch_Theatre" EntitySet="wch_Theatre" />
             <End Role="wch_TimeTableDetail" EntitySet="wch_TimeTableDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__TimeI__2C3393D0" Association="Self.FK__wch_TimeT__TimeI__2C3393D0">
+          <AssociationSet Name="FK__wch_TimeT__TimeI__3F466844" Association="Self.FK__wch_TimeT__TimeI__3F466844">
             <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
             <End Role="wch_TimeTableDetail" EntitySet="wch_TimeTableDetail" />
           </AssociationSet>
@@ -576,6 +615,7 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
             <End Role="wch_CourseSelection" EntitySet="wch_CourseSelection" />
           </AssociationSet>
           <EntitySet Name="sv_wch_TimeTable" EntityType="wchModel.sv_wch_TimeTable" />
+          <EntitySet Name="sv_wch_courseSelect" EntityType="wchModel.sv_wch_courseSelect" />
         </EntityContainer>
         <EntityType Name="wch_Class">
           <Key>
@@ -968,6 +1008,29 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
           <Property Name="TimeSpan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Day" Type="Byte" Nullable="false" />
         </EntityType>
+        <EntityType Name="sv_wch_courseSelect">
+          <Key>
+            <PropertyRef Name="StuID" />
+            <PropertyRef Name="StuName" />
+            <PropertyRef Name="TimeID" />
+            <PropertyRef Name="TermName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="Period" />
+            <PropertyRef Name="Credit" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="StuID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StuName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="TimeID" Type="Int32" Nullable="false" />
+          <Property Name="TermName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TeaName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="Credit" Type="Int32" Nullable="false" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mark" Type="Double" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1168,6 +1231,22 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="TermName" ColumnName="TermName" />
                 <ScalarProperty Name="TermID" ColumnName="TermID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sv_wch_courseSelect">
+            <EntityTypeMapping TypeName="wchModel.sv_wch_courseSelect">
+              <MappingFragment StoreEntitySet="sv_wch_courseSelect">
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="TermName" ColumnName="TermName" />
+                <ScalarProperty Name="TimeID" ColumnName="TimeID" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="StuID" ColumnName="StuID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

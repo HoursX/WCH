@@ -41,5 +41,6 @@ namespace wch
         public DbSet<sv_wch_CourseSelection> sv_wch_CourseSelection { get; set; }
         public DbSet<sv_wch_Teacher> sv_wch_Teacher { get; set; }
         public DbSet<sv_wch_TimeTable> sv_wch_TimeTable { get; set; }
+        public DbSet<sv_wch_courseSelect> sv_wch_courseSelect { get; set; }
     }
 }

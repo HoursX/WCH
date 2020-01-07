@@ -69,6 +69,7 @@
       <End Role="wch_CourseSelection" EntitySet="wch_CourseSelection" />
     </AssociationSet>
     <EntitySet Name="sv_wch_TimeTable" EntityType="wchModel.sv_wch_TimeTable" />
+    <EntitySet Name="sv_wch_courseSelect" EntityType="wchModel.sv_wch_courseSelect" />
   </EntityContainer>
   <EntityType Name="wch_Class">
     <Key>
@@ -460,5 +461,28 @@
     <Property Name="ScheduleID" Type="Int32" Nullable="false" />
     <Property Name="TimeSpan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Day" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sv_wch_courseSelect">
+    <Key>
+      <PropertyRef Name="StuID" />
+      <PropertyRef Name="StuName" />
+      <PropertyRef Name="TimeID" />
+      <PropertyRef Name="TermName" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="TeaName" />
+      <PropertyRef Name="Period" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="DepName" />
+    </Key>
+    <Property Name="StuID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="StuName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="TimeID" Type="Int32" Nullable="false" />
+    <Property Name="TermName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TeaName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Period" Type="Int32" Nullable="false" />
+    <Property Name="Credit" Type="Int32" Nullable="false" />
+    <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Mark" Type="Double" />
   </EntityType>
 </Schema>

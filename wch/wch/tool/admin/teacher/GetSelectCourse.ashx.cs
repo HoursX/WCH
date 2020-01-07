@@ -19,7 +19,7 @@ namespace wch.tool.admin.teacher
             limit = Convert.ToInt32(context.Request["limit"]);
             HttpResponse res = context.Response;
             res.ContentType = "text/json";
-            wch.view.bs_CourseSelection model = new view.bs_CourseSelection();
+            wch.view.bs_CourseSelect model = new view.bs_CourseSelect();
             model.pageIndex = page-1;
             model.pageSize = limit;
             model.search();
