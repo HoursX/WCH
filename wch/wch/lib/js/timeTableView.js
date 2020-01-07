@@ -22,7 +22,7 @@ function timeTableView() {
             , method: 'POST'
             , cellMinWidth: 80
             , height: 'full-300'
-            , url: '/tool/admin/student/GetTimeTable.ashx'
+            , url: '/tool/admin/timeTable/GetTimeTable.ashx'
             , toolbar: '#toolbarTimeTableView' //开启头部工具栏，并为其绑定左侧模板
             , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
@@ -91,7 +91,7 @@ function timeTableView() {
                                 //监听提交
                                 form.on('submit(submitStuForm)', function (data) {
                                     //layer.msg(JSON.stringify(data.field));
-                                    myPost("/tool/admin/student/AddStu.ashx",
+                                    myPost("/tool/admin/timeTable/AddTimeTable.ashx",
                                         { val: JSON.stringify(data.field) },
                                         function (val, data) {
                                             console.log(data.msg);
@@ -131,7 +131,7 @@ function timeTableView() {
                 layer.confirm('真的删除行么', function (index) {
                     console.log(data.StuID);
 
-                    myPost("/tool/admin/student/DelStu.ashx",
+                    myPost("/tool/admin/timeTable/DelTimeTable.ashx",
                         { stuID: data.StuID },
                         function (val, adata) {
                             console.log(adata.msg);
@@ -181,7 +181,7 @@ function timeTableView() {
                             //监听提交
                             form.on('submit(submitStuForm)', function (data) {
                                 //layer.msg(JSON.stringify(data.field));
-                                myPost("/tool/admin/student/UpdStu.ashx",
+                                myPost("/tool/admin/student/UpdTimeTable.ashx",
                                     { val: JSON.stringify(data.field) },
                                     function (val, data) {
                                         console.log(data.msg);
