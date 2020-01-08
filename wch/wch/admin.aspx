@@ -639,7 +639,8 @@
     $('#table-main').html(CourseSelToolbar);
     courseSelect();
     layui.element.init();
-});
+  });
+    //院系
 $("#Department").click(function () {
   var htt = "<table id='context' lay-filter='context' class='layui-hide'></table>";
   $('#form-content').html("");

@@ -39,11 +39,14 @@ function timeTableView() {
                 , { field: 'Credit', title: '学分' }
                 , { field: 'DepName', title: '院系' }
                 , { field: 'TeaName', title: '授课教师' }
+                , { field: 'Day', title: '周'}
                 , { field: 'TimeSpan', title: '上课时间' }
                 , { field: 'TermName', title: '学期' }
                 , { field: 'StuNum', title: '选课人数', sort: true }
                 , { field: 'Capacity', title: '容量', sort: true }
-                , { field: 'AllowView', title: '允许选课', sort: true }
+                , { field: 'AllowView', title: '允许选课', sort: true, templet: function (res) {
+                    return res.AllowView == 1 ? '是' : '否';}
+                 }
                 , { field: 'Site', title: '教室' }
                 , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 165, align: 'center' }
             ]]
@@ -94,7 +97,7 @@ function timeTableView() {
                                 var form = layui.form;
                                 
                                 //监听提交
-                                form.on('submit(submitStuForm)', function (data) {
+                                form.on('submit(submitTimeForm)', function (data) {
                                     //layer.msg(JSON.stringify(data.field));
                                     myPost("/tool/admin/timeTable/AddTimeTable.ashx",
                                         { val: JSON.stringify(data.field) },
@@ -134,11 +137,12 @@ function timeTableView() {
             //console.log(obj)
             if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
-                    console.log(data.StuID);
+                    console.log(data.TimeID);
 
                     myPost("/tool/admin/timeTable/DelTimeTable.ashx",
-                        { stuID: data.StuID },
+                        { val: data.TimeID },
                         function (val, adata) {
+                            layer.msg(adata.msg);
                             console.log(adata.msg);
                         });
 
@@ -149,7 +153,7 @@ function timeTableView() {
                 });
             } else if (obj.event === 'edit') {
                 var sdata = obj.data;
-                var AddStudent = document.getElementById('submitStu').innerHTML;
+                var AddStudent = document.getElementById('submitTimeTable').innerHTML;
                 layer.open({
                     type: 1,
                     content: AddStudent, //这里content是一个普通的String
@@ -159,32 +163,24 @@ function timeTableView() {
                         console.log(index);
                         //addStudent();
                         //添加属性
-                        $("input[name='StuID']").val(sdata.StuID);
-                        $("input[name='StuName']").val(sdata.StuName);
-                        $("input[name='Gender']").each(function () {
-                            if ($(this).val() == sdata.Gender.toString()) {
+                        bindCourse("#CourseGridding", true, true, sdata.CourseName);
+                        bindTeacher("#TeaGridding", true, true, sdata.TeaName);
+                        bindSchedule("#ScheduleGridding", true, true, sdata.TimeSpan);
+                        bindTheatre("#TheatreGridding", true, true, sdata.Site);
+                        bindTerm("#TermGridding", true, true, sdata.TermName);
+                        $("input[name='AllowView']").each(function () {
+                            if ($(this).val() == sdata.AllowView.toString()) {
                                 $(this).attr("checked", true);
                             }
                         });
-                        $("input[name='StuAge']").val(sdata.StuAge);
-                        bindClass("#classGridding", true, true, sdata.ClassName);
-                        bindDepartment("#depGridding", true, true, sdata.DepName);
-                        $("input[name='Tel']").val(sdata.Tel);
-                        $("input[name='Grade']").val(sdata.Grade);
-                        $("textarea[name='Address']").val(sdata.Address);
-                        laydate.render({
-                            elem: '#date'
-                            ,value: sdata.Grade.toString().substr(0,10)
-                            ,isInitValue: true
-                        });
+                        $("input[name='Capacity']").val(sdata.Capacity);
 
                         form.render();
-                        console.log(sdata.Grade.toString().substr(0,10));
                         layui.use('form', function () {
                             var form = layui.form;
 
                             //监听提交
-                            form.on('submit(submitStuForm)', function (data) {
+                            form.on('submit(submitTimeForm)', function (data) {
                                 //layer.msg(JSON.stringify(data.field));
                                 myPost("/tool/admin/student/UpdTimeTable.ashx",
                                     { val: JSON.stringify(data.field) },
@@ -216,25 +212,28 @@ function timeTableView() {
 
         var $ = layui.$, active = {
             reload: function () {
-                var stuname = $("input[name='stuname']");
-                var stuid = $("input[name='stuid']");
-                var classname = $("input[name='classname']");
-
+                var courseName = $("input[name='CourseName']");
+                var depName = $("input[name='DepName']");
+                var teaName = $("input[name='TeaName']");
+                var termName = $("input[name='TermName']");
+                var site = $("input[name='Site']");
                 //执行重载
                 table.reload('contentTable', {
                     page: {
                         curr: 1 //重新从第 1 页开始
                     }
                     , where: {
-                        stuName: stuname.val(),
-                        stuID: stuid.val(),
-                        className: classname.val(),
+                        CourseName: courseName.val(),
+                        DepName: depName.val(),
+                        TeaName: teaName.val(),
+                        TermName: termName.val(),
+                        Site:site.val(),
                     }
                 }, 'data');
             }
         };
 
-        $('#stu_search').on('click', function () {
+        $('#time_table_search').on('click', function () {
             var type = $(this).data('type');
             active[type] ? active[type].call(this) : '';
         });

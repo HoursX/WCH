@@ -135,8 +135,7 @@
                     area: ['570px', '580px'],
                     title: '修改教师',
                     success: function (layero, index) {
-                        console.log(sdata.elem);
-                        bindDepartment("#depGridding2");
+
                         //修改属性
                         console.log(sdata.DepName.index);
                         $("input[name='TeaID']").val(sdata.TeaID);
