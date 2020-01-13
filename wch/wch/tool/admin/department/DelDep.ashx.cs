@@ -14,18 +14,37 @@ namespace wch.tool.admin.department
 
         public void ProcessRequest(HttpContext context)
         {
-            string depID = context.Request.Params["DepID"];
+            
             HttpResponse res = context.Response;
-
-            wch.bll.departments.Delete(depID);
-            var json = new
-            {
-                code = 200,
-                msg = "success",
-            };
             res.ContentType = "text/json";
-            res.Write(JsonConvert.SerializeObject(json));
-            res.End();
+            
+
+            
+            try
+            {
+                string depID = context.Request.Params["DepID"];
+                wch.bll.departments.Delete(depID);
+                var json = new
+                {
+                    code = 200,
+                    msg = "删除成功",
+                };
+                res.Write(JsonConvert.SerializeObject(json));
+
+            }
+            catch (Exception e)
+            {
+                var json = new
+                {
+                    code = 500,
+                    msg = "出现错误：" + e.Message,
+                };
+                res.Write(JsonConvert.SerializeObject(json));
+            }
+            finally
+            {
+                res.End();
+            }
         }
 
         public bool IsReusable

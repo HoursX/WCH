@@ -58,3 +58,49 @@ FROM         dbo.wch_CourseSelection INNER JOIN
                       dbo.wch_Teacher.DepID = dbo.wch_Department.DepID INNER JOIN
                       dbo.wch_TimeTableDetail ON dbo.wch_TimeTable.TimeID = dbo.wch_TimeTableDetail.TimeID INNER JOIN
                       dbo.wch_Term ON dbo.wch_TimeTableDetail.TermID = dbo.wch_Term.TermID
+
+
+
+
+
+
+create view sv_wch_StudentSelect
+as
+SELECT     dbo.wch_TimeTable.TimeID, dbo.wch_TimeTable.CourseID, dbo.wch_Course.CourseName, dbo.wch_Course.Period, dbo.wch_Course.Credit, 
+                      dbo.wch_TimeTable.StuNum, dbo.wch_TimeTable.Capacity, dbo.wch_TimeTable.AllowView, dbo.wch_TimeTable.TeaID, dbo.wch_Teacher.TeaName
+FROM         dbo.wch_TimeTable INNER JOIN
+                      dbo.wch_Course ON dbo.wch_TimeTable.CourseID = dbo.wch_Course.CourseID INNER JOIN
+                      dbo.wch_Teacher ON dbo.wch_TimeTable.TeaID = dbo.wch_Teacher.TeaID
+
+
+
+
+create view sv_wch_pastCourse
+as
+select wch_CourseSelection.StuID,wch_Course.CourseName, wch_Course.CourseID,wch_TimeTable.TimeID, wch_Course.Period,wch_Course.Credit,wch_TimeTable.StuNum,wch_TimeTable.Capacity,wch_CourseSelection.Mark,wch_Teacher.TeaName,wch_Teacher.TeaID
+from wch_CourseSelection join wch_TimeTable on wch_TimeTable.TimeID = wch_CourseSelection.TimeID
+join wch_Course on wch_Course.CourseID = wch_TimeTable.CourseID
+join wch_Department on wch_Department.DepID = wch_Course.DepID
+join wch_Teacher on wch_Teacher.TeaID = wch_TimeTable.TeaID
+
+
+create view sv_wch_department
+as
+SELECT     DepID, DepName
+FROM         dbo.wch_Department
+
+
+create view sv_wch_Class
+as
+select ClassID,ClassName,wch_Department.DepID,DepName,StuNum from wch_Class join wch_Department on wch_Class.DepID = wch_Department.DepID
+
+
+create view sv_wch_Course
+as
+select CourseID,CourseName,Period,Credit,wch_Department.DepID,DepName from wch_Course join wch_Department on wch_Course.DepID = wch_Department.DepID
+
+
+create view sv_wch_Term
+as
+select * from wch_Term
+

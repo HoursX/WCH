@@ -14,11 +14,12 @@ namespace wch
     
     public partial class wch_TimeTableDetail
     {
-        public int TimeID { get; set; }
-        public int TermID { get; set; }
-        public byte Day { get; set; }
-        public int ScheduleID { get; set; }
-        public int TheatreID { get; set; }
+        public int RowID { get; set; }
+        public Nullable<int> TimeID { get; set; }
+        public Nullable<int> TermID { get; set; }
+        public Nullable<byte> Day { get; set; }
+        public Nullable<int> ScheduleID { get; set; }
+        public Nullable<int> TheatreID { get; set; }
     
         public virtual wch_Schedule wch_Schedule { get; set; }
         public virtual wch_Term wch_Term { get; set; }

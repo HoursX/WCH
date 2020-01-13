@@ -27,9 +27,10 @@
         <EntityType Name="wch_CourseSelection">
           <Key>
             <PropertyRef Name="StuID" />
+            <PropertyRef Name="TimeID" />
           </Key>
           <Property Name="StuID" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="TimeID" Type="int" />
+          <Property Name="TimeID" Type="int" Nullable="false" />
           <Property Name="Mark" Type="float" />
         </EntityType>
         <EntityType Name="wch_Department">
@@ -89,10 +90,10 @@
           </Key>
           <Property Name="TermID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TermName" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="StartTime" Type="nvarchar" MaxLength="20" />
-          <Property Name="EndTime" Type="nvarchar" MaxLength="20" />
-          <Property Name="StartChoice" Type="nvarchar" MaxLength="20" />
-          <Property Name="EndChoice" Type="nvarchar" MaxLength="20" />
+          <Property Name="StartTime" Type="date" />
+          <Property Name="EndTime" Type="date" />
+          <Property Name="StartChoice" Type="date" />
+          <Property Name="EndChoice" Type="date" />
         </EntityType>
         <EntityType Name="wch_Theatre">
           <Key>
@@ -115,17 +116,46 @@
         </EntityType>
         <EntityType Name="wch_TimeTableDetail">
           <Key>
-            <PropertyRef Name="TimeID" />
-            <PropertyRef Name="TermID" />
-            <PropertyRef Name="Day" />
-            <PropertyRef Name="ScheduleID" />
-            <PropertyRef Name="TheatreID" />
+            <PropertyRef Name="RowID" />
           </Key>
-          <Property Name="TimeID" Type="int" Nullable="false" />
-          <Property Name="TermID" Type="int" Nullable="false" />
-          <Property Name="Day" Type="tinyint" Nullable="false" />
-          <Property Name="ScheduleID" Type="int" Nullable="false" />
-          <Property Name="TheatreID" Type="int" Nullable="false" />
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeID" Type="int" />
+          <Property Name="TermID" Type="int" />
+          <Property Name="Day" Type="tinyint" />
+          <Property Name="ScheduleID" Type="int" />
+          <Property Name="TheatreID" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_Class”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="sv_wch_Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="8" />
+          <Property Name="DepID" Type="tinyint" Nullable="false" />
+          <Property Name="DepName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StuNum" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_Course”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="sv_wch_Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="Period" />
+            <PropertyRef Name="Credit" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="Credit" Type="int" Nullable="false" />
+          <Property Name="DepID" Type="tinyint" Nullable="false" />
+          <Property Name="DepName" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“wch.dbo.sv_wch_courseSelect”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -164,6 +194,42 @@
           <Property Name="TimeID" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_department”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="sv_wch_department">
+          <Key>
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="DepID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_pastCourse”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="sv_wch_pastCourse">
+          <Key>
+            <PropertyRef Name="StuID" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="TimeID" />
+            <PropertyRef Name="Period" />
+            <PropertyRef Name="Credit" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="TeaID" />
+          </Key>
+          <Property Name="StuID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="TimeID" Type="int" Nullable="false" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="Credit" Type="int" Nullable="false" />
+          <Property Name="StuNum" Type="int" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Mark" Type="float" />
+          <Property Name="TeaName" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="TeaID" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“wch.dbo.sv_wch_Student”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="sv_wch_Student">
           <Key>
@@ -183,6 +249,28 @@
           <Property Name="StuID" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_StudentSelect”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="sv_wch_StudentSelect">
+          <Key>
+            <PropertyRef Name="TimeID" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="Period" />
+            <PropertyRef Name="Credit" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="TeaName" />
+          </Key>
+          <Property Name="TimeID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="Credit" Type="int" Nullable="false" />
+          <Property Name="StuNum" Type="int" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="AllowView" Type="bit" />
+          <Property Name="TeaID" Type="nvarchar" MaxLength="20" />
+          <Property Name="TeaName" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“wch.dbo.sv_wch_Teacher”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="sv_wch_Teacher">
           <Key>
@@ -200,6 +288,20 @@
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_Term”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="sv_wch_Term">
+          <Key>
+            <PropertyRef Name="TermID" />
+            <PropertyRef Name="TermName" />
+          </Key>
+          <Property Name="TermID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TermName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="StartTime" Type="date" />
+          <Property Name="EndTime" Type="date" />
+          <Property Name="StartChoice" Type="date" />
+          <Property Name="EndChoice" Type="date" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“wch.dbo.sv_wch_TimeTable”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="sv_wch_TimeTable">
           <Key>
@@ -208,7 +310,6 @@
             <PropertyRef Name="Period" />
             <PropertyRef Name="TimeID" />
             <PropertyRef Name="Capacity" />
-            <PropertyRef Name="Day" />
             <PropertyRef Name="TermID" />
             <PropertyRef Name="TermName" />
             <PropertyRef Name="DepName" />
@@ -228,13 +329,13 @@
           <Property Name="StuNum" Type="int" />
           <Property Name="Capacity" Type="int" Nullable="false" />
           <Property Name="AllowView" Type="bit" />
-          <Property Name="Day" Type="tinyint" Nullable="false" />
+          <Property Name="Day" Type="tinyint" />
           <Property Name="TermID" Type="int" Nullable="false" />
           <Property Name="TermName" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="StartTime" Type="nvarchar" MaxLength="20" />
-          <Property Name="EndTime" Type="nvarchar" MaxLength="20" />
-          <Property Name="StartChoice" Type="nvarchar" MaxLength="20" />
-          <Property Name="EndChoice" Type="nvarchar" MaxLength="20" />
+          <Property Name="StartTime" Type="date" />
+          <Property Name="EndTime" Type="date" />
+          <Property Name="StartChoice" Type="date" />
+          <Property Name="EndChoice" Type="date" />
           <Property Name="DepName" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="TeaName" Type="nvarchar" MaxLength="8" Nullable="false" />
           <Property Name="TheatreID" Type="int" Nullable="false" />
@@ -269,7 +370,7 @@
         </Association>
         <Association Name="FK__wch_Cours__StuID__45F365D3">
           <End Role="wch_Student" Type="Self.wch_Student" Multiplicity="1" />
-          <End Role="wch_CourseSelection" Type="Self.wch_CourseSelection" Multiplicity="0..1" />
+          <End Role="wch_CourseSelection" Type="Self.wch_CourseSelection" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="wch_Student">
               <PropertyRef Name="StuID" />
@@ -280,7 +381,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__wch_Cours__TimeI__46E78A0C">
-          <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="0..1" />
+          <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="1" />
           <End Role="wch_CourseSelection" Type="Self.wch_CourseSelection" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="wch_TimeTable">
@@ -340,7 +441,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__wch_TimeT__Sched__4222D4EF">
-          <End Role="wch_Schedule" Type="Self.wch_Schedule" Multiplicity="1" />
+          <End Role="wch_Schedule" Type="Self.wch_Schedule" Multiplicity="0..1" />
           <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="wch_Schedule">
@@ -364,7 +465,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__wch_TimeT__TermI__403A8C7D">
-          <End Role="wch_Term" Type="Self.wch_Term" Multiplicity="1" />
+          <End Role="wch_Term" Type="Self.wch_Term" Multiplicity="0..1" />
           <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="wch_Term">
@@ -376,7 +477,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__wch_TimeT__Theat__4316F928">
-          <End Role="wch_Theatre" Type="Self.wch_Theatre" Multiplicity="1" />
+          <End Role="wch_Theatre" Type="Self.wch_Theatre" Multiplicity="0..1" />
           <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="wch_Theatre">
@@ -388,7 +489,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__wch_TimeT__TimeI__3F466844">
-          <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="1" />
+          <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="0..1" />
           <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="wch_TimeTable">
@@ -412,6 +513,25 @@
           <EntitySet Name="wch_Theatre" EntityType="Self.wch_Theatre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wch_TimeTable" EntityType="Self.wch_TimeTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wch_TimeTableDetail" EntityType="Self.wch_TimeTableDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sv_wch_Class" EntityType="Self.sv_wch_Class" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[sv_wch_Class].[ClassID] AS [ClassID], 
+[sv_wch_Class].[ClassName] AS [ClassName], 
+[sv_wch_Class].[DepID] AS [DepID], 
+[sv_wch_Class].[DepName] AS [DepName], 
+[sv_wch_Class].[StuNum] AS [StuNum]
+FROM [dbo].[sv_wch_Class] AS [sv_wch_Class]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sv_wch_Course" EntityType="Self.sv_wch_Course" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[sv_wch_Course].[CourseID] AS [CourseID], 
+[sv_wch_Course].[CourseName] AS [CourseName], 
+[sv_wch_Course].[Period] AS [Period], 
+[sv_wch_Course].[Credit] AS [Credit], 
+[sv_wch_Course].[DepID] AS [DepID], 
+[sv_wch_Course].[DepName] AS [DepName]
+FROM [dbo].[sv_wch_Course] AS [sv_wch_Course]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="sv_wch_courseSelect" EntityType="Self.sv_wch_courseSelect" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [sv_wch_courseSelect].[StuID] AS [StuID], 
@@ -433,6 +553,27 @@ FROM [dbo].[sv_wch_courseSelect] AS [sv_wch_courseSelect]</DefiningQuery>
 [sv_wch_CourseSelection].[TimeID] AS [TimeID]
 FROM [dbo].[sv_wch_CourseSelection] AS [sv_wch_CourseSelection]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="sv_wch_department" EntityType="Self.sv_wch_department" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[sv_wch_department].[DepID] AS [DepID], 
+[sv_wch_department].[DepName] AS [DepName]
+FROM [dbo].[sv_wch_department] AS [sv_wch_department]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sv_wch_pastCourse" EntityType="Self.sv_wch_pastCourse" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[sv_wch_pastCourse].[StuID] AS [StuID], 
+[sv_wch_pastCourse].[CourseName] AS [CourseName], 
+[sv_wch_pastCourse].[CourseID] AS [CourseID], 
+[sv_wch_pastCourse].[TimeID] AS [TimeID], 
+[sv_wch_pastCourse].[Period] AS [Period], 
+[sv_wch_pastCourse].[Credit] AS [Credit], 
+[sv_wch_pastCourse].[StuNum] AS [StuNum], 
+[sv_wch_pastCourse].[Capacity] AS [Capacity], 
+[sv_wch_pastCourse].[Mark] AS [Mark], 
+[sv_wch_pastCourse].[TeaName] AS [TeaName], 
+[sv_wch_pastCourse].[TeaID] AS [TeaID]
+FROM [dbo].[sv_wch_pastCourse] AS [sv_wch_pastCourse]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="sv_wch_Student" EntityType="Self.sv_wch_Student" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [sv_wch_Student].[StuName] AS [StuName], 
@@ -446,6 +587,20 @@ FROM [dbo].[sv_wch_CourseSelection] AS [sv_wch_CourseSelection]</DefiningQuery>
 [sv_wch_Student].[StuID] AS [StuID]
 FROM [dbo].[sv_wch_Student] AS [sv_wch_Student]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="sv_wch_StudentSelect" EntityType="Self.sv_wch_StudentSelect" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[sv_wch_StudentSelect].[TimeID] AS [TimeID], 
+[sv_wch_StudentSelect].[CourseID] AS [CourseID], 
+[sv_wch_StudentSelect].[CourseName] AS [CourseName], 
+[sv_wch_StudentSelect].[Period] AS [Period], 
+[sv_wch_StudentSelect].[Credit] AS [Credit], 
+[sv_wch_StudentSelect].[StuNum] AS [StuNum], 
+[sv_wch_StudentSelect].[Capacity] AS [Capacity], 
+[sv_wch_StudentSelect].[AllowView] AS [AllowView], 
+[sv_wch_StudentSelect].[TeaID] AS [TeaID], 
+[sv_wch_StudentSelect].[TeaName] AS [TeaName]
+FROM [dbo].[sv_wch_StudentSelect] AS [sv_wch_StudentSelect]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="sv_wch_Teacher" EntityType="Self.sv_wch_Teacher" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [sv_wch_Teacher].[TeaID] AS [TeaID], 
@@ -456,6 +611,16 @@ FROM [dbo].[sv_wch_Student] AS [sv_wch_Student]</DefiningQuery>
 [sv_wch_Teacher].[Tel] AS [Tel], 
 [sv_wch_Teacher].[Address] AS [Address]
 FROM [dbo].[sv_wch_Teacher] AS [sv_wch_Teacher]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sv_wch_Term" EntityType="Self.sv_wch_Term" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[sv_wch_Term].[TermID] AS [TermID], 
+[sv_wch_Term].[TermName] AS [TermName], 
+[sv_wch_Term].[StartTime] AS [StartTime], 
+[sv_wch_Term].[EndTime] AS [EndTime], 
+[sv_wch_Term].[StartChoice] AS [StartChoice], 
+[sv_wch_Term].[EndChoice] AS [EndChoice]
+FROM [dbo].[sv_wch_Term] AS [sv_wch_Term]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="sv_wch_TimeTable" EntityType="Self.sv_wch_TimeTable" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -554,409 +719,216 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
           <EntitySet Name="wch_Theatre" EntityType="wchModel.wch_Theatre" />
           <EntitySet Name="wch_TimeTable" EntityType="wchModel.wch_TimeTable" />
           <EntitySet Name="wch_TimeTableDetail" EntityType="wchModel.wch_TimeTableDetail" />
-          <AssociationSet Name="FK__wch_Class__DepID__0519C6AF" Association="wchModel.FK__wch_Class__DepID__0519C6AF">
+          <EntitySet Name="sv_wch_courseSelect" EntityType="wchModel.sv_wch_courseSelect" />
+          <EntitySet Name="sv_wch_CourseSelection" EntityType="wchModel.sv_wch_CourseSelection" />
+          <EntitySet Name="sv_wch_department" EntityType="wchModel.sv_wch_department" />
+          <EntitySet Name="sv_wch_Student" EntityType="wchModel.sv_wch_Student" />
+          <EntitySet Name="sv_wch_StudentSelect" EntityType="wchModel.sv_wch_StudentSelect" />
+          <EntitySet Name="sv_wch_Teacher" EntityType="wchModel.sv_wch_Teacher" />
+          <EntitySet Name="sv_wch_TimeTable" EntityType="wchModel.sv_wch_TimeTable" />
+          <AssociationSet Name="FK__wch_Class__DepID__25869641" Association="wchModel.FK__wch_Class__DepID__25869641">
             <End Role="wch_Department" EntitySet="wch_Department" />
             <End Role="wch_Class" EntitySet="wch_Class" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Stude__Class__09DE7BCC" Association="wchModel.FK__wch_Stude__Class__09DE7BCC">
+          <AssociationSet Name="FK__wch_Stude__Class__286302EC" Association="wchModel.FK__wch_Stude__Class__286302EC">
             <End Role="wch_Class" EntitySet="wch_Class" />
             <End Role="wch_Student" EntitySet="wch_Student" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Cours__DepID__21B6055D" Association="wchModel.FK__wch_Cours__DepID__21B6055D">
+          <AssociationSet Name="FK__wch_Cours__DepID__36B12243" Association="wchModel.FK__wch_Cours__DepID__36B12243">
             <End Role="wch_Department" EntitySet="wch_Department" />
             <End Role="wch_Course" EntitySet="wch_Course" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__Cours__286302EC" Association="wchModel.FK__wch_TimeT__Cours__286302EC">
+          <AssociationSet Name="FK__wch_TimeT__Cours__3B75D760" Association="wchModel.FK__wch_TimeT__Cours__3B75D760">
             <End Role="wch_Course" EntitySet="wch_Course" />
             <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Cours__StuID__32E0915F" Association="wchModel.FK__wch_Cours__StuID__32E0915F">
+          <AssociationSet Name="FK__wch_Cours__StuID__45F365D3" Association="wchModel.FK__wch_Cours__StuID__45F365D3">
             <End Role="wch_Student" EntitySet="wch_Student" />
             <End Role="wch_CourseSelection" EntitySet="wch_CourseSelection" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Stude__DepID__0AD2A005" Association="wchModel.FK__wch_Stude__DepID__0AD2A005">
+          <AssociationSet Name="FK__wch_Cours__TimeI__46E78A0C" Association="wchModel.FK__wch_Cours__TimeI__46E78A0C">
+            <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
+            <End Role="wch_CourseSelection" EntitySet="wch_CourseSelection" />
+          </AssociationSet>
+          <AssociationSet Name="FK__wch_Stude__DepID__29572725" Association="wchModel.FK__wch_Stude__DepID__29572725">
             <End Role="wch_Department" EntitySet="wch_Department" />
             <End Role="wch_Student" EntitySet="wch_Student" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_Teach__DepID__108B795B" Association="wchModel.FK__wch_Teach__DepID__108B795B">
+          <AssociationSet Name="FK__wch_Teach__DepID__2D27B809" Association="wchModel.FK__wch_Teach__DepID__2D27B809">
             <End Role="wch_Department" EntitySet="wch_Department" />
             <End Role="wch_Teacher" EntitySet="wch_Teacher" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__Sched__2F10007B" Association="wchModel.FK__wch_TimeT__Sched__2F10007B">
+          <AssociationSet Name="FK__wch_TimeT__Sched__4222D4EF" Association="wchModel.FK__wch_TimeT__Sched__4222D4EF">
             <End Role="wch_Schedule" EntitySet="wch_Schedule" />
             <End Role="wch_TimeTableDetail" EntitySet="wch_TimeTableDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__TeaID__29572725" Association="wchModel.FK__wch_TimeT__TeaID__29572725">
+          <AssociationSet Name="FK__wch_TimeT__TeaID__3C69FB99" Association="wchModel.FK__wch_TimeT__TeaID__3C69FB99">
             <End Role="wch_Teacher" EntitySet="wch_Teacher" />
             <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__TermI__2D27B809" Association="wchModel.FK__wch_TimeT__TermI__2D27B809">
+          <AssociationSet Name="FK__wch_TimeT__TermI__403A8C7D" Association="wchModel.FK__wch_TimeT__TermI__403A8C7D">
             <End Role="wch_Term" EntitySet="wch_Term" />
             <End Role="wch_TimeTableDetail" EntitySet="wch_TimeTableDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__Theat__300424B4" Association="wchModel.FK__wch_TimeT__Theat__300424B4">
+          <AssociationSet Name="FK__wch_TimeT__Theat__4316F928" Association="wchModel.FK__wch_TimeT__Theat__4316F928">
             <End Role="wch_Theatre" EntitySet="wch_Theatre" />
             <End Role="wch_TimeTableDetail" EntitySet="wch_TimeTableDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__wch_TimeT__TimeI__2C3393D0" Association="wchModel.FK__wch_TimeT__TimeI__2C3393D0">
+          <AssociationSet Name="FK__wch_TimeT__TimeI__3F466844" Association="wchModel.FK__wch_TimeT__TimeI__3F466844">
             <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
             <End Role="wch_TimeTableDetail" EntitySet="wch_TimeTableDetail" />
           </AssociationSet>
-          <EntitySet Name="sv_wch_Student" EntityType="wchModel.sv_wch_Student" />
-          <EntitySet Name="sv_wch_CourseSelection" EntityType="wchModel.sv_wch_CourseSelection" />
-          <EntitySet Name="sv_wch_Teacher" EntityType="wchModel.sv_wch_Teacher" />
-          <AssociationSet Name="FK__wch_Cours__TimeI__33D4B598" Association="wchModel.FK__wch_Cours__TimeI__33D4B598">
-            <End Role="wch_TimeTable" EntitySet="wch_TimeTable" />
-            <End Role="wch_CourseSelection" EntitySet="wch_CourseSelection" />
-          </AssociationSet>
-          <EntitySet Name="sv_wch_courseSelect" EntityType="wchModel.sv_wch_courseSelect" />
-          <EntitySet Name="sv_wch_TimeTable" EntityType="wchModel.sv_wch_TimeTable" />
+          <EntitySet Name="sv_wch_Class" EntityType="wchModel.sv_wch_Class" />
+          <EntitySet Name="sv_wch_Course" EntityType="wchModel.sv_wch_Course" />
+          <EntitySet Name="sv_wch_Term" EntityType="wchModel.sv_wch_Term" />
+          <EntitySet Name="sv_wch_pastCourse" EntityType="wchModel.sv_wch_pastCourse" />
         </EntityContainer>
         <EntityType Name="wch_Class">
           <Key>
             <PropertyRef Name="ClassID" />
           </Key>
-          <Property Type="Int32" Name="ClassID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ClassName" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Type="Byte" Name="DepID" />
-          <Property Type="Int32" Name="StuNum" />
-          <NavigationProperty Name="wch_Department" Relationship="wchModel.FK__wch_Class__DepID__0519C6AF" FromRole="wch_Class" ToRole="wch_Department" />
-          <NavigationProperty Name="wch_Student" Relationship="wchModel.FK__wch_Stude__Class__09DE7BCC" FromRole="wch_Class" ToRole="wch_Student" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="DepID" Type="Byte" />
+          <Property Name="StuNum" Type="Int32" />
+          <NavigationProperty Name="wch_Department" Relationship="wchModel.FK__wch_Class__DepID__25869641" FromRole="wch_Class" ToRole="wch_Department" />
+          <NavigationProperty Name="wch_Student" Relationship="wchModel.FK__wch_Stude__Class__286302EC" FromRole="wch_Class" ToRole="wch_Student" />
         </EntityType>
         <EntityType Name="wch_Course">
           <Key>
             <PropertyRef Name="CourseID" />
           </Key>
-          <Property Type="Int32" Name="CourseID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Period" Nullable="false" />
-          <Property Type="Int32" Name="Credit" Nullable="false" />
-          <Property Type="Byte" Name="DepID" />
-          <NavigationProperty Name="wch_Department" Relationship="wchModel.FK__wch_Cours__DepID__21B6055D" FromRole="wch_Course" ToRole="wch_Department" />
-          <NavigationProperty Name="wch_TimeTable" Relationship="wchModel.FK__wch_TimeT__Cours__286302EC" FromRole="wch_Course" ToRole="wch_TimeTable" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="Credit" Type="Int32" Nullable="false" />
+          <Property Name="DepID" Type="Byte" />
+          <NavigationProperty Name="wch_Department" Relationship="wchModel.FK__wch_Cours__DepID__36B12243" FromRole="wch_Course" ToRole="wch_Department" />
+          <NavigationProperty Name="wch_TimeTable" Relationship="wchModel.FK__wch_TimeT__Cours__3B75D760" FromRole="wch_Course" ToRole="wch_TimeTable" />
         </EntityType>
         <EntityType Name="wch_CourseSelection">
           <Key>
             <PropertyRef Name="StuID" />
+            <PropertyRef Name="TimeID" />
           </Key>
-          <Property Type="String" Name="StuID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="TimeID" />
-          <Property Type="Double" Name="Mark" />
-          <NavigationProperty Name="wch_Student" Relationship="wchModel.FK__wch_Cours__StuID__32E0915F" FromRole="wch_CourseSelection" ToRole="wch_Student" />
-          <NavigationProperty Name="wch_TimeTable" Relationship="wchModel.FK__wch_Cours__TimeI__33D4B598" FromRole="wch_CourseSelection" ToRole="wch_TimeTable" />
+          <Property Name="StuID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TimeID" Type="Int32" Nullable="false" />
+          <Property Name="Mark" Type="Double" />
+          <NavigationProperty Name="wch_Student" Relationship="wchModel.FK__wch_Cours__StuID__45F365D3" FromRole="wch_CourseSelection" ToRole="wch_Student" />
+          <NavigationProperty Name="wch_TimeTable" Relationship="wchModel.FK__wch_Cours__TimeI__46E78A0C" FromRole="wch_CourseSelection" ToRole="wch_TimeTable" />
         </EntityType>
         <EntityType Name="wch_Department">
           <Key>
             <PropertyRef Name="DepID" />
           </Key>
-          <Property Type="Byte" Name="DepID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="DepName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="wch_Class" Relationship="wchModel.FK__wch_Class__DepID__0519C6AF" FromRole="wch_Department" ToRole="wch_Class" />
-          <NavigationProperty Name="wch_Course" Relationship="wchModel.FK__wch_Cours__DepID__21B6055D" FromRole="wch_Department" ToRole="wch_Course" />
-          <NavigationProperty Name="wch_Student" Relationship="wchModel.FK__wch_Stude__DepID__0AD2A005" FromRole="wch_Department" ToRole="wch_Student" />
-          <NavigationProperty Name="wch_Teacher" Relationship="wchModel.FK__wch_Teach__DepID__108B795B" FromRole="wch_Department" ToRole="wch_Teacher" />
+          <Property Name="DepID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="wch_Class" Relationship="wchModel.FK__wch_Class__DepID__25869641" FromRole="wch_Department" ToRole="wch_Class" />
+          <NavigationProperty Name="wch_Course" Relationship="wchModel.FK__wch_Cours__DepID__36B12243" FromRole="wch_Department" ToRole="wch_Course" />
+          <NavigationProperty Name="wch_Student" Relationship="wchModel.FK__wch_Stude__DepID__29572725" FromRole="wch_Department" ToRole="wch_Student" />
+          <NavigationProperty Name="wch_Teacher" Relationship="wchModel.FK__wch_Teach__DepID__2D27B809" FromRole="wch_Department" ToRole="wch_Teacher" />
         </EntityType>
         <EntityType Name="wch_Login">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Type="String" Name="UserID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Passwd" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="Identity" Nullable="false" />
-          <Property Type="String" Name="Nickname" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PhotoPath" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="AllowLogin" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Passwd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Identity" Type="Int32" Nullable="false" />
+          <Property Name="Nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AllowLogin" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="wch_Schedule">
           <Key>
             <PropertyRef Name="ScheduleID" />
           </Key>
-          <Property Type="Int32" Name="ScheduleID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="TimeSpan" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="wch_TimeTableDetail" Relationship="wchModel.FK__wch_TimeT__Sched__2F10007B" FromRole="wch_Schedule" ToRole="wch_TimeTableDetail" />
+          <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeSpan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="wch_TimeTableDetail" Relationship="wchModel.FK__wch_TimeT__Sched__4222D4EF" FromRole="wch_Schedule" ToRole="wch_TimeTableDetail" />
         </EntityType>
         <EntityType Name="wch_Student">
           <Key>
             <PropertyRef Name="StuID" />
           </Key>
-          <Property Type="String" Name="StuID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="StuName" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="Gender" Nullable="false" />
-          <Property Type="Int32" Name="ClassID" />
-          <Property Type="Byte" Name="DepID" />
-          <Property Type="Byte" Name="StuAge" />
-          <Property Type="String" Name="Tel" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="Grade" Precision="0" />
-          <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="wch_Class" Relationship="wchModel.FK__wch_Stude__Class__09DE7BCC" FromRole="wch_Student" ToRole="wch_Class" />
-          <NavigationProperty Name="wch_CourseSelection" Relationship="wchModel.FK__wch_Cours__StuID__32E0915F" FromRole="wch_Student" ToRole="wch_CourseSelection" />
-          <NavigationProperty Name="wch_Department" Relationship="wchModel.FK__wch_Stude__DepID__0AD2A005" FromRole="wch_Student" ToRole="wch_Department" />
+          <Property Name="StuID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StuName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="DepID" Type="Byte" />
+          <Property Name="StuAge" Type="Byte" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="wch_Class" Relationship="wchModel.FK__wch_Stude__Class__286302EC" FromRole="wch_Student" ToRole="wch_Class" />
+          <NavigationProperty Name="wch_CourseSelection" Relationship="wchModel.FK__wch_Cours__StuID__45F365D3" FromRole="wch_Student" ToRole="wch_CourseSelection" />
+          <NavigationProperty Name="wch_Department" Relationship="wchModel.FK__wch_Stude__DepID__29572725" FromRole="wch_Student" ToRole="wch_Department" />
         </EntityType>
         <EntityType Name="wch_Teacher">
           <Key>
             <PropertyRef Name="TeaID" />
           </Key>
-          <Property Type="String" Name="TeaID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TeaName" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="Gender" Nullable="false" />
-          <Property Type="Byte" Name="DepID" />
-          <Property Type="Byte" Name="TeaAge" />
-          <Property Type="String" Name="Tel" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="wch_Department" Relationship="wchModel.FK__wch_Teach__DepID__108B795B" FromRole="wch_Teacher" ToRole="wch_Department" />
-          <NavigationProperty Name="wch_TimeTable" Relationship="wchModel.FK__wch_TimeT__TeaID__29572725" FromRole="wch_Teacher" ToRole="wch_TimeTable" />
+          <Property Name="TeaID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TeaName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="DepID" Type="Byte" />
+          <Property Name="TeaAge" Type="Byte" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="wch_Department" Relationship="wchModel.FK__wch_Teach__DepID__2D27B809" FromRole="wch_Teacher" ToRole="wch_Department" />
+          <NavigationProperty Name="wch_TimeTable" Relationship="wchModel.FK__wch_TimeT__TeaID__3C69FB99" FromRole="wch_Teacher" ToRole="wch_TimeTable" />
         </EntityType>
         <EntityType Name="wch_Term">
           <Key>
             <PropertyRef Name="TermID" />
           </Key>
-          <Property Type="Int32" Name="TermID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="TermName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="StartTime" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="EndTime" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="StartChoice" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="EndChoice" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="wch_TimeTableDetail" Relationship="wchModel.FK__wch_TimeT__TermI__2D27B809" FromRole="wch_Term" ToRole="wch_TimeTableDetail" />
+          <Property Name="TermID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TermName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="DateTime" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Precision="0" />
+          <Property Name="StartChoice" Type="DateTime" Precision="0" />
+          <Property Name="EndChoice" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="wch_TimeTableDetail" Relationship="wchModel.FK__wch_TimeT__TermI__403A8C7D" FromRole="wch_Term" ToRole="wch_TimeTableDetail" />
         </EntityType>
         <EntityType Name="wch_Theatre">
           <Key>
             <PropertyRef Name="TheatreID" />
           </Key>
-          <Property Type="Int32" Name="TheatreID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="SeatCapacity" Nullable="false" />
-          <Property Type="String" Name="Site" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="wch_TimeTableDetail" Relationship="wchModel.FK__wch_TimeT__Theat__300424B4" FromRole="wch_Theatre" ToRole="wch_TimeTableDetail" />
+          <Property Name="TheatreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeatCapacity" Type="Int32" Nullable="false" />
+          <Property Name="Site" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="wch_TimeTableDetail" Relationship="wchModel.FK__wch_TimeT__Theat__4316F928" FromRole="wch_Theatre" ToRole="wch_TimeTableDetail" />
         </EntityType>
         <EntityType Name="wch_TimeTable">
           <Key>
             <PropertyRef Name="TimeID" />
           </Key>
-          <Property Type="Int32" Name="TimeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="CourseID" />
-          <Property Type="String" Name="TeaID" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="StuNum" />
-          <Property Type="Int32" Name="Capacity" Nullable="false" />
-          <Property Type="Boolean" Name="AllowView" />
-          <NavigationProperty Name="wch_Course" Relationship="wchModel.FK__wch_TimeT__Cours__286302EC" FromRole="wch_TimeTable" ToRole="wch_Course" />
-          <NavigationProperty Name="wch_Teacher" Relationship="wchModel.FK__wch_TimeT__TeaID__29572725" FromRole="wch_TimeTable" ToRole="wch_Teacher" />
-          <NavigationProperty Name="wch_TimeTableDetail" Relationship="wchModel.FK__wch_TimeT__TimeI__2C3393D0" FromRole="wch_TimeTable" ToRole="wch_TimeTableDetail" />
-          <NavigationProperty Name="wch_CourseSelection" Relationship="wchModel.FK__wch_Cours__TimeI__33D4B598" FromRole="wch_TimeTable" ToRole="wch_CourseSelection" />
+          <Property Name="TimeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="TeaID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StuNum" Type="Int32" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="AllowView" Type="Boolean" />
+          <NavigationProperty Name="wch_Course" Relationship="wchModel.FK__wch_TimeT__Cours__3B75D760" FromRole="wch_TimeTable" ToRole="wch_Course" />
+          <NavigationProperty Name="wch_CourseSelection" Relationship="wchModel.FK__wch_Cours__TimeI__46E78A0C" FromRole="wch_TimeTable" ToRole="wch_CourseSelection" />
+          <NavigationProperty Name="wch_Teacher" Relationship="wchModel.FK__wch_TimeT__TeaID__3C69FB99" FromRole="wch_TimeTable" ToRole="wch_Teacher" />
+          <NavigationProperty Name="wch_TimeTableDetail" Relationship="wchModel.FK__wch_TimeT__TimeI__3F466844" FromRole="wch_TimeTable" ToRole="wch_TimeTableDetail" />
         </EntityType>
         <EntityType Name="wch_TimeTableDetail">
           <Key>
-            <PropertyRef Name="TimeID" />
-            <PropertyRef Name="TermID" />
-            <PropertyRef Name="Day" />
-            <PropertyRef Name="ScheduleID" />
-            <PropertyRef Name="TheatreID" />
+            <PropertyRef Name="RowID" />
           </Key>
-          <Property Type="Int32" Name="TimeID" Nullable="false" />
-          <Property Type="Int32" Name="TermID" Nullable="false" />
-          <Property Type="Byte" Name="Day" Nullable="false" />
-          <Property Type="Int32" Name="ScheduleID" Nullable="false" />
-          <Property Type="Int32" Name="TheatreID" Nullable="false" />
-          <NavigationProperty Name="wch_Schedule" Relationship="wchModel.FK__wch_TimeT__Sched__2F10007B" FromRole="wch_TimeTableDetail" ToRole="wch_Schedule" />
-          <NavigationProperty Name="wch_Term" Relationship="wchModel.FK__wch_TimeT__TermI__2D27B809" FromRole="wch_TimeTableDetail" ToRole="wch_Term" />
-          <NavigationProperty Name="wch_Theatre" Relationship="wchModel.FK__wch_TimeT__Theat__300424B4" FromRole="wch_TimeTableDetail" ToRole="wch_Theatre" />
-          <NavigationProperty Name="wch_TimeTable" Relationship="wchModel.FK__wch_TimeT__TimeI__2C3393D0" FromRole="wch_TimeTableDetail" ToRole="wch_TimeTable" />
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeID" Type="Int32" />
+          <Property Name="TermID" Type="Int32" />
+          <Property Name="Day" Type="Byte" />
+          <Property Name="ScheduleID" Type="Int32" />
+          <Property Name="TheatreID" Type="Int32" />
+          <NavigationProperty Name="wch_Schedule" Relationship="wchModel.FK__wch_TimeT__Sched__4222D4EF" FromRole="wch_TimeTableDetail" ToRole="wch_Schedule" />
+          <NavigationProperty Name="wch_Term" Relationship="wchModel.FK__wch_TimeT__TermI__403A8C7D" FromRole="wch_TimeTableDetail" ToRole="wch_Term" />
+          <NavigationProperty Name="wch_Theatre" Relationship="wchModel.FK__wch_TimeT__Theat__4316F928" FromRole="wch_TimeTableDetail" ToRole="wch_Theatre" />
+          <NavigationProperty Name="wch_TimeTable" Relationship="wchModel.FK__wch_TimeT__TimeI__3F466844" FromRole="wch_TimeTableDetail" ToRole="wch_TimeTable" />
         </EntityType>
-        <Association Name="FK__wch_Class__DepID__0519C6AF">
-          <End Type="wchModel.wch_Department" Role="wch_Department" Multiplicity="0..1" />
-          <End Type="wchModel.wch_Class" Role="wch_Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Department">
-              <PropertyRef Name="DepID" />
-            </Principal>
-            <Dependent Role="wch_Class">
-              <PropertyRef Name="DepID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_Stude__Class__09DE7BCC">
-          <End Type="wchModel.wch_Class" Role="wch_Class" Multiplicity="0..1" />
-          <End Type="wchModel.wch_Student" Role="wch_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Class">
-              <PropertyRef Name="ClassID" />
-            </Principal>
-            <Dependent Role="wch_Student">
-              <PropertyRef Name="ClassID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_Cours__DepID__21B6055D">
-          <End Type="wchModel.wch_Department" Role="wch_Department" Multiplicity="0..1" />
-          <End Type="wchModel.wch_Course" Role="wch_Course" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Department">
-              <PropertyRef Name="DepID" />
-            </Principal>
-            <Dependent Role="wch_Course">
-              <PropertyRef Name="DepID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_TimeT__Cours__286302EC">
-          <End Type="wchModel.wch_Course" Role="wch_Course" Multiplicity="0..1" />
-          <End Type="wchModel.wch_TimeTable" Role="wch_TimeTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Course">
-              <PropertyRef Name="CourseID" />
-            </Principal>
-            <Dependent Role="wch_TimeTable">
-              <PropertyRef Name="CourseID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_Cours__StuID__32E0915F">
-          <End Type="wchModel.wch_Student" Role="wch_Student" Multiplicity="1" />
-          <End Type="wchModel.wch_CourseSelection" Role="wch_CourseSelection" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Student">
-              <PropertyRef Name="StuID" />
-            </Principal>
-            <Dependent Role="wch_CourseSelection">
-              <PropertyRef Name="StuID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_Stude__DepID__0AD2A005">
-          <End Type="wchModel.wch_Department" Role="wch_Department" Multiplicity="0..1" />
-          <End Type="wchModel.wch_Student" Role="wch_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Department">
-              <PropertyRef Name="DepID" />
-            </Principal>
-            <Dependent Role="wch_Student">
-              <PropertyRef Name="DepID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_Teach__DepID__108B795B">
-          <End Type="wchModel.wch_Department" Role="wch_Department" Multiplicity="0..1" />
-          <End Type="wchModel.wch_Teacher" Role="wch_Teacher" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Department">
-              <PropertyRef Name="DepID" />
-            </Principal>
-            <Dependent Role="wch_Teacher">
-              <PropertyRef Name="DepID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_TimeT__Sched__2F10007B">
-          <End Type="wchModel.wch_Schedule" Role="wch_Schedule" Multiplicity="1" />
-          <End Type="wchModel.wch_TimeTableDetail" Role="wch_TimeTableDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Schedule">
-              <PropertyRef Name="ScheduleID" />
-            </Principal>
-            <Dependent Role="wch_TimeTableDetail">
-              <PropertyRef Name="ScheduleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_TimeT__TeaID__29572725">
-          <End Type="wchModel.wch_Teacher" Role="wch_Teacher" Multiplicity="0..1" />
-          <End Type="wchModel.wch_TimeTable" Role="wch_TimeTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Teacher">
-              <PropertyRef Name="TeaID" />
-            </Principal>
-            <Dependent Role="wch_TimeTable">
-              <PropertyRef Name="TeaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_TimeT__TermI__2D27B809">
-          <End Type="wchModel.wch_Term" Role="wch_Term" Multiplicity="1" />
-          <End Type="wchModel.wch_TimeTableDetail" Role="wch_TimeTableDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Term">
-              <PropertyRef Name="TermID" />
-            </Principal>
-            <Dependent Role="wch_TimeTableDetail">
-              <PropertyRef Name="TermID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_TimeT__Theat__300424B4">
-          <End Type="wchModel.wch_Theatre" Role="wch_Theatre" Multiplicity="1" />
-          <End Type="wchModel.wch_TimeTableDetail" Role="wch_TimeTableDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_Theatre">
-              <PropertyRef Name="TheatreID" />
-            </Principal>
-            <Dependent Role="wch_TimeTableDetail">
-              <PropertyRef Name="TheatreID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__wch_TimeT__TimeI__2C3393D0">
-          <End Type="wchModel.wch_TimeTable" Role="wch_TimeTable" Multiplicity="1" />
-          <End Type="wchModel.wch_TimeTableDetail" Role="wch_TimeTableDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_TimeTable">
-              <PropertyRef Name="TimeID" />
-            </Principal>
-            <Dependent Role="wch_TimeTableDetail">
-              <PropertyRef Name="TimeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="sv_wch_Student">
-          <Key>
-            <PropertyRef Name="StuName" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="DepName" />
-            <PropertyRef Name="StuID" />
-          </Key>
-          <Property Name="StuName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Name="Gender" Type="Boolean" Nullable="false" />
-          <Property Name="StuAge" Type="Byte" />
-          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Grade" Type="DateTime" Precision="0" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ClassName" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StuID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="sv_wch_CourseSelection">
-          <Key>
-            <PropertyRef Name="StuID" />
-            <PropertyRef Name="TimeID" />
-          </Key>
-          <Property Type="String" Name="StuID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="Mark" />
-          <Property Type="Int32" Name="TimeID" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sv_wch_Teacher">
-          <Key>
-            <PropertyRef Name="TeaID" />
-            <PropertyRef Name="TeaName" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="DepName" />
-          </Key>
-          <Property Type="String" Name="TeaID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TeaName" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="Gender" Nullable="false" />
-          <Property Type="String" Name="DepName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Byte" Name="TeaAge" />
-          <Property Type="String" Name="Tel" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK__wch_Cours__TimeI__33D4B598">
-          <End Type="wchModel.wch_TimeTable" Role="wch_TimeTable" Multiplicity="0..1" />
-          <End Type="wchModel.wch_CourseSelection" Role="wch_CourseSelection" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wch_TimeTable">
-              <PropertyRef Name="TimeID" />
-            </Principal>
-            <Dependent Role="wch_CourseSelection">
-              <PropertyRef Name="TimeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="sv_wch_courseSelect">
           <Key>
             <PropertyRef Name="StuID" />
@@ -980,6 +952,75 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
           <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Mark" Type="Double" />
         </EntityType>
+        <EntityType Name="sv_wch_CourseSelection">
+          <Key>
+            <PropertyRef Name="StuID" />
+            <PropertyRef Name="TimeID" />
+          </Key>
+          <Property Name="StuID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mark" Type="Double" />
+          <Property Name="TimeID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sv_wch_department">
+          <Key>
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="DepID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sv_wch_Student">
+          <Key>
+            <PropertyRef Name="StuName" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="DepName" />
+            <PropertyRef Name="StuID" />
+          </Key>
+          <Property Name="StuName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="StuAge" Type="Byte" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassName" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StuID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sv_wch_StudentSelect">
+          <Key>
+            <PropertyRef Name="TimeID" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="Period" />
+            <PropertyRef Name="Credit" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="TeaName" />
+          </Key>
+          <Property Name="TimeID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="Credit" Type="Int32" Nullable="false" />
+          <Property Name="StuNum" Type="Int32" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="AllowView" Type="Boolean" />
+          <Property Name="TeaID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TeaName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sv_wch_Teacher">
+          <Key>
+            <PropertyRef Name="TeaID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="TeaID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TeaName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TeaAge" Type="Byte" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="sv_wch_TimeTable">
           <Key>
             <PropertyRef Name="CourseName" />
@@ -987,7 +1028,6 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
             <PropertyRef Name="Period" />
             <PropertyRef Name="TimeID" />
             <PropertyRef Name="Capacity" />
-            <PropertyRef Name="Day" />
             <PropertyRef Name="TermID" />
             <PropertyRef Name="TermName" />
             <PropertyRef Name="DepName" />
@@ -1007,13 +1047,13 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
           <Property Name="StuNum" Type="Int32" />
           <Property Name="Capacity" Type="Int32" Nullable="false" />
           <Property Name="AllowView" Type="Boolean" />
-          <Property Name="Day" Type="Byte" Nullable="false" />
+          <Property Name="Day" Type="Byte" />
           <Property Name="TermID" Type="Int32" Nullable="false" />
           <Property Name="TermName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="StartTime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="EndTime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StartChoice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="EndChoice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="DateTime" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Precision="0" />
+          <Property Name="StartChoice" Type="DateTime" Precision="0" />
+          <Property Name="EndChoice" Type="DateTime" Precision="0" />
           <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TeaName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
           <Property Name="TheatreID" Type="Int32" Nullable="false" />
@@ -1021,6 +1061,226 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
           <Property Name="Site" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ScheduleID" Type="Int32" Nullable="false" />
           <Property Name="TimeSpan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__wch_Class__DepID__25869641">
+          <End Type="wchModel.wch_Department" Role="wch_Department" Multiplicity="0..1" />
+          <End Type="wchModel.wch_Class" Role="wch_Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Department">
+              <PropertyRef Name="DepID" />
+            </Principal>
+            <Dependent Role="wch_Class">
+              <PropertyRef Name="DepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_Stude__Class__286302EC">
+          <End Type="wchModel.wch_Class" Role="wch_Class" Multiplicity="0..1" />
+          <End Type="wchModel.wch_Student" Role="wch_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Class">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="wch_Student">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_Cours__DepID__36B12243">
+          <End Type="wchModel.wch_Department" Role="wch_Department" Multiplicity="0..1" />
+          <End Type="wchModel.wch_Course" Role="wch_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Department">
+              <PropertyRef Name="DepID" />
+            </Principal>
+            <Dependent Role="wch_Course">
+              <PropertyRef Name="DepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_TimeT__Cours__3B75D760">
+          <End Type="wchModel.wch_Course" Role="wch_Course" Multiplicity="0..1" />
+          <End Type="wchModel.wch_TimeTable" Role="wch_TimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="wch_TimeTable">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_Cours__StuID__45F365D3">
+          <End Type="wchModel.wch_Student" Role="wch_Student" Multiplicity="1" />
+          <End Type="wchModel.wch_CourseSelection" Role="wch_CourseSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Student">
+              <PropertyRef Name="StuID" />
+            </Principal>
+            <Dependent Role="wch_CourseSelection">
+              <PropertyRef Name="StuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_Cours__TimeI__46E78A0C">
+          <End Type="wchModel.wch_TimeTable" Role="wch_TimeTable" Multiplicity="1" />
+          <End Type="wchModel.wch_CourseSelection" Role="wch_CourseSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_TimeTable">
+              <PropertyRef Name="TimeID" />
+            </Principal>
+            <Dependent Role="wch_CourseSelection">
+              <PropertyRef Name="TimeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_Stude__DepID__29572725">
+          <End Type="wchModel.wch_Department" Role="wch_Department" Multiplicity="0..1" />
+          <End Type="wchModel.wch_Student" Role="wch_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Department">
+              <PropertyRef Name="DepID" />
+            </Principal>
+            <Dependent Role="wch_Student">
+              <PropertyRef Name="DepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_Teach__DepID__2D27B809">
+          <End Type="wchModel.wch_Department" Role="wch_Department" Multiplicity="0..1" />
+          <End Type="wchModel.wch_Teacher" Role="wch_Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Department">
+              <PropertyRef Name="DepID" />
+            </Principal>
+            <Dependent Role="wch_Teacher">
+              <PropertyRef Name="DepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_TimeT__Sched__4222D4EF">
+          <End Type="wchModel.wch_Schedule" Role="wch_Schedule" Multiplicity="0..1" />
+          <End Type="wchModel.wch_TimeTableDetail" Role="wch_TimeTableDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Schedule">
+              <PropertyRef Name="ScheduleID" />
+            </Principal>
+            <Dependent Role="wch_TimeTableDetail">
+              <PropertyRef Name="ScheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_TimeT__TeaID__3C69FB99">
+          <End Type="wchModel.wch_Teacher" Role="wch_Teacher" Multiplicity="0..1" />
+          <End Type="wchModel.wch_TimeTable" Role="wch_TimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Teacher">
+              <PropertyRef Name="TeaID" />
+            </Principal>
+            <Dependent Role="wch_TimeTable">
+              <PropertyRef Name="TeaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_TimeT__TermI__403A8C7D">
+          <End Type="wchModel.wch_Term" Role="wch_Term" Multiplicity="0..1" />
+          <End Type="wchModel.wch_TimeTableDetail" Role="wch_TimeTableDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Term">
+              <PropertyRef Name="TermID" />
+            </Principal>
+            <Dependent Role="wch_TimeTableDetail">
+              <PropertyRef Name="TermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_TimeT__Theat__4316F928">
+          <End Type="wchModel.wch_Theatre" Role="wch_Theatre" Multiplicity="0..1" />
+          <End Type="wchModel.wch_TimeTableDetail" Role="wch_TimeTableDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_Theatre">
+              <PropertyRef Name="TheatreID" />
+            </Principal>
+            <Dependent Role="wch_TimeTableDetail">
+              <PropertyRef Name="TheatreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wch_TimeT__TimeI__3F466844">
+          <End Type="wchModel.wch_TimeTable" Role="wch_TimeTable" Multiplicity="0..1" />
+          <End Type="wchModel.wch_TimeTableDetail" Role="wch_TimeTableDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wch_TimeTable">
+              <PropertyRef Name="TimeID" />
+            </Principal>
+            <Dependent Role="wch_TimeTableDetail">
+              <PropertyRef Name="TimeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sv_wch_Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ClassName" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="DepID" Type="Byte" Nullable="false" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StuNum" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sv_wch_Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="Period" />
+            <PropertyRef Name="Credit" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="Credit" Type="Int32" Nullable="false" />
+          <Property Name="DepID" Type="Byte" Nullable="false" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sv_wch_Term">
+          <Key>
+            <PropertyRef Name="TermID" />
+            <PropertyRef Name="TermName" />
+          </Key>
+          <Property Name="TermID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TermName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="DateTime" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Precision="0" />
+          <Property Name="StartChoice" Type="DateTime" Precision="0" />
+          <Property Name="EndChoice" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="sv_wch_pastCourse">
+          <Key>
+            <PropertyRef Name="StuID" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="TimeID" />
+            <PropertyRef Name="Period" />
+            <PropertyRef Name="Credit" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="TeaID" />
+          </Key>
+          <Property Name="StuID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="TimeID" Type="Int32" Nullable="false" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="Credit" Type="Int32" Nullable="false" />
+          <Property Name="StuNum" Type="Int32" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Mark" Type="Double" />
+          <Property Name="TeaName" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="TeaID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1155,6 +1415,40 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="TermID" ColumnName="TermID" />
                 <ScalarProperty Name="TimeID" ColumnName="TimeID" />
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sv_wch_courseSelect">
+            <EntityTypeMapping TypeName="wchModel.sv_wch_courseSelect">
+              <MappingFragment StoreEntitySet="sv_wch_courseSelect">
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="TermName" ColumnName="TermName" />
+                <ScalarProperty Name="TimeID" ColumnName="TimeID" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="StuID" ColumnName="StuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sv_wch_CourseSelection">
+            <EntityTypeMapping TypeName="wchModel.sv_wch_CourseSelection">
+              <MappingFragment StoreEntitySet="sv_wch_CourseSelection">
+                <ScalarProperty Name="TimeID" ColumnName="TimeID" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="StuID" ColumnName="StuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sv_wch_department">
+            <EntityTypeMapping TypeName="wchModel.sv_wch_department">
+              <MappingFragment StoreEntitySet="sv_wch_department">
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1173,12 +1467,19 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sv_wch_CourseSelection">
-            <EntityTypeMapping TypeName="wchModel.sv_wch_CourseSelection">
-              <MappingFragment StoreEntitySet="sv_wch_CourseSelection">
+          <EntitySetMapping Name="sv_wch_StudentSelect">
+            <EntityTypeMapping TypeName="wchModel.sv_wch_StudentSelect">
+              <MappingFragment StoreEntitySet="sv_wch_StudentSelect">
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="TeaID" ColumnName="TeaID" />
+                <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="TimeID" ColumnName="TimeID" />
-                <ScalarProperty Name="Mark" ColumnName="Mark" />
-                <ScalarProperty Name="StuID" ColumnName="StuID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1192,22 +1493,6 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="TeaName" ColumnName="TeaName" />
                 <ScalarProperty Name="TeaID" ColumnName="TeaID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sv_wch_courseSelect">
-            <EntityTypeMapping TypeName="wchModel.sv_wch_courseSelect">
-              <MappingFragment StoreEntitySet="sv_wch_courseSelect">
-                <ScalarProperty Name="Mark" ColumnName="Mark" />
-                <ScalarProperty Name="DepName" ColumnName="DepName" />
-                <ScalarProperty Name="Credit" ColumnName="Credit" />
-                <ScalarProperty Name="Period" ColumnName="Period" />
-                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="TermName" ColumnName="TermName" />
-                <ScalarProperty Name="TimeID" ColumnName="TimeID" />
-                <ScalarProperty Name="StuName" ColumnName="StuName" />
-                <ScalarProperty Name="StuID" ColumnName="StuID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1237,6 +1522,58 @@ FROM [dbo].[sv_wch_TimeTable] AS [sv_wch_TimeTable]</DefiningQuery>
                 <ScalarProperty Name="Period" ColumnName="Period" />
                 <ScalarProperty Name="Credit" ColumnName="Credit" />
                 <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sv_wch_Class">
+            <EntityTypeMapping TypeName="wchModel.sv_wch_Class">
+              <MappingFragment StoreEntitySet="sv_wch_Class">
+                <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sv_wch_Course">
+            <EntityTypeMapping TypeName="wchModel.sv_wch_Course">
+              <MappingFragment StoreEntitySet="sv_wch_Course">
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sv_wch_Term">
+            <EntityTypeMapping TypeName="wchModel.sv_wch_Term">
+              <MappingFragment StoreEntitySet="sv_wch_Term">
+                <ScalarProperty Name="EndChoice" ColumnName="EndChoice" />
+                <ScalarProperty Name="StartChoice" ColumnName="StartChoice" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="TermName" ColumnName="TermName" />
+                <ScalarProperty Name="TermID" ColumnName="TermID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sv_wch_pastCourse">
+            <EntityTypeMapping TypeName="wchModel.sv_wch_pastCourse">
+              <MappingFragment StoreEntitySet="sv_wch_pastCourse">
+                <ScalarProperty Name="TeaID" ColumnName="TeaID" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="TimeID" ColumnName="TimeID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="StuID" ColumnName="StuID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

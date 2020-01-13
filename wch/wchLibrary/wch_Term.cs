@@ -21,10 +21,10 @@ namespace wch
     
         public int TermID { get; set; }
         public string TermName { get; set; }
-        public string StartTime { get; set; }
-        public string EndTime { get; set; }
-        public string StartChoice { get; set; }
-        public string EndChoice { get; set; }
+        public Nullable<System.DateTime> StartTime { get; set; }
+        public Nullable<System.DateTime> EndTime { get; set; }
+        public Nullable<System.DateTime> StartChoice { get; set; }
+        public Nullable<System.DateTime> EndChoice { get; set; }
     
         public virtual ICollection<wch_TimeTableDetail> wch_TimeTableDetail { get; set; }
     }

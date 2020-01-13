@@ -37,10 +37,16 @@ namespace wch
         public DbSet<wch_Theatre> wch_Theatre { get; set; }
         public DbSet<wch_TimeTable> wch_TimeTable { get; set; }
         public DbSet<wch_TimeTableDetail> wch_TimeTableDetail { get; set; }
-        public DbSet<sv_wch_Student> sv_wch_Student { get; set; }
-        public DbSet<sv_wch_CourseSelection> sv_wch_CourseSelection { get; set; }
-        public DbSet<sv_wch_Teacher> sv_wch_Teacher { get; set; }
         public DbSet<sv_wch_courseSelect> sv_wch_courseSelect { get; set; }
+        public DbSet<sv_wch_CourseSelection> sv_wch_CourseSelection { get; set; }
+        public DbSet<sv_wch_department> sv_wch_department { get; set; }
+        public DbSet<sv_wch_Student> sv_wch_Student { get; set; }
+        public DbSet<sv_wch_StudentSelect> sv_wch_StudentSelect { get; set; }
+        public DbSet<sv_wch_Teacher> sv_wch_Teacher { get; set; }
         public DbSet<sv_wch_TimeTable> sv_wch_TimeTable { get; set; }
+        public DbSet<sv_wch_Class> sv_wch_Class { get; set; }
+        public DbSet<sv_wch_Course> sv_wch_Course { get; set; }
+        public DbSet<sv_wch_Term> sv_wch_Term { get; set; }
+        public DbSet<sv_wch_pastCourse> sv_wch_pastCourse { get; set; }
     }
 }

@@ -30,10 +30,11 @@ namespace wch.tool.admin.timeTable
             }
             catch (Exception e)
             {
+                //throw;
                 var json = new
                 {
                     code = 500,
-                    msg = "出现错误：" + "设置时间或地点发生冲突，请选择其他的时间或地点",
+                    msg = "出现错误：" + "设置教师，时间或地点发生冲突，请选择其他的教师，时间或地点",
                 };
                 res.Write(JsonConvert.SerializeObject(json));
             }

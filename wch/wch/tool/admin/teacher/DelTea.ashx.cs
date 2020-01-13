@@ -14,17 +14,31 @@ namespace wch.tool.admin.teacher
 
         public void ProcessRequest(HttpContext context)
         {
-            string teaID = context.Request.Params["TeaID"];
+            
             HttpResponse res = context.Response;
-
-            wch.bll.teachers.Delete(teaID);
-            var json = new
-            {
-                code = 200,
-                msg = "success",
-            };
             res.ContentType = "text/json";
-            res.Write(JsonConvert.SerializeObject(json));
+            try
+            {
+                string teaID = context.Request.Params["TeaID"];
+                wch.bll.teachers.Delete(teaID);
+                var json = new
+                {
+                    code = 200,
+                    msg = "删除成功",
+                };
+            
+                res.Write(JsonConvert.SerializeObject(json));
+            }
+            catch (Exception e)
+            {
+                var json = new
+                {
+                    code = 500,
+                    msg = "出现错误" + e.Message,
+                };
+
+                res.Write(JsonConvert.SerializeObject(json));
+            }
             res.End();
         }
 

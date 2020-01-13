@@ -54,34 +54,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bll\Classes.cs" />
+    <Compile Include="bll\Course.cs" />
+    <Compile Include="bll\courseSelect.cs" />
     <Compile Include="bll\departments.cs" />
+    <Compile Include="bll\grade.cs" />
     <Compile Include="bll\students.cs" />
     <Compile Include="bll\teachers.cs" />
+    <Compile Include="bll\Terms.cs" />
     <Compile Include="bll\timeTable.cs" />
     <Compile Include="bll\universe.cs" />
+    <Compile Include="bll\user.cs" />
     <Compile Include="lib\DBHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sv_wch_Class.cs">
+      <DependentUpon>wchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sv_wch_Course.cs">
+      <DependentUpon>wchModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sv_wch_courseSelect.cs">
       <DependentUpon>wchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sv_wch_CourseSelection.cs">
       <DependentUpon>wchModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sv_wch_department.cs">
+      <DependentUpon>wchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sv_wch_pastCourse.cs">
+      <DependentUpon>wchModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sv_wch_Student.cs">
+      <DependentUpon>wchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sv_wch_StudentSelect.cs">
       <DependentUpon>wchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sv_wch_Teacher.cs">
       <DependentUpon>wchModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sv_wch_Term.cs">
+      <DependentUpon>wchModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sv_wch_TimeTable.cs">
       <DependentUpon>wchModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="view\bs_Class.cs" />
+    <Compile Include="view\bs_Course.cs" />
+    <Compile Include="view\bs_Courses.cs" />
     <Compile Include="view\bs_CourseSelect.cs" />
     <Compile Include="view\bs_CourseSelection.cs" />
     <Compile Include="view\bs_Department.cs" />
+    <Compile Include="view\bs_Past.cs" />
     <Compile Include="view\bs_Student.cs" />
+    <Compile Include="view\bs_Tea.cs" />
     <Compile Include="view\bs_Teacher.cs" />
+    <Compile Include="view\bs_Term.cs" />
     <Compile Include="view\bs_TimeTable.cs" />
+    <Compile Include="view\bs_User.cs" />
     <Compile Include="wchModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,6 +189,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -46,7 +46,7 @@ function studentView() {
                 , { field: 'Tel', title: '电话' }
                 , { field: 'Grade', title: '入学时间', sort: true }
                 , { field: 'Address', title: '家庭地址' }
-                , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 165, align: 'center' }
+                , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 120, align: 'center' }
             ]]
             , page: true
             , done: function (res, curr, count) {

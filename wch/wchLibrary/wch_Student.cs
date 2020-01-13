@@ -14,6 +14,11 @@ namespace wch
     
     public partial class wch_Student
     {
+        public wch_Student()
+        {
+            this.wch_CourseSelection = new HashSet<wch_CourseSelection>();
+        }
+    
         public string StuID { get; set; }
         public string StuName { get; set; }
         public bool Gender { get; set; }
@@ -25,7 +30,7 @@ namespace wch
         public string Address { get; set; }
     
         public virtual wch_Class wch_Class { get; set; }
-        public virtual wch_CourseSelection wch_CourseSelection { get; set; }
+        public virtual ICollection<wch_CourseSelection> wch_CourseSelection { get; set; }
         public virtual wch_Department wch_Department { get; set; }
     }
 }

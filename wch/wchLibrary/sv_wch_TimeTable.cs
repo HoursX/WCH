@@ -23,13 +23,13 @@ namespace wch
         public Nullable<int> StuNum { get; set; }
         public int Capacity { get; set; }
         public Nullable<bool> AllowView { get; set; }
-        public byte Day { get; set; }
+        public Nullable<byte> Day { get; set; }
         public int TermID { get; set; }
         public string TermName { get; set; }
-        public string StartTime { get; set; }
-        public string EndTime { get; set; }
-        public string StartChoice { get; set; }
-        public string EndChoice { get; set; }
+        public Nullable<System.DateTime> StartTime { get; set; }
+        public Nullable<System.DateTime> EndTime { get; set; }
+        public Nullable<System.DateTime> StartChoice { get; set; }
+        public Nullable<System.DateTime> EndChoice { get; set; }
         public string DepName { get; set; }
         public string TeaName { get; set; }
         public int TheatreID { get; set; }

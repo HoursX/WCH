@@ -29,6 +29,10 @@ namespace wch.bll
             wchEntities dc = new wchEntities();
             sv_wch_TimeTable model = JsonConvert.DeserializeObject<sv_wch_TimeTable>(time_json);
 
+            if (dc.sv_wch_TimeTable.Any(a => a.TermID == model.TermID && a.Day == model.Day && a.ScheduleID == model.ScheduleID && a.TeaID == model.TeaID))
+            {
+                throw new Exception();
+            }
             if (dc.wch_TimeTableDetail.Any(a => a.TermID == model.TermID && a.Day == model.Day && a.ScheduleID == model.ScheduleID && a.TheatreID == model.TheatreID))
             {
                 throw new Exception();
@@ -57,16 +61,28 @@ namespace wch.bll
         public static void Update(string stu_json)
         {
             wchEntities dc = new wchEntities();
-            wch_Student model = JsonConvert.DeserializeObject<wch_Student>(stu_json);
-            wch_Student stu = dc.wch_Student.SingleOrDefault(a => a.StuID == model.StuID);
-            stu.StuName = model.StuName;
-            stu.Gender = model.Gender;
-            stu.ClassID = model.ClassID;
-            stu.DepID = model.DepID;
-            stu.StuAge = model.StuAge;
-            stu.Tel = model.Tel;
-            stu.Address = model.Address;
-            stu.Grade = model.Grade;
+            sv_wch_TimeTable model = JsonConvert.DeserializeObject<sv_wch_TimeTable>(stu_json);
+            wch_TimeTable timeTable = dc.wch_TimeTable.SingleOrDefault(a => a.TimeID == model.TimeID);
+            wch_TimeTableDetail timeTableDetail = dc.wch_TimeTableDetail.SingleOrDefault(a => a.TimeID == model.TimeID);
+
+            if (dc.sv_wch_TimeTable.Any(a => a.TermID == model.TermID && a.Day == model.Day && a.ScheduleID == model.ScheduleID && a.TeaID == model.TeaID))
+            {
+                throw new Exception();
+            }
+            if (dc.wch_TimeTableDetail.Any(a => a.TermID == model.TermID && a.Day == model.Day && a.ScheduleID == model.ScheduleID && a.TheatreID == model.TheatreID))
+            {
+                throw new Exception();
+            }
+            timeTable.CourseID = model.CourseID;
+            timeTable.TeaID = model.TeaID;
+            timeTable.Capacity = model.Capacity;
+            timeTable.AllowView = model.AllowView;
+
+            timeTableDetail.TermID = model.TermID;
+            timeTableDetail.Day = model.Day;
+            timeTableDetail.ScheduleID = model.ScheduleID;
+            timeTableDetail.TheatreID = model.TheatreID;
+
             dc.SaveChanges();
         }
     }

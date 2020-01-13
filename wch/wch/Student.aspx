@@ -23,7 +23,6 @@
           </a>
         </li>
         <li class="layui-nav-item"><a href="">面板首页</a></li>
-        <li class="layui-nav-item"><a href="">商品管理</a></li>
         <li class="layui-nav-item"><a href="">用户</a></li>
         <li class="layui-nav-item">
           <a href="javascript:;">其它系统</a>
@@ -35,17 +34,23 @@
         </li>
       </ul>
       <ul class="layui-nav layui-layout-right">
+          
+          <li class="layui-nav-item">
+              当前时间：
+            </li>
+        <li class="layui-nav-item" id="TimeView">
+        </li>
         <li class="layui-nav-item">
           <a href="javascript:;">
             <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
             Bikteen
           </a>
           <dl class="layui-nav-child">
-            <dd><a href="">基本资料</a></dd>
+            <dd><a href="javascript:;" id="userInfoView">基本资料</a></dd>
             <dd><a href="">安全设置</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item"><a href="">退出</a></li>
+        <li class="layui-nav-item"><a href="./Login.aspx">退出</a></li>
       </ul>
     </div>
 
@@ -56,8 +61,8 @@
           <li class="layui-nav-item layui-nav-itemed">
             <a class="" href="javascript:;">我的应用</a>
             <dl class="layui-nav-child">
-              <dd><a href="javascript:;" id="StudentView">查看历史选课信息</a></dd>
-              <dd><a href="javascript:;" id="AddStudent">查看选课名单</a></dd>
+              <dd><a href="javascript:;" id="PastCourse">查看历史选课信息</a></dd>
+              <dd><a href="javascript:;" id="SelectStudent">查看选课名单</a></dd>
               <dd><a href="javascript:;" id="Select">选课</a></dd>
               <dd><a href="javascript:;" id="Delete">退课</a></dd>
             </dl>
@@ -81,7 +86,7 @@
 
           <div id="form-content">
               <!-- 表单放置处 -->
-    
+             
     
           </div>
 
@@ -106,10 +111,77 @@
 
 </body>
 
+<script type="text/html" id="userInfoContent">
+
+</script>
+
+
+
+
+<script type="text/html" id="coursetoolbarDemo">
+<div class="layui-btn-container">
+  <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+  <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+  <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+</div>
+</script>
+
+
+<script type="text/html" id="barDemo1">
+<a class="layui-btn layui-btn-xs" lay-event="choice">选择</a>
+</script>
+
+
+<script type="text/html" id="barDemo2">
+<a class="layui-btn layui-btn-xs" lay-event="delete">退课</a>
+</script>
+
 <script src="lib/jquery-3.4.1/dist/jquery.js"></script>
 <script src="./lib/layui/layui.js" charset="utf-8"></script>
 <script src="./lib/js/wch-tool.js"></script>
+<script src="./lib/js/selectView.js"></script>
+<script src="./lib/js/pastCourse.js"></script>
+<script src="./lib/js/deleteView.js"></script>
+<script src="lib/js/selectStudent.js"></script>
+<script>
 
+    renderForm();
+    $("#Select").click(function () {
+        var htt = "<table id='context' lay-filter='context' class='layui-hide'></table>";
+        $('#form-content').html("");
+        $('#table-main').html(htt);
+        selectView();
+        layui.element.init();
+    });
+    $("#Delete").click(function () {
+        var htt = "<table id='context' lay-filter='context' class='layui-hide'></table>";
+        $('#form-content').html("");
+        $('#table-main').html(htt);
+        deleteView();
+        layui.element.init();
+    });
+    $("#PastCourse").click(function () {
+        var htt = "<table id='context' lay-filter='context' class='layui-hide'></table>";
+        $('#form-content').html("");
+        $('#table-main').html(htt);
+        pastCourseView();
+        layui.element.init();
+    });
+    $("#SelectStudent").click(function () {
+        var htt = "<table id='context' lay-filter='context' class='layui-hide'></table>";
+        $('#form-content').html("");
+        $('#table-main').html(htt);
+        selectStudent();
+        layui.element.init();
+    });
+    $("#userInfoView").click(function () {
 
-
+    });
+    setInterval(function () {
+        myPost("/tool/universe/GetTime.ashx", {}, function(val, data){
+          //console.log(data.data);
+          $("#TimeView").html(data.data);
+        });
+    }, 1000);
+</script>
 </html>

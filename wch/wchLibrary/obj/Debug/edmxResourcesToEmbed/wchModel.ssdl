@@ -22,9 +22,10 @@
   <EntityType Name="wch_CourseSelection">
     <Key>
       <PropertyRef Name="StuID" />
+      <PropertyRef Name="TimeID" />
     </Key>
     <Property Name="StuID" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TimeID" Type="int" />
+    <Property Name="TimeID" Type="int" Nullable="false" />
     <Property Name="Mark" Type="float" />
   </EntityType>
   <EntityType Name="wch_Department">
@@ -84,10 +85,10 @@
     </Key>
     <Property Name="TermID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TermName" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="StartTime" Type="nvarchar" MaxLength="20" />
-    <Property Name="EndTime" Type="nvarchar" MaxLength="20" />
-    <Property Name="StartChoice" Type="nvarchar" MaxLength="20" />
-    <Property Name="EndChoice" Type="nvarchar" MaxLength="20" />
+    <Property Name="StartTime" Type="date" />
+    <Property Name="EndTime" Type="date" />
+    <Property Name="StartChoice" Type="date" />
+    <Property Name="EndChoice" Type="date" />
   </EntityType>
   <EntityType Name="wch_Theatre">
     <Key>
@@ -110,17 +111,46 @@
   </EntityType>
   <EntityType Name="wch_TimeTableDetail">
     <Key>
-      <PropertyRef Name="TimeID" />
-      <PropertyRef Name="TermID" />
-      <PropertyRef Name="Day" />
-      <PropertyRef Name="ScheduleID" />
-      <PropertyRef Name="TheatreID" />
+      <PropertyRef Name="RowID" />
     </Key>
-    <Property Name="TimeID" Type="int" Nullable="false" />
-    <Property Name="TermID" Type="int" Nullable="false" />
-    <Property Name="Day" Type="tinyint" Nullable="false" />
-    <Property Name="ScheduleID" Type="int" Nullable="false" />
-    <Property Name="TheatreID" Type="int" Nullable="false" />
+    <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeID" Type="int" />
+    <Property Name="TermID" Type="int" />
+    <Property Name="Day" Type="tinyint" />
+    <Property Name="ScheduleID" Type="int" />
+    <Property Name="TheatreID" Type="int" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_Class”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="sv_wch_Class">
+    <Key>
+      <PropertyRef Name="ClassID" />
+      <PropertyRef Name="DepID" />
+      <PropertyRef Name="DepName" />
+    </Key>
+    <Property Name="ClassID" Type="int" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="8" />
+    <Property Name="DepID" Type="tinyint" Nullable="false" />
+    <Property Name="DepName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="StuNum" Type="int" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_Course”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="sv_wch_Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="Period" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="DepID" />
+      <PropertyRef Name="DepName" />
+    </Key>
+    <Property Name="CourseID" Type="int" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Period" Type="int" Nullable="false" />
+    <Property Name="Credit" Type="int" Nullable="false" />
+    <Property Name="DepID" Type="tinyint" Nullable="false" />
+    <Property Name="DepName" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“wch.dbo.sv_wch_courseSelect”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -159,6 +189,42 @@
     <Property Name="TimeID" Type="int" Nullable="false" />
   </EntityType>
   <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_department”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="sv_wch_department">
+    <Key>
+      <PropertyRef Name="DepID" />
+      <PropertyRef Name="DepName" />
+    </Key>
+    <Property Name="DepID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepName" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_pastCourse”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="sv_wch_pastCourse">
+    <Key>
+      <PropertyRef Name="StuID" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="TimeID" />
+      <PropertyRef Name="Period" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="Capacity" />
+      <PropertyRef Name="TeaName" />
+      <PropertyRef Name="TeaID" />
+    </Key>
+    <Property Name="StuID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CourseID" Type="int" Nullable="false" />
+    <Property Name="TimeID" Type="int" Nullable="false" />
+    <Property Name="Period" Type="int" Nullable="false" />
+    <Property Name="Credit" Type="int" Nullable="false" />
+    <Property Name="StuNum" Type="int" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="Mark" Type="float" />
+    <Property Name="TeaName" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="TeaID" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
 警告 6002: 表/视图“wch.dbo.sv_wch_Student”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
   <EntityType Name="sv_wch_Student">
     <Key>
@@ -178,6 +244,28 @@
     <Property Name="StuID" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_StudentSelect”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="sv_wch_StudentSelect">
+    <Key>
+      <PropertyRef Name="TimeID" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="Period" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="Capacity" />
+      <PropertyRef Name="TeaName" />
+    </Key>
+    <Property Name="TimeID" Type="int" Nullable="false" />
+    <Property Name="CourseID" Type="int" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Period" Type="int" Nullable="false" />
+    <Property Name="Credit" Type="int" Nullable="false" />
+    <Property Name="StuNum" Type="int" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="AllowView" Type="bit" />
+    <Property Name="TeaID" Type="nvarchar" MaxLength="20" />
+    <Property Name="TeaName" Type="nvarchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
 警告 6002: 表/视图“wch.dbo.sv_wch_Teacher”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
   <EntityType Name="sv_wch_Teacher">
     <Key>
@@ -195,6 +283,20 @@
     <Property Name="Address" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--生成过程中发现错误:
+警告 6002: 表/视图“wch.dbo.sv_wch_Term”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="sv_wch_Term">
+    <Key>
+      <PropertyRef Name="TermID" />
+      <PropertyRef Name="TermName" />
+    </Key>
+    <Property Name="TermID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TermName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="StartTime" Type="date" />
+    <Property Name="EndTime" Type="date" />
+    <Property Name="StartChoice" Type="date" />
+    <Property Name="EndChoice" Type="date" />
+  </EntityType>
+  <!--生成过程中发现错误:
 警告 6002: 表/视图“wch.dbo.sv_wch_TimeTable”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
   <EntityType Name="sv_wch_TimeTable">
     <Key>
@@ -203,7 +305,6 @@
       <PropertyRef Name="Period" />
       <PropertyRef Name="TimeID" />
       <PropertyRef Name="Capacity" />
-      <PropertyRef Name="Day" />
       <PropertyRef Name="TermID" />
       <PropertyRef Name="TermName" />
       <PropertyRef Name="DepName" />
@@ -223,13 +324,13 @@
     <Property Name="StuNum" Type="int" />
     <Property Name="Capacity" Type="int" Nullable="false" />
     <Property Name="AllowView" Type="bit" />
-    <Property Name="Day" Type="tinyint" Nullable="false" />
+    <Property Name="Day" Type="tinyint" />
     <Property Name="TermID" Type="int" Nullable="false" />
     <Property Name="TermName" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="StartTime" Type="nvarchar" MaxLength="20" />
-    <Property Name="EndTime" Type="nvarchar" MaxLength="20" />
-    <Property Name="StartChoice" Type="nvarchar" MaxLength="20" />
-    <Property Name="EndChoice" Type="nvarchar" MaxLength="20" />
+    <Property Name="StartTime" Type="date" />
+    <Property Name="EndTime" Type="date" />
+    <Property Name="StartChoice" Type="date" />
+    <Property Name="EndChoice" Type="date" />
     <Property Name="DepName" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="TeaName" Type="nvarchar" MaxLength="8" Nullable="false" />
     <Property Name="TheatreID" Type="int" Nullable="false" />
@@ -264,7 +365,7 @@
   </Association>
   <Association Name="FK__wch_Cours__StuID__45F365D3">
     <End Role="wch_Student" Type="Self.wch_Student" Multiplicity="1" />
-    <End Role="wch_CourseSelection" Type="Self.wch_CourseSelection" Multiplicity="0..1" />
+    <End Role="wch_CourseSelection" Type="Self.wch_CourseSelection" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="wch_Student">
         <PropertyRef Name="StuID" />
@@ -275,7 +376,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__wch_Cours__TimeI__46E78A0C">
-    <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="0..1" />
+    <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="1" />
     <End Role="wch_CourseSelection" Type="Self.wch_CourseSelection" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="wch_TimeTable">
@@ -335,7 +436,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__wch_TimeT__Sched__4222D4EF">
-    <End Role="wch_Schedule" Type="Self.wch_Schedule" Multiplicity="1" />
+    <End Role="wch_Schedule" Type="Self.wch_Schedule" Multiplicity="0..1" />
     <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="wch_Schedule">
@@ -359,7 +460,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__wch_TimeT__TermI__403A8C7D">
-    <End Role="wch_Term" Type="Self.wch_Term" Multiplicity="1" />
+    <End Role="wch_Term" Type="Self.wch_Term" Multiplicity="0..1" />
     <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="wch_Term">
@@ -371,7 +472,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__wch_TimeT__Theat__4316F928">
-    <End Role="wch_Theatre" Type="Self.wch_Theatre" Multiplicity="1" />
+    <End Role="wch_Theatre" Type="Self.wch_Theatre" Multiplicity="0..1" />
     <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="wch_Theatre">
@@ -383,7 +484,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__wch_TimeT__TimeI__3F466844">
-    <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="1" />
+    <End Role="wch_TimeTable" Type="Self.wch_TimeTable" Multiplicity="0..1" />
     <End Role="wch_TimeTableDetail" Type="Self.wch_TimeTableDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="wch_TimeTable">
@@ -407,6 +508,25 @@
     <EntitySet Name="wch_Theatre" EntityType="Self.wch_Theatre" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="wch_TimeTable" EntityType="Self.wch_TimeTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="wch_TimeTableDetail" EntityType="Self.wch_TimeTableDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sv_wch_Class" EntityType="Self.sv_wch_Class" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[sv_wch_Class].[ClassID] AS [ClassID], 
+[sv_wch_Class].[ClassName] AS [ClassName], 
+[sv_wch_Class].[DepID] AS [DepID], 
+[sv_wch_Class].[DepName] AS [DepName], 
+[sv_wch_Class].[StuNum] AS [StuNum]
+FROM [dbo].[sv_wch_Class] AS [sv_wch_Class]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sv_wch_Course" EntityType="Self.sv_wch_Course" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[sv_wch_Course].[CourseID] AS [CourseID], 
+[sv_wch_Course].[CourseName] AS [CourseName], 
+[sv_wch_Course].[Period] AS [Period], 
+[sv_wch_Course].[Credit] AS [Credit], 
+[sv_wch_Course].[DepID] AS [DepID], 
+[sv_wch_Course].[DepName] AS [DepName]
+FROM [dbo].[sv_wch_Course] AS [sv_wch_Course]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="sv_wch_courseSelect" EntityType="Self.sv_wch_courseSelect" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [sv_wch_courseSelect].[StuID] AS [StuID], 
@@ -428,6 +548,27 @@ FROM [dbo].[sv_wch_courseSelect] AS [sv_wch_courseSelect]</DefiningQuery>
 [sv_wch_CourseSelection].[TimeID] AS [TimeID]
 FROM [dbo].[sv_wch_CourseSelection] AS [sv_wch_CourseSelection]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="sv_wch_department" EntityType="Self.sv_wch_department" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[sv_wch_department].[DepID] AS [DepID], 
+[sv_wch_department].[DepName] AS [DepName]
+FROM [dbo].[sv_wch_department] AS [sv_wch_department]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sv_wch_pastCourse" EntityType="Self.sv_wch_pastCourse" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[sv_wch_pastCourse].[StuID] AS [StuID], 
+[sv_wch_pastCourse].[CourseName] AS [CourseName], 
+[sv_wch_pastCourse].[CourseID] AS [CourseID], 
+[sv_wch_pastCourse].[TimeID] AS [TimeID], 
+[sv_wch_pastCourse].[Period] AS [Period], 
+[sv_wch_pastCourse].[Credit] AS [Credit], 
+[sv_wch_pastCourse].[StuNum] AS [StuNum], 
+[sv_wch_pastCourse].[Capacity] AS [Capacity], 
+[sv_wch_pastCourse].[Mark] AS [Mark], 
+[sv_wch_pastCourse].[TeaName] AS [TeaName], 
+[sv_wch_pastCourse].[TeaID] AS [TeaID]
+FROM [dbo].[sv_wch_pastCourse] AS [sv_wch_pastCourse]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="sv_wch_Student" EntityType="Self.sv_wch_Student" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [sv_wch_Student].[StuName] AS [StuName], 
@@ -441,6 +582,20 @@ FROM [dbo].[sv_wch_CourseSelection] AS [sv_wch_CourseSelection]</DefiningQuery>
 [sv_wch_Student].[StuID] AS [StuID]
 FROM [dbo].[sv_wch_Student] AS [sv_wch_Student]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="sv_wch_StudentSelect" EntityType="Self.sv_wch_StudentSelect" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[sv_wch_StudentSelect].[TimeID] AS [TimeID], 
+[sv_wch_StudentSelect].[CourseID] AS [CourseID], 
+[sv_wch_StudentSelect].[CourseName] AS [CourseName], 
+[sv_wch_StudentSelect].[Period] AS [Period], 
+[sv_wch_StudentSelect].[Credit] AS [Credit], 
+[sv_wch_StudentSelect].[StuNum] AS [StuNum], 
+[sv_wch_StudentSelect].[Capacity] AS [Capacity], 
+[sv_wch_StudentSelect].[AllowView] AS [AllowView], 
+[sv_wch_StudentSelect].[TeaID] AS [TeaID], 
+[sv_wch_StudentSelect].[TeaName] AS [TeaName]
+FROM [dbo].[sv_wch_StudentSelect] AS [sv_wch_StudentSelect]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="sv_wch_Teacher" EntityType="Self.sv_wch_Teacher" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [sv_wch_Teacher].[TeaID] AS [TeaID], 
@@ -451,6 +606,16 @@ FROM [dbo].[sv_wch_Student] AS [sv_wch_Student]</DefiningQuery>
 [sv_wch_Teacher].[Tel] AS [Tel], 
 [sv_wch_Teacher].[Address] AS [Address]
 FROM [dbo].[sv_wch_Teacher] AS [sv_wch_Teacher]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sv_wch_Term" EntityType="Self.sv_wch_Term" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[sv_wch_Term].[TermID] AS [TermID], 
+[sv_wch_Term].[TermName] AS [TermName], 
+[sv_wch_Term].[StartTime] AS [StartTime], 
+[sv_wch_Term].[EndTime] AS [EndTime], 
+[sv_wch_Term].[StartChoice] AS [StartChoice], 
+[sv_wch_Term].[EndChoice] AS [EndChoice]
+FROM [dbo].[sv_wch_Term] AS [sv_wch_Term]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="sv_wch_TimeTable" EntityType="Self.sv_wch_TimeTable" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

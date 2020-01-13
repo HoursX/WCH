@@ -11,6 +11,13 @@ namespace wch
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["user"]== null || Session["Identity"].ToString() != "3")
+            {
+                Response.Redirect("login.aspx");
+                return;
+            }
+
+
 
         }
     }

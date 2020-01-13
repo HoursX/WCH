@@ -20,7 +20,7 @@ namespace wch.tool.admin.student
             string stu = context.Request.Params["val"];
             try
             {
-                wch.bll.timeTable.Add(stu);
+                wch.bll.students.Add(stu);
                 var json = new
                 {
                     code = 200,

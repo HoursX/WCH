@@ -15,12 +15,14 @@ namespace wch.view
             TeaName = "";
             TermName = "";
             Site = "";
+            TeaID = "";
         }
         public string CourseName { get; set; }
         public string DepName { get; set; }
         public string TeaName { get; set; }
         public string TermName { get; set; }
         public string Site { get; set; }
+        public string TeaID { get; set; }
 
         public int pageIndex { get; set; }
         public int pageSize { get; set; }
@@ -52,6 +54,10 @@ namespace wch.view
             if (Site != "")
             {
                 data = from a in data where a.Site.Contains(Site) select a;
+            }
+            if (TeaID != "")
+            {
+                data = from a in data where a.TeaID.Contains(TeaID) select a;
             }
             this.rowCount = data.Count();
             data = (from a in data orderby a.TimeID select a).Skip(pageIndex * pageSize).Take(pageSize);

@@ -16,10 +16,10 @@ namespace wch.tool.admin.teacher
         {
             HttpResponse res = context.Response;
             res.ContentType = "text/json";
-            string dep = context.Request.Params["val"];
+            string tea = context.Request.Params["val"];
             try
             {
-                wch.bll.departments.Update(dep);
+                wch.bll.teachers.Update(tea);
         
                 var json = new
                 {

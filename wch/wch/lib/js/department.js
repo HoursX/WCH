@@ -65,7 +65,7 @@
                     layer.open({
                         type: 1,
                         content: AddDepartment,
-                        area: ['370px', '250px'],
+                        area: ['450px', '250px'],
                         title: '添加院系',
                         success: function (layero, index) {
                             console.log(index);
@@ -76,7 +76,7 @@
                                 //监听提交
                                 form.on('submit(submitDepForm)', function (data) {
                                     //layer.msg(JSON.stringify(data.field));
-                                    myPost("/tool/admin/department/Adddep.ashx",
+                                    myPost("/tool/admin/department/AddDep.ashx",
                                     { val: JSON.stringify(data.field) },
                                     function (val, data) {
                                         console.log(data.msg);
@@ -111,6 +111,8 @@
                         { depID: data.DepID },
                         function (val, adata) {
                             console.log(adata.msg);
+                            if (adata.code == 200)
+                                layer.msg("删除成功！");
                         });
                     obj.del();
 
@@ -122,13 +124,14 @@
                 layer.open({
                     type: 1,
                     content: AddDepartment,
-                    area: ['570px', '300px'],
+                    area: ['350px', '250px'],
                     title: '修改院系',
                     success: function (layero, index) {
                         console.log(sdata.elem);
                         //修改属性
                         console.log(sdata.DepName.index);
-                        $("input[name='DepName']").val(sdata.DepID);
+                        $("input[name='DepID']").val(sdata.DepID);
+                        $("input[name='DepName']").val(sdata.DepName);
                         form.render();
                         layui.use('form', function () {
                             var form = layui.form;
@@ -152,6 +155,26 @@
                     }
                 });
             }
+        });
+        var $ = layui.$, active = {
+            reload: function () {
+                var depname = $("input[name='DepartmentName']");
+                console.log(depname);
+                //执行重载
+                table.reload('departmentTable', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    , where: {
+                        DepName: depname.val(),
+                    }
+                }, 'data');
+            }
+        };
+
+        $('#department_search').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
         });
     });
 }

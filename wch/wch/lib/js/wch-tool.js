@@ -283,6 +283,94 @@ function bindTerm(id, isDefault = false, isView = false, val = ""){
         });
 }
 
+//获取院系并绑定下拉框
+//id: 下拉框id
+//isView: 是否按照显示值绑定
+//val:显示值
+function bindDay(id, set = false,val = ""){
+    $(id).empty();
+    $(id).append(new Option("请选择上课周", ""));
+    if(set){
+        switch(val){
+            case 1:
+                $(id).append(new Option("周一", "1", true, true));
+                $(id).append(new Option("周二", "2"));
+                $(id).append(new Option("周三", "3"));
+                $(id).append(new Option("周四", "4"));
+                $(id).append(new Option("周五", "5"));
+                $(id).append(new Option("周六", "6"));
+                $(id).append(new Option("周日", "7"));
+                break;
+            case 2:
+                $(id).append(new Option("周一", "1"));
+                $(id).append(new Option("周二", "2", true, true));
+                $(id).append(new Option("周三", "3"));
+                $(id).append(new Option("周四", "4"));
+                $(id).append(new Option("周五", "5"));
+                $(id).append(new Option("周六", "6"));
+                $(id).append(new Option("周日", "7"));
+                break;
+            case 3:
+                $(id).append(new Option("周一", "1"));
+                $(id).append(new Option("周二", "2"));
+                $(id).append(new Option("周三", "3", true, true));
+                $(id).append(new Option("周四", "4"));
+                $(id).append(new Option("周五", "5"));
+                $(id).append(new Option("周六", "6"));
+                $(id).append(new Option("周日", "7"));
+                break;
+            case 4:
+                $(id).append(new Option("周一", "1"));
+                $(id).append(new Option("周二", "2"));
+                $(id).append(new Option("周三", "3"));
+                $(id).append(new Option("周四", "4", true, true));
+                $(id).append(new Option("周五", "5"));
+                $(id).append(new Option("周六", "6"));
+                $(id).append(new Option("周日", "7"));
+                break;
+            case 5:
+                $(id).append(new Option("周一", "1"));
+                $(id).append(new Option("周二", "2"));
+                $(id).append(new Option("周三", "3"));
+                $(id).append(new Option("周四", "4"));
+                $(id).append(new Option("周五", "5", true, true));
+                $(id).append(new Option("周六", "6"));
+                $(id).append(new Option("周日", "7"));
+                break;
+            case 6:
+                $(id).append(new Option("周一", "1"));
+                $(id).append(new Option("周二", "2"));
+                $(id).append(new Option("周三", "3"));
+                $(id).append(new Option("周四", "4"));
+                $(id).append(new Option("周五", "5"));
+                $(id).append(new Option("周六", "6", true, true));
+                $(id).append(new Option("周日", "7"));
+                break;
+            case 7:
+                $(id).append(new Option("周一", "1"));
+                $(id).append(new Option("周二", "2"));
+                $(id).append(new Option("周三", "3"));
+                $(id).append(new Option("周四", "4"));
+                $(id).append(new Option("周五", "5"));
+                $(id).append(new Option("周六", "6"));
+                $(id).append(new Option("周日", "7", true, true));
+                break;
+
+        }
+    } else {
+        $(id).append(new Option("周一", "1"));
+        $(id).append(new Option("周二", "2"));
+        $(id).append(new Option("周三", "3"));
+        $(id).append(new Option("周四", "4"));
+        $(id).append(new Option("周五", "5"));
+        $(id).append(new Option("周六", "6"));
+        $(id).append(new Option("周日", "7"));
+    }
+    layui.form.render();
+}
+
+
+
 //获取其他信息并绑定下拉框
 //url:后端数据接口
 //id: 下拉框id
@@ -302,3 +390,25 @@ function bindUniverse(url, id, tip, view, val){
             layui.form.init();
         });
 }
+
+
+
+function getcookies(name){
+    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    console.log(arr[2]);
+    if(arr != null) return arr[2];
+    
+    return null;
+  }
+
+  function delcookies(name){
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var val = decodeURIComponent(getcookies(name));
+    if(val != null){
+      document.cookie = name + "=" + val + ";expires=" + exp.toGMTString() + ";path=/";
+    }
+  }
+
+
+

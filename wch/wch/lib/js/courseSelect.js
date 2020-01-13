@@ -34,6 +34,7 @@
             , { field: 'Period', title: '学时', edit: 'text' }
             , { field: 'Credit', title: '学分', edit: 'text' }
             , { field: 'DepName', title: '院系', edit: 'text' }
+            , { field: 'Mark', title: '成绩', edit: 'text' }
 
           ]]
           , page: true

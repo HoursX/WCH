@@ -135,9 +135,8 @@
                     area: ['570px', '580px'],
                     title: '修改教师',
                     success: function (layero, index) {
-
+                        console.log(sdata.elem);
                         //修改属性
-                        console.log(sdata.DepName.index);
                         $("input[name='TeaID']").val(sdata.TeaID);
                         $("input[name='TeaName']").val(sdata.TeaName);
                         $("input[name='Gender']").each(function () {

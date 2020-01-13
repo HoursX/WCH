@@ -48,7 +48,7 @@ function timeTableView() {
                     return res.AllowView == 1 ? '是' : '否';}
                  }
                 , { field: 'Site', title: '教室' }
-                , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 165, align: 'center' }
+                , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 120, align: 'center' }
             ]]
             , page: true
             , done: function (res, curr, count) {
@@ -97,10 +97,10 @@ function timeTableView() {
                                 var form = layui.form;
                                 
                                 //监听提交
-                                form.on('submit(submitTimeForm)', function (data) {
+                                form.on('submit(submitTimeForm)', function (sdata) {
                                     //layer.msg(JSON.stringify(data.field));
                                     myPost("/tool/admin/timeTable/AddTimeTable.ashx",
-                                        { val: JSON.stringify(data.field) },
+                                        { val: JSON.stringify(sdata.field) },
                                         function (val, data) {
                                             console.log(data.msg);
                                             layer.msg(data.msg);
@@ -157,17 +157,21 @@ function timeTableView() {
                 layer.open({
                     type: 1,
                     content: AddStudent, //这里content是一个普通的String
-                    area: ['570px', '710px'],
-                    title: '修改',
+                    area: ['480px', '600px'],
+                    title: '排课修改',
                     success: function (layero, index) {
                         console.log(index);
                         //addStudent();
                         //添加属性
+                        form.render();
+                        $("#TimeID").val(sdata.TimeID);
                         bindCourse("#CourseGridding", true, true, sdata.CourseName);
                         bindTeacher("#TeaGridding", true, true, sdata.TeaName);
                         bindSchedule("#ScheduleGridding", true, true, sdata.TimeSpan);
                         bindTheatre("#TheatreGridding", true, true, sdata.Site);
                         bindTerm("#TermGridding", true, true, sdata.TermName);
+                        bindDay("#selectDay", true, sdata.Day);
+                        form.render();
                         $("input[name='AllowView']").each(function () {
                             if ($(this).val() == sdata.AllowView.toString()) {
                                 $(this).attr("checked", true);
@@ -180,10 +184,10 @@ function timeTableView() {
                             var form = layui.form;
 
                             //监听提交
-                            form.on('submit(submitTimeForm)', function (data) {
+                            form.on('submit(submitTimeForm)', function (sdata) {
                                 //layer.msg(JSON.stringify(data.field));
-                                myPost("/tool/admin/student/UpdTimeTable.ashx",
-                                    { val: JSON.stringify(data.field) },
+                                myPost("/tool/admin/timeTable/UpdTimeTable.ashx",
+                                    { val: JSON.stringify(sdata.field) },
                                     function (val, data) {
                                         console.log(data.msg);
                                         layer.msg(data.msg);

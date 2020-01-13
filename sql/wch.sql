@@ -58,10 +58,10 @@ CREATE TABLE wch_Term
 (
     TermID int PRIMARY KEY IDENTITY(1,1),
     TermName NVARCHAR(30) NOT NULL,
-    StartTime NVARCHAR(20) NULL,
-    EndTime NVARCHAR(20) NULL,
-    StartChoice NVARCHAR(20) NULL,
-    EndChoice NVARCHAR(20) NULL,
+    StartTime DATE NULL,
+    EndTime DATE NULL,
+    StartChoice DATE NULL,
+    EndChoice DATE NULL,
 )
 CREATE TABLE wch_Course
 (
@@ -84,22 +84,19 @@ CREATE TABLE  wch_TimeTable
 )
 CREATE TABLE wch_TimeTableDetail
 (
+	RowID int IDENTITY(1,1) primary key,
 	TimeID int FOREIGN KEY REFERENCES wch_TimeTable(TimeID),
 	TermID int FOREIGN KEY REFERENCES wch_Term(TermID),
 	[Day] TINYINT check([Day]>=0 AND [Day]<=7),
 	ScheduleID int FOREIGN KEY REFERENCES wch_Schedule(ScheduleID),
 	TheatreID int FOREIGN KEY REFERENCES wch_Theatre(TheatreID),
-    CONSTRAINT pk_wch_TimeTableDetail PRIMARY KEY
-    (
-        TimeID,TermID,[Day],ScheduleID,TheatreID
-    )
 )
 CREATE TABLE wch_CourseSelection
 (
     StuID NVARCHAR(20) FOREIGN KEY REFERENCES wch_Student(StuID),
-    TimeID INT NULL FOREIGN KEY REFERENCES wch_TimeTable(TimeID),
+    TimeID INT FOREIGN KEY REFERENCES wch_TimeTable(TimeID),
     Mark FLOAT null,
-    CONSTRAINT pk_wch_CourseSelection PRIMARY KEY(StuID),
+    CONSTRAINT pk_wch_CourseSelection PRIMARY KEY(StuID, TimeID),
 )
 CREATE TABLE wch_Login
 (

@@ -16,8 +16,8 @@ namespace wch
     {
         public wch_TimeTable()
         {
-            this.wch_TimeTableDetail = new HashSet<wch_TimeTableDetail>();
             this.wch_CourseSelection = new HashSet<wch_CourseSelection>();
+            this.wch_TimeTableDetail = new HashSet<wch_TimeTableDetail>();
         }
     
         public int TimeID { get; set; }
@@ -28,8 +28,8 @@ namespace wch
         public Nullable<bool> AllowView { get; set; }
     
         public virtual wch_Course wch_Course { get; set; }
+        public virtual ICollection<wch_CourseSelection> wch_CourseSelection { get; set; }
         public virtual wch_Teacher wch_Teacher { get; set; }
         public virtual ICollection<wch_TimeTableDetail> wch_TimeTableDetail { get; set; }
-        public virtual ICollection<wch_CourseSelection> wch_CourseSelection { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace wch
     public partial class wch_CourseSelection
     {
         public string StuID { get; set; }
-        public Nullable<int> TimeID { get; set; }
+        public int TimeID { get; set; }
         public Nullable<double> Mark { get; set; }
     
         public virtual wch_Student wch_Student { get; set; }
